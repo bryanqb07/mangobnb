@@ -5,7 +5,7 @@ class Api::RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.with_attached_photos.find_by(id: params[:id])
+    @room = Room.find_by(id: params[:id])
     render :show
   end
 end

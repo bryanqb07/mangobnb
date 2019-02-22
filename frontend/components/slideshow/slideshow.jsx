@@ -9,25 +9,29 @@ export default class Slideshow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            currentIdx: 0
+            currentIdx: 0,
         };
+
+        setInterval(this.goToNextSlide.bind(this), 2000);
     }
 
     goToNextSlide(){
+        if (this.state.currentIdx === this.props.photos.length - 1) {
+            return this.setState({
+                currentIdx: 0,
+            });
+        }
 
-    }
-
-
-    goToPreviousSlide() {
-
+        this.setState(prevState => ({
+            currentIdx: ( prevState.currentIdx + 1)
+        }));
     }
 
     render(){
+        const photos = this.props.photos;
         return(
             <div className="slideshow">
-                <Slide />
-                <LeftArrow goToPreviousSlide={this.goToPreviousSlide}/>
-                <RightArrow goToNextSlide={this.goToPreviousSlide}/>
+                <Slide photo={photos[this.state.currentIdx]} />   
             </div>
         )
     }

@@ -16,6 +16,7 @@
 
  a:link {
    text-decoration: none;
+   color: black;
  }
 
  /* html, body, div, span, applet, object, iframe,
@@ -43,13 +44,6 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 
-a.button{
-  background-color: orange;
-  border: 1px solid black;
-  border-radius: 2px;
-  color: white;
-  padding: 5px;
-}
 
 header{
   display: flex;
@@ -57,22 +51,32 @@ header{
   margin: 0 auto;
 }
 
-.left-nav{
-  width: 50%;
+.nav-bar{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  border-bottom: 1px solid lightgrey;
+}
+
+.left-nav{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 
 .left-nav h1{
-  width: 40%;
+  width: 30%;
   margin: 0;
 }
 
 .left-nav img{
-  width: 50%;
-  margin: 0;
+  width: 20%;
+}
+
+.right-nav{
+  align-items: center;
 }
 
 .right-nav-top{
@@ -96,6 +100,42 @@ header{
   font-size: 20px;
 }
 
+
+#mail{
+  color: red;
+  font-size: 50px;
+}
+
+#phone{
+  font-size: 30px;
+  color: red;
+}
+
+a.button{
+  background-color: orange;
+  border: 1px solid black;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+}
+
+
+.home-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.slideshow{
+  margin: 0 auto;
+  padding-top: 20px;
+  width: 80%;
+}
+
+.slide{
+  -webkit-transition: -webkit-transform .5s linear;
+  width: 600px;
+  height: 400px;
+}
 
 /* *{
   border: 1px solid red;
