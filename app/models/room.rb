@@ -3,6 +3,7 @@ class Room < ApplicationRecord
   has_many :bookings
   has_many :guests, through: :bookings
   has_many :prices
+  has_many_attached :photos
 
   def get_bookings_by_date(start_date, end_date)
     self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])

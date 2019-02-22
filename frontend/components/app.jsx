@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import NavBar from './navbar/navbar';
+import HomePage from './home/home_page';
 
 
 export default() => (
@@ -10,8 +11,10 @@ export default() => (
                 <h1>MangoBnb</h1>
                 <img src="" alt="image"/>
             </div>
-            
-            <Route path="/" component={NavBar} />
+            <div className="right-nav">
+                <Route path="/" component={NavBar} />
+                <Route exact path="/" component={HomePage} />
+            </div>
         </header>
     </div>
 )

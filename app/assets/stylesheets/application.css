@@ -43,8 +43,18 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 
+a.button{
+  background-color: orange;
+  border: 1px solid black;
+  border-radius: 2px;
+  color: white;
+  padding: 5px;
+}
+
 header{
   display: flex;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .left-nav{
@@ -65,18 +75,25 @@ header{
   margin: 0;
 }
 
-.right-nav{
+.right-nav-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.right-nav-bottom{
   display: flex;
 }
 
-.nav-bar{
+.right-nav-bottom{
   display: flex;
   align-items: center;
 }
 
-.nav-bar a{
+.right-nav-bottom a{
   padding: 20px;
-  font-szie: 20px;
+  font-size: 20px;
 }
 
 

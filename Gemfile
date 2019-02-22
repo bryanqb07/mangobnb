@@ -37,6 +37,7 @@ gem 'pry-rails'
 gem 'annotate'
 gem 'bcrypt'
 gem 'jquery-rails'
+gem "aws-sdk-s3"
 
 
 # Reduces boot times through caching; required in config/boot.rb
