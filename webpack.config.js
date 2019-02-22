@@ -8,7 +8,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '*']
+    extensions: ['.js', '.jsx', '.css', '*']
   },
   module: {
     rules: [
@@ -20,8 +20,13 @@ module.exports = {
           query: {
             presets: ['@babel/env', '@babel/react']
           }
-        },
-      }
+        }
+    },
+    {
+          test: /\.css?$/,
+          include: /node_modules/,
+          loaders: ['style-loader','css-loader', 'sass-loader']
+        }
     ]
   },
   devtool: 'source-map'

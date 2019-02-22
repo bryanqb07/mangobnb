@@ -11,8 +11,14 @@ export default class Slideshow extends React.Component{
         this.state = {
             currentIdx: 0,
         };
+    }
 
-        setInterval(this.goToNextSlide.bind(this), 2000);
+    componentDidMount(){
+        this.timer = setInterval(this.goToNextSlide.bind(this), 3000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timer);
     }
 
     goToNextSlide(){

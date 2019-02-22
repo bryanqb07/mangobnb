@@ -12,6 +12,11 @@ import { getRooms } from './actions/room_action';
 window.getRooms = getRooms;
 
 
+import {getCurrentDate, getTomorrowsDate} from './util/date_api_util';
+
+window.getCurrentDate = getCurrentDate;
+window.getTomorrowsDate = getTomorrowsDate;
+
 /////////////////////////
 
 document.addEventListener("DOMContentLoaded", ()=> {
