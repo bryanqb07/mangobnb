@@ -1,15 +1,19 @@
 import { connect } from 'react-redux';
-import { getRooms } from '../../actions/room_action';
+import { getPrices } from '../../actions/price_action';
+import { getAvgPrice } from '../../reducers/selectors';
 import BookingForm from './booking_form';
 
 const mapStateToProps = ({ entities }) => ({
-    photos: entities.photos
+    prices: entities.prices,
+    avgPriceRoomOne: getAvgPrice(entities, 1),
+    avgPriceRoomTwo: getAvgPrice(entities, 2),
+    rooms: entities.rooms
 });
 
 const mapDispatchToProps = dispatch => ({
-    getRooms: () => dispatch(getRooms())
+    getPrices: (dates) => dispatch(getPrices(dates)),
 });
 
 
 export default connect(
-    mapStateToProps, mapDispatchToProps)(NavBar);
+    mapStateToProps, mapDispatchToProps)(BookingForm);

@@ -1,5 +1,7 @@
 import React from 'react';
 import * as Util from '../../util/date_api_util';
+import { Link } from 'react-router-dom';
+
 
 class BookingForm extends React.Component{
     constructor(props){
@@ -58,7 +60,7 @@ class BookingForm extends React.Component{
                         }
                       </select>
                     </label>
-                    <label>Guest(s) Gender (optional)
+                    <label>Guest(s) Gender
                         <select value={this.state.guest.gender} 
                             onChange={this.handleInput("guest", "gender")}>
                         { this.genderOptions.map(gender => <option value={gender} 
@@ -75,8 +77,9 @@ class BookingForm extends React.Component{
                     <span>
                         <button > Book Now </button>
                     </span>
-
-                </form>     
+                </form>    
+                <br/>
+                <Link to="/home">Return to search page.</Link> 
             </div>
         )
     }

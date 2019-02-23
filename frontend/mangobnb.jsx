@@ -43,13 +43,15 @@ window.testBooking = {
 // import { getPrices } from './util/price_api_util';
 
 import { getPrices } from './actions/price_action';
+import { getAvgPrice } from './reducers/selectors';
+window.getAvgPrice = getAvgPrice;
 
 window.getPrices = getPrices;
 
 window.testDate = {
     start_date: "Mar 1 2019",
     end_date: "Mar 4 2019"
-}
+};
 
 /////////////////////////
 
