@@ -1,3 +1,5 @@
 class Guest < ApplicationRecord
-  validates :name, :email, :booking_id, presence: true
+  validates :name, :email, presence: true
+  has_many :bookings
+  
 end

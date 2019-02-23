@@ -191,6 +191,16 @@ a.button{
   text-align: center;
 }
 
+.booking-form-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.booking-form{
+  display: flex;
+  flex-direction: column;
+}
+
 /* *{
   border: 1px solid red;
 }

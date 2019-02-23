@@ -12,10 +12,11 @@ import { getRooms } from './actions/room_action';
 window.getRooms = getRooms;
 
 
-import {getCurrentDate, getTomorrowsDate} from './util/date_api_util';
+import {getCurrentDate, getTomorrowsDate, getTimeValues} from './util/date_api_util';
 
 window.getCurrentDate = getCurrentDate;
 window.getTomorrowsDate = getTomorrowsDate;
+window.getTimeValues = getTimeValues;
 
 /////////////////////////
 

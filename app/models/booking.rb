@@ -1,9 +1,14 @@
 class Booking < ApplicationRecord
-  validates :start_date, :end_date, :guest_id, :room_id, :num_guests, presence: true
+  validates :start_date, :end_date, :guest_id, :room_id, :num_guests, :confirmation_code, presence: true
   validate :in_future
   validate :has_vacancy?
   belongs_to :guest
   belongs_to :room
+
+
+  def self.generate_confirmation_code
+    SecureRandom.hex(3)
+  end
 
   def total_price
     total_price = 0
@@ -14,7 +19,9 @@ class Booking < ApplicationRecord
   end
 
   def in_future
-    self.start_date >= Date.today
+    if self.start_date <= Date.today
+      self.errors[:start_date] << "Start date cannot be in the past."
+    end
   end
 
   def has_vacancy?

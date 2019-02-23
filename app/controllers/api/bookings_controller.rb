@@ -10,6 +10,8 @@ class Api::BookingsController < ApplicationController
   end
 
   def create
+
+
     @booking = Booking.new(user_params)
     if @booking.save
       render :show
@@ -24,5 +26,7 @@ class Api::BookingsController < ApplicationController
     self.params.require(:booking).permit(:start_date, :end_date, :num_guests,
     :room_id, :comments, :checkin_time)
   end
+
+
 
 end
