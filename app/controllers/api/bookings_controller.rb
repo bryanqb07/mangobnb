@@ -10,9 +10,8 @@ class Api::BookingsController < ApplicationController
   end
 
   def create
-
-
-    @booking = Booking.new(user_params)
+    @booking = Booking.new(booking_params)
+    @booking.confirmation_code = Booking.generate_confirmation_code
     if @booking.save
       render :show
     else
@@ -24,7 +23,7 @@ class Api::BookingsController < ApplicationController
 
   def booking_params
     self.params.require(:booking).permit(:start_date, :end_date, :num_guests,
-    :room_id, :comments, :checkin_time)
+    :room_id, :guest_id, :comments, :checkin_time)
   end
 
 

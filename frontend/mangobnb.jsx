@@ -18,6 +18,39 @@ window.getCurrentDate = getCurrentDate;
 window.getTomorrowsDate = getTomorrowsDate;
 window.getTimeValues = getTimeValues;
 
+
+import { postGuest, postBooking } from './util/booking_api_util';
+
+window.postGuest = postGuest;
+window.postBooking = postBooking;
+
+window.testGuest = {
+    name: "Bryan L",
+    email: "b@mail.com",
+    gender: "M"
+};
+
+window.testBooking = {
+    num_guests: 1,
+    start_date: "Apr 15 2019",
+    end_date: "Apr 20 2019",
+    guest_id: 11,
+    room_id: 1,
+    comments: "top-bunk please"
+};
+
+
+// import { getPrices } from './util/price_api_util';
+
+import { getPrices } from './actions/price_action';
+
+window.getPrices = getPrices;
+
+window.testDate = {
+    start_date: "Mar 1 2019",
+    end_date: "Mar 4 2019"
+}
+
 /////////////////////////
 
 document.addEventListener("DOMContentLoaded", ()=> {

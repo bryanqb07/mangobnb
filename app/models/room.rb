@@ -20,4 +20,13 @@ class Room < ApplicationRecord
       existing_guests = self.get_existing_guests(bookings)
       self.guest_capacity - existing_guests >= 0 ? self.guest_capacity - existing_guests : 0
   end
+
+  def price_per_guest(start_date, end_date)
+    price_per_guest = 0
+    prices = Price.where(["(price_date between ? and ? ) and room_id = ?" ,
+      start_date, end_date, self.id])
+    prices.each{ |price| total_price += price.price }
+    price_per_guest
+  end
+
 end

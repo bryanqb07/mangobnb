@@ -30,17 +30,15 @@ class BookingForm extends React.Component{
     }
 
     render(){
-        //console.log(this.props);
+
         return(
             <div className="booking-form-container">
-                <div className="room-option-container">
+                {/* <div className="room-option-container">
 
                 
                 </div>
 
-
-
-
+ */}
                 <form className="booking-form" onSubmit={this.handleSubmit.bind(this)}>
                     <label> Primary Guest Name
                         <input type="text" 
@@ -72,7 +70,6 @@ class BookingForm extends React.Component{
                         <textarea
                             value={this.state.comments}
                             onChange={this.handleInput("booking", "comments")}>
-                            { this.state.booking.comments }
                         </textarea>
                     </label>
                     <span>
