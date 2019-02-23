@@ -132,10 +132,13 @@ a.button{
 }
 
 .slide{
-  -webkit-transition: -webkit-transform .5s linear;
   width: 600px;
   height: 400px;
   margin: 0 auto;
+  -webkit-transition: background 1s;
+   -moz-transition: background 1s;
+   -o-transition: background 1s;
+   transition: background 1s;
 }
 
 .search-form-container h1{
@@ -164,6 +167,28 @@ a.button{
 .picker{
   padding: 5px;
 
+}
+
+.map-section{
+  margin-top: 150px;
+}
+
+.map-section h1{
+  text-align: center;
+}
+
+#map-container{
+  width: 500px;
+  height: 500px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search-warning{
+  color: red;
+  margin: 0 auto;
+  width: 40%;
+  text-align: center;
 }
 
 /* *{

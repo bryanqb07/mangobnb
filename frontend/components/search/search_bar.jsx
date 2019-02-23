@@ -11,7 +11,8 @@ class SearchBar extends React.Component {
         this.state = {
             startDate: this.today,
             endDate: this.tomorrow,
-            numGuests: null
+            numGuests: null,
+            errors: []
         };
         this.GUEST_NUM = ["-- Guests --", 1, 2, 3, 4];
         this.handleChange = this.handleChange.bind(this);
@@ -28,15 +29,38 @@ class SearchBar extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        
+        const errors = this.errorCheck();
+        if (errors.length > 0){
+            this.setState({ errors: errors });        
+        }else{
+            this.props.history.push({
+                pathname: "booking/",
+                search: `numguests=${this.state.numGuests}&sdate=${this.state.startDate}&edate=${this.state.endDate}`
+            });
+        }
     }
 
+    errorCheck(){
+        let errors = [];
+        if (this.state.numGuests === "-- Guests --" || !this.state.numGuests) {
+            errors.push("Number of guests cannot be blank.");
+        }
+        if(this.state.startDate > this.state.endDate){
+            errors.push("Check-in date must precede check-out date.");
+        }
+        return errors;
+    }
+
+
     render() {
-        console.log(this.state);
+        const errors = this.state.errors ? (
+            this.state.errors.map(error => <div className="search-warning" key ={error}>
+                {error}</div>) ) : ""; 
+
         return (
             <div className="search-form-container">
                 <h1>Reservations</h1>
-                <form>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                     <DatePicker
                         className="picker" 
                         minDate={this.today}
@@ -57,6 +81,8 @@ class SearchBar extends React.Component {
                     </select>
                     <button>Search</button>
                 </form>
+                <br/>
+                { errors }
             </div>
         );
     }
