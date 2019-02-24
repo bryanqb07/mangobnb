@@ -12,7 +12,8 @@ class BookingForm extends React.Component{
                 gender: "Male(s) Only",
                 checkin_time: "", 
                 comments: "",
-                room_id: 1
+                room_id: 1,
+                errors: {}
         };
         this.num_guests = null;
         this.num_nights = null;
@@ -22,8 +23,8 @@ class BookingForm extends React.Component{
         this.timeOptions = Util.getTimeValues();
         this.handleInput = this.handleInput.bind(this);
         this.genderOptions = ["Male(s) Only", "Female(s) Only", "Mixed", "Other"];
-        this.handleGuestCreation = this.handleGuestCreation.bind(this);
-        this.handleBookingCreation = this.handleBookingCreation.bind(this);
+        // this.handleGuestCreation = this.handleGuestCreation.bind(this);
+        // this.handleBookingCreation = this.handleBookingCreation.bind(this);
     }
 
     componentDidMount(){
@@ -66,20 +67,15 @@ class BookingForm extends React.Component{
         };
 
         this.props.submitGuestBooking(guest, booking);
-
+        this.props.history.push({
+            pathname: "/confirmation",
+        });
     }
 
-    handleGuestCreation(){
-
-        this.props.createGuest(guest);
-        return "random";
+    handleClick() {
+        this.props.clearBooking();
     }
-
-    handleBookingCreation(){
-
-        this.props.createBooking(booking);
-    }
-
+    
     render(){
         let avgPrice = this.state.room_id == 1 ? this.props.avgPriceRoomOne
         : this.props.avgPriceRoomTwo;
@@ -129,13 +125,14 @@ class BookingForm extends React.Component{
                         </textarea>
                     </label>
                     <div>
-                        <span>Start Date: {this.start_date}</span>
+                        <span>Checkin Date: {this.start_date}</span>
                     </div>
                     <div>
-                        <span>End Date: {this.end_date}</span>
+                        <span>Checkout Date: {this.end_date}</span>
                     </div>       
                     <span>
-                        <span>Price: ${avgPrice} x ${this.num_nights}</span>
+                        <span>{this.num_guests} Guest(s) x 
+                        NTD${avgPrice} per Night x {this.num_nights} Night(s)</span>    
                         <br/>
                         <span>Total Price: ${avgPrice * this.num_nights}</span>
                     </span>
@@ -144,7 +141,7 @@ class BookingForm extends React.Component{
                     </span>
                 </form>    
                 <br/>
-                <Link to="/">Return to search page.</Link> 
+                <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link> 
             </div>
         )
     }

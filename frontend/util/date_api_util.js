@@ -43,13 +43,8 @@ export const getNumNights = (date1, date2) => (
     date2.getDate() - date1.getDate()
 );
 
-export const dateFormatter = date => {
-    let dayNum = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-};
-
-    // let date = newDate.getDate();
-    // let month = newDate.getMonth() + 1;
-    // let year = newDate.getFullYear();
-    // return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`
+// export const dateFormatter = date => {
+//     let dayNum = date.getDate();
+//     let month = date.getMonth() + 1;
+//     let year = date.getFullYear();
+// };

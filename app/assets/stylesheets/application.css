@@ -14,7 +14,7 @@
  *= require_self
  */
 
- a:link {
+.right-nav-bottom a:link {
    text-decoration: none;
    color: black;
  }

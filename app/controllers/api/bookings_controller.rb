@@ -12,7 +12,7 @@ class Api::BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.confirmation_code = Booking.generate_confirmation_code
-    # debugger
+    @booking.price_at_booking_time = @booking.get_price
     if @booking.save
       render :show
     else

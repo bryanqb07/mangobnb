@@ -1,5 +1,6 @@
 export const RECEIVE_GUEST = "RECEIVE_GUEST";
 export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
+export const CLEAR_BOOKING = "CLEAR_BOOKING";
 
 import * as APIUtil from '../util/booking_api_util';
 
@@ -11,6 +12,11 @@ import * as APIUtil from '../util/booking_api_util';
 export const receiveBooking = booking => ({
     type: RECEIVE_BOOKING,
     booking
+});
+
+
+export const clearBooking = () => ({
+    type: CLEAR_BOOKING
 });
 
 

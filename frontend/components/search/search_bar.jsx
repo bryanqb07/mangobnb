@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
             query_params += `&end_date=${this.state.endDate}`;
             
             this.props.history.push({
-                pathname: "booking/",
+                pathname: "/booking",
                 search: query_params
             });
         }

@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
     SecureRandom.hex(3)
   end
 
-  def price
+  def get_price
     total_price = 0
     prices = Price.where(["(price_date between ? and ? ) and room_id = ?" ,
       self.start_date, self.end_date - 1.day, room_id])
