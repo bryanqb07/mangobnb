@@ -13,7 +13,7 @@ class Booking < ApplicationRecord
   def price
     total_price = 0
     prices = Price.where(["(price_date between ? and ? ) and room_id = ?" ,
-      self.start_date, self.end_date, room_id])
+      self.start_date, self.end_date - 1.day, room_id])
     prices.each{ |price| total_price += price.price }
     total_price * self.num_guests
   end
@@ -29,6 +29,7 @@ class Booking < ApplicationRecord
     if self.num_guests > self.room.beds_available(self.start_date, self.end_date)
       self.errors[:guest_capacity] << "Room full for given dates."
     end
+
   end
 
 end
