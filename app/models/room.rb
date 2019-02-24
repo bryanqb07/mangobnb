@@ -17,6 +17,7 @@ class Room < ApplicationRecord
 
   def beds_available(start_date, end_date)
       bookings = self.get_bookings_by_date(start_date, end_date)
+      return if !bookings
       existing_guests = self.get_existing_guests(bookings)
       self.guest_capacity - existing_guests >= 0 ? self.guest_capacity - existing_guests : 0
   end

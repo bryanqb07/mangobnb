@@ -6,10 +6,12 @@ export const postGuest = guest => (
     })
 );
 
-export const postBooking = booking => (
-    $.ajax({
+export const postBooking = (formBooking, guest_id) => {
+    let booking = formBooking;
+    booking.guest_id = guest_id;
+    return $.ajax({
         method: 'POST',
         url: 'api/bookings/',
         data: { booking }
-    })
-); 
+    });
+}; 

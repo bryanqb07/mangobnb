@@ -141,6 +141,13 @@ a.button{
    transition: background 1s;
 }
 
+
+/* DELETE AFTER FINISHED */
+.search-form-container{
+  margin-top: 300px;
+}
+/* DELETE AFTER FINISHED */
+
 .search-form-container h1{
   text-align: center;
 }
@@ -192,9 +199,13 @@ a.button{
 }
 
 .booking-form-container{
-  width: 80%;
   margin: 0 auto;
+  padding-top: 50px;
+  width: 30%;
 }
+
+
+
 
 .booking-form{
   display: flex;

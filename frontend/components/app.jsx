@@ -2,15 +2,14 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import NavBarContainer from './navbar/navbar_container';
 import HomePage from './home/home_page';
-import Map from './map/map';
-import BookingForm from './booking/booking_form';
+import BookingFormContainer from './booking/booking_form_container';
 
 export default() => (
     <div className="content-wrapper">
         <header>
-            <Route path="/" component={NavBarContainer} />
+            {/* <Route path="/" component={NavBarContainer} /> */}
         </header>
         <Route exact path="/" component={HomePage}/>
-        <Route path="/booking" component={BookingForm} />
+        <Route path="/booking" component={BookingFormContainer} />
     </div>
 )

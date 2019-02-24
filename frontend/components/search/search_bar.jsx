@@ -33,9 +33,13 @@ class SearchBar extends React.Component {
         if (errors.length > 0){
             this.setState({ errors: errors });        
         }else{
+            let query_params = `num_guests=${this.state.numGuests}`;
+            query_params += `&start_date=${this.state.startDate}`;
+            query_params += `&end_date=${this.state.endDate}`;
+            
             this.props.history.push({
                 pathname: "booking/",
-                search: `numguests=${this.state.numGuests}&sdate=${this.state.startDate}&edate=${this.state.endDate}`
+                search: query_params
             });
         }
     }
