@@ -1,13 +1,13 @@
 import React from 'react';
-import * as Util from '../../util/date_api_util';
+import * as DateUtil from '../../util/date_api_util';
 import DatePicker from 'react-date-picker';
 import { withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
-        this.today = Util.getCurrentDate();
-        this.tomorrow = Util.getTomorrowsDate();
+        this.today = new Date();
+        this.tomorrow = DateUtil.getFollowingDate(this.today);
         this.state = {
             startDate: this.today,
             endDate: this.tomorrow,
@@ -24,7 +24,14 @@ class SearchBar extends React.Component {
     }
 
     handleDateChange(type) {
-        return (e) => this.setState({ [type]: e });
+        if(type === "startDate"){ //allows auto-updating of end date 
+                                //when new start date selected
+            return (e) =>  this.setState({ 
+                [type]: e , 
+                endDate: DateUtil.getFollowingDate(e) });
+        }else{
+            return (e) => this.setState({ [type]: e });
+        }
     }
 
     handleSubmit(e){

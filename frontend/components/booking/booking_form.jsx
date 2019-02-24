@@ -23,8 +23,6 @@ class BookingForm extends React.Component{
         this.timeOptions = Util.getTimeValues();
         this.handleInput = this.handleInput.bind(this);
         this.genderOptions = ["Male(s) Only", "Female(s) Only", "Mixed", "Other"];
-        // this.handleGuestCreation = this.handleGuestCreation.bind(this);
-        // this.handleBookingCreation = this.handleBookingCreation.bind(this);
     }
 
     componentDidMount(){
@@ -66,10 +64,15 @@ class BookingForm extends React.Component{
             comments: this.state.comments
         };
 
-        this.props.submitGuestBooking(guest, booking);
-        this.props.history.push({
-            pathname: "/confirmation",
-        });
+        if(this.state.errors.length > 0){
+            return;
+        }else{
+            this.props.submitGuestBooking(guest, booking);
+            this.props.history.push({
+                pathname: "/confirmation",
+            });
+        }
+
     }
 
     handleClick() {
@@ -149,5 +152,3 @@ class BookingForm extends React.Component{
 
 export default BookingForm;
 
-
-// loading 

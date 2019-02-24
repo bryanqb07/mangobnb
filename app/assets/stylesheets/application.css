@@ -155,7 +155,10 @@ a.button{
 .search-form-container form{
   display: flex;
   justify-content: center;
+  width: 70%;
+  margin: 0 auto;
 }
+
 
 
 .search-form-container form select{
@@ -173,7 +176,6 @@ a.button{
 
 .picker{
   padding: 5px;
-
 }
 
 .map-section{
