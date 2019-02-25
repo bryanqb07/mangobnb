@@ -1,10 +1,11 @@
 class Booking < ApplicationRecord
   validates :start_date, :end_date, :guest_id, :room_id, :num_guests, :confirmation_code, presence: true
-  validate :in_future
+  validate :valid_dates
   validate :has_vacancy?
+  validate :ensure_unique_confirmation_code
+  validate :females_only
   belongs_to :guest
   belongs_to :room
-
 
   def self.generate_confirmation_code
     SecureRandom.hex(3)
@@ -18,18 +19,33 @@ class Booking < ApplicationRecord
     total_price * self.num_guests
   end
 
-  def in_future
+  def valid_dates
     if self.start_date <= Date.today
-      self.errors[:start_date] << "Start date cannot be in the past."
+      self.errors[:start_date] << "Checkin date cannot be in the past."
+    end
+    else if self.end_date <= self.start_date
+        self.errors[:start_date] << "Checkout date cannot precede checkin date."
     end
   end
 
-  def has_vacancy?
+  def has_vacancy? # change
     raise("Must have at least one guest!") if self.num_guests < 1
     if self.num_guests > self.room.beds_available(self.start_date, self.end_date)
-      self.errors[:guest_capacity] << "Room full for given dates."
+      self.errors[:guest_capacity] << "Room full for one or more selected dates. Please re-do search."
     end
+  end
 
+  def ensure_unique_confirmation_code
+    while Booking.exists?(:confirmation_code => self.confirmation_code)
+      self.confirmation_code = Booking.generate_confirmation_code
+    end
+  end
+
+  #ensure males cannot book female_only dorm room
+  def females_only
+    if(self.room_id == 2 && self.guest.gender != "Female(s) Only")
+      self.errors[:room_id] << "Only females can book female dorm room."
+    end
   end
 
 end

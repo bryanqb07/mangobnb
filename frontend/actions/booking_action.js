@@ -1,13 +1,16 @@
+import { receiveErrors } from './error_action';
+
 export const RECEIVE_GUEST = "RECEIVE_GUEST";
 export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
 export const CLEAR_BOOKING = "CLEAR_BOOKING";
 
+
 import * as APIUtil from '../util/booking_api_util';
 
-// export const receiveGuest = guest => ({
-//     type: RECEIVE_GUEST,
-//     guest
-// });
+export const receiveGuest = booking => ({
+    type: RECEIVE_GUEST,
+    guest: booking.guest
+});
 
 export const receiveBooking = booking => ({
     type: RECEIVE_BOOKING,
@@ -20,26 +23,36 @@ export const clearBooking = () => ({
 });
 
 
-// export const createGuest = (guest) => dispatch => {
-//     APIUtil.postGuest(guest)
-//         .then(guest => dispatch(receiveGuest(guest)));
+// export const createGuest = (formGuest) => dispatch => {
+//     APIUtil.postGuest(formGuest).then(guest => {
+//         dispatch(receiveGuest(guest));
+//         return guest.id;
+//     });
 // };
 
 
 export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
     APIUtil.postGuest(formGuest)
-        .then(guest => APIUtil.postBooking(formBooking, guest.id))
-        .then(booking => dispatch(receiveBooking(booking)));
+        .then(guest => {
+            //dispatch(receiveGuest(guest));
+            formBooking.guest_id = guest.id;
+            return APIUtil.postBooking(formBooking);
+        },
+            errors => dispatch(receiveErrors(errors))
+        )
+        .then(booking => dispatch(receiveBooking(booking)),
+            errors => dispatch(receiveErrors(errors))
+        );
 };
 
-
-
-
-// export const createBooking = (booking) => dispatch => {
-//     APIUtil.postBooking(booking)
-//         .then(booking =>));
+// export const createBooking = (formBooking) => dispatch => {
+//     APIUtil.postBooking(formBooking)
+//         .then(booking => {
+//             dispatch(receiveBooking(booking));
+//             return "success";
+//         });
 // };
 
-// export const submit
+
 
 

@@ -9,7 +9,7 @@ class BookingForm extends React.Component{
         this.state = {
                 name: "",
                 email: "",
-                gender: "Male(s) Only",
+                gender: "",
                 checkin_time: "05:00:PM", 
                 comments: "",
                 room_id: 1,
@@ -22,7 +22,7 @@ class BookingForm extends React.Component{
         this.NUM_BEDS = ["-- Select # Beds --", 1, 2, 3, 4];
         this.timeOptions = DateUtil.getTimeValues();
         this.handleInput = this.handleInput.bind(this);
-        this.genderOptions = ["Male(s) Only", "Female(s) Only", "Mixed", "Other"];
+        this.genderOptions = ["-- Select Gender --", "Male(s) Only", "Female(s) Only", "Males/Females", "Other"];
     }
 
     componentDidMount(){
@@ -64,7 +64,7 @@ class BookingForm extends React.Component{
             comments: this.state.comments
         };
 
-        if(this.state.errors.length > 0){
+        if(this.props.errors > 0){
             return;
         }else{
             this.props.submitGuestBooking(guest, booking);

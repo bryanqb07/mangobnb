@@ -6,9 +6,9 @@ export const postGuest = guest => (
     })
 );
 
-export const postBooking = (formBooking, guest_id) => {
-    let booking = formBooking;
-    booking.guest_id = guest_id;
+export const postBooking = (booking) => {
+    // let booking = formBooking;
+    // booking.guest_id = guest_id;
     return $.ajax({
         method: 'POST',
         url: 'api/bookings/',

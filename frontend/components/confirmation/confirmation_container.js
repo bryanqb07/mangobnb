@@ -3,7 +3,8 @@ import { clearBooking } from '../../actions/booking_action';
 import ConfirmationPage from './confirmation_page';
 
 const mapStateToProps = ({ entities }) => ({
-    booking: entities.bookings ? entities.bookings : ""
+    booking: entities.bookings ? entities.bookings : "",
+   // guest: entities.guests ? entities.guests : ""
 });
 
 const mapDispatchToProps = dispatch => ({
