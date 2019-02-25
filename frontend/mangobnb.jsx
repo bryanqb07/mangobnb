@@ -12,11 +12,11 @@ import { getRooms } from './actions/room_action';
 window.getRooms = getRooms;
 
 
-import {getCurrentDate, getTomorrowsDate, getTimeValues} from './util/date_api_util';
-
-window.getCurrentDate = getCurrentDate;
-window.getTomorrowsDate = getTomorrowsDate;
-window.getTimeValues = getTimeValues;
+import { getCurrentDateStr } from './util/date_api_util';
+window.getCurrentDateStr = getCurrentDateStr;
+// window.getCurrentDate = getCurrentDate;
+// window.getTomorrowsDate = getTomorrowsDate;
+// window.getTimeValues = getTimeValues;
 
 
 import { postGuest, postBooking } from './util/booking_api_util';
@@ -44,6 +44,7 @@ window.testBooking = {
 
 import { getPrices } from './actions/price_action';
 import { getAvgPrice } from './reducers/selectors';
+
 window.getAvgPrice = getAvgPrice;
 
 window.getPrices = getPrices;

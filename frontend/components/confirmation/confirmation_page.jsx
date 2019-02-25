@@ -28,7 +28,7 @@ class ConfirmationPage extends React.Component{
                 <div className="confirmation-header">
                     <h1>Booking Confirmed!</h1>
                     <h3>Confirmation #: {booking.confirmation_code}</h3>
-                    <p>An email has been sent to
+                    <p>A confirmation email has been sent to
                 <a href="#"> {booking.guest.email} </a>.  Please check your
                         inbox shortly and save the email for your record.
             </p>
@@ -36,25 +36,27 @@ class ConfirmationPage extends React.Component{
                 <div className="confirmation-details">
                     <h1>Booking Details</h1>
 
-                    <span>Primary Guest Name: </span><span>{booking.guest.name}</span>
+                    <b>Primary Guest Name: </b><span>{booking.guest.name}</span>
                     <br />
-                    <span>Primary Guest Email: </span><span> {booking.guest.email}</span>
+                    <b>Primary Guest Email: </b><span> {booking.guest.email}</span>
                     <br />
-                    <span>Number of Guests: </span><span> {booking.num_guests}</span>
+                    <b>Number of Guests: </b><span> {booking.num_guests}</span>
                     <br />
-                    <span>Guest(s) Gender: </span><span>{booking.guest.gender}</span>
+                    <b>Guest(s) Gender: </b><span>{booking.guest.gender}</span>
                     <br />
-                    <span>Room Type: </span><span>{booking.room.title}</span>
+                    <b>Room Type: </b><span>{booking.room.title}</span>
                     <br />
-                    <span>Checkin Date: </span><span>{booking.start_date}</span>
+                    <b>Checkin Time: </b><span>{booking.checkin_time}</span>
                     <br />
-                    <span>Checkout Date: </span><span>{booking.end_date}</span>
+                    <b>Checkin Date: </b><span>{booking.start_date}</span>
                     <br />
-                    <span>Total Price: </span><span>NTD$ {booking.price_at_booking_time}</span>
+                    <b>Checkout Date: </b><span>{booking.end_date}</span>
                     <br />
-                    <span>Confirmation #: </span><span>{booking.confirmation_code}</span>
+                    <b>Total Price: </b><span>NTD$ {booking.price_at_booking_time}</span>
                     <br />
-                    <span>Additional Requests: </span><span>{booking.comments}</span>
+                    <b>Confirmation #: </b><span>{booking.confirmation_code}</span>
+                    <br />
+                    <b>Additional Requests: </b><span>{booking.comments}</span>
                     <br />
                 </div>
 

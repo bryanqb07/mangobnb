@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Util from '../../util/date_api_util';
+import * as DateUtil from '../../util/date_api_util';
 import { Link } from 'react-router-dom';
 
 
@@ -10,7 +10,7 @@ class BookingForm extends React.Component{
                 name: "",
                 email: "",
                 gender: "Male(s) Only",
-                checkin_time: "", 
+                checkin_time: "05:00:PM", 
                 comments: "",
                 room_id: 1,
                 errors: {}
@@ -20,7 +20,7 @@ class BookingForm extends React.Component{
         this.start_date = null;
         this.end_date = null;
         this.NUM_BEDS = ["-- Select # Beds --", 1, 2, 3, 4];
-        this.timeOptions = Util.getTimeValues();
+        this.timeOptions = DateUtil.getTimeValues();
         this.handleInput = this.handleInput.bind(this);
         this.genderOptions = ["Male(s) Only", "Female(s) Only", "Mixed", "Other"];
     }
@@ -39,7 +39,7 @@ class BookingForm extends React.Component{
         this.num_guests = searchParams.get("num_guests");
         this.start_date = searchParams.get("start_date");
         this.end_date = searchParams.get("end_date");
-        this.num_nights = Util.getNumNights(new Date(this.start_date), new Date(this.end_date));
+        this.num_nights = DateUtil.getNumNights(new Date(this.start_date), new Date(this.end_date));
     }
 
     handleInput(type){
@@ -59,7 +59,7 @@ class BookingForm extends React.Component{
             num_guests: this.num_guests,
             start_date: this.start_date,
             end_date: this.end_date,
-            checkin_time: this.checkin_time,
+            checkin_time: this.state.checkin_time,
             room_id: this.state.room_id,
             comments: this.state.comments
         };
