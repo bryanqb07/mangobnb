@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getPrices } from '../../actions/price_action';
+import { getRooms } from '../../actions/room_action';
 import { getAvgPrice } from '../../reducers/selectors';
 import { 
         //createGuest,
@@ -16,11 +17,12 @@ const mapStateToProps = (state) => ({
     errors: state.ui.errors,
     avgPriceRoomOne: getAvgPrice(state, 1),
     avgPriceRoomTwo: getAvgPrice(state, 2),
-    rooms: state.entities.rooms, // availability object by room
+    rooms: entities.rooms, // availability object by room
 });
 
 const mapDispatchToProps = dispatch => ({
     getPrices: (date) => dispatch(getPrices(date)),
+    getRooms: (date) => dispatch(getRooms(date)),
     // createGuest: guest => dispatch(createGuest(guest)),
     // createBooking: booking => dispatch(createBooking(booking)),
     submitGuestBooking: (guest, booking) => dispatch(submitGuestBooking(guest, booking)),

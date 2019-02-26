@@ -7,7 +7,7 @@ export const receiveRooms = rooms => ({
     rooms
 });
 
-export const getRooms = () => dispatch => {
-    APIUtil.getRooms()
+export const getRooms = (date) => dispatch => {
+    APIUtil.getRooms(date)
         .then(rooms => dispatch(receiveRooms(rooms)));
 };

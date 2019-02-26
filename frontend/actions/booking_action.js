@@ -18,6 +18,7 @@ export const receiveBooking = booking => ({
 });
 
 
+
 export const clearBooking = () => ({
     type: CLEAR_BOOKING
 });
