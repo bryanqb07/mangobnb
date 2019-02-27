@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as DateUtil from '../../util/date_api_util';
+
 
 class ConfirmationPage extends React.Component{
     constructor(props){

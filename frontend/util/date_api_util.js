@@ -34,27 +34,44 @@ export const getCurrentDateStr = (date, separator = '/') => {
 export const getTimeValues = () => {
     let AM = ["12:00 AM"];
     let PM = ["12:00 PM"];
-    for(let i = 1; i <= 11; i++){
-        if(i < 10){
+    for (let i = 1; i <= 11; i++) {
+        if (i < 10) {
             AM.push(`0${i}:00 AM`);
             PM.push(`0${i}:00 PM`);
-        }else{
+        } else {
             AM.push(`${i}:00 AM`);
             PM.push(`${i}:00 PM`);
         }
     }
-    return AM.concat(PM);
+    return PM.concat(AM); // get full time list with 12:00PM base
+
 };
 
 export const getNumNights = (date1, date2) => (
     date2.getDate() - date1.getDate()
 );
 
-export const timeFormatter = date => {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${hours}:${minutes}`;
-}
+// export const timeFormatter = date => {
+//     const hours = date.getHours();
+//     const minutes = date.getMinutes();
+//     return `${hours}:${minutes}`;
+// };
+
+export const timeFormatter = dateTime =>{
+    var hr = dateTime.getHours();
+    var ampm = "AM";
+    if (hr > 12) {
+        hr -= 12;
+        ampm = "PM";
+    }
+
+    if(hr % 12 < 10){
+        return `0${hr}:00 ${ampm}`;
+    }else{
+        return `${hr}:00 ${ampm}`;
+    }
+     
+};
 
 // export const dateFormatter = date => {
 //     let dayNum = date.getDate();

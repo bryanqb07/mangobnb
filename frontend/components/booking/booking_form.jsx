@@ -10,7 +10,7 @@ class BookingForm extends React.Component{
                 name: "",
                 email: "",
                 gender: "",
-                checkin_time: "05:00:PM", 
+                checkin_time: "12:00:PM", 
                 comments: "",
                 room_id: 1,
                 errors: {}
