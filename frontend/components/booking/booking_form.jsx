@@ -32,6 +32,7 @@ class BookingForm extends React.Component{
             end_date: this.end_date
         };
         this.props.getPrices(date);
+        this.props.getRooms(date);
     }
 
     parseParams(paramsString){
@@ -80,6 +81,13 @@ class BookingForm extends React.Component{
     }
     
     render(){
+        if (this.props.loading){
+            return(
+                <div className="loader">Loading...</div>
+            )
+        }
+
+
         let avgPrice = this.state.room_id == 1 ? this.props.avgPriceRoomOne
         : this.props.avgPriceRoomTwo;
 
@@ -108,7 +116,7 @@ class BookingForm extends React.Component{
                     <label>Estimated Checkin Time (optional)
                         <select value={this.state.checkin_time} 
                             onChange={this.handleInput("checkin_time")}>
-                        { this.timeOptions.map(time => <option value={time} 
+                        { this.timeOptions.map( time => <option value={time} 
                             key={time}>{time}</option>)
                         }
                       </select>

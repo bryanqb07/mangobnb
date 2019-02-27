@@ -1,1 +1,1 @@
-json.extract! guest, :id, :email, :gender
+json.extract! guest, :name, :email, :gender

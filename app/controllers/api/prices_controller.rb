@@ -11,5 +11,4 @@ class Api::PricesController < ApplicationController
       self.params.require(:dates).permit(:start_date, :end_date)
     end
 
-
 end

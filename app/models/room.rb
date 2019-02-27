@@ -16,8 +16,9 @@ class Room < ApplicationRecord
   end
 
   def beds_available(start_date, end_date)
+      #debugger
       bookings = self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])
-      return self.guest_capacity if !bookings
+      return self.guest_capacity if bookings.empty?
       existing_guests_max = self.max_guests(bookings)
       self.guest_capacity - existing_guests_max >= 0 ? self.guest_capacity - existing_guests_max : 0
   end

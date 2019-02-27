@@ -4,34 +4,33 @@ import { Link } from 'react-router-dom';
 class ConfirmationPage extends React.Component{
     constructor(props){
         super(props);
-        this.state = {loading: true};
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.booking != this.props.booking){
-            this.setState({loading: false});
-        }
-    }
+    // componentDidUpdate(prevProps){
+
+    // }
 
     handleClick(){
         this.props.clearBooking();
     }
 
-
     render(){
-       if(this.state.loading){
-           return (<div>Loading....</div>)
+        if (this.props.loading) {
+            return (
+                <div className="loader">Loading...</div>
+            )
         }else{
             const booking = this.props.booking;
+            // const guest = this.props.guest;
         return (
             <div className="confirmation-container">
                 <div className="confirmation-header">
                     <h1>Booking Confirmed!</h1>
                     <h3>Confirmation #: {booking.confirmation_code}</h3>
                     <p>A confirmation email has been sent to
-                <a href="#"> {booking.guest.email} </a>.  Please check your
+                     <a href="#"> {booking.guest.email} </a>.  Please check your
                         inbox shortly and save the email for your record.
-            </p>
+                     </p>
                 </div>
                 <div className="confirmation-details">
                     <h1>Booking Details</h1>

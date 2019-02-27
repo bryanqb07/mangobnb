@@ -1,7 +1,5 @@
 class Api::BookingsController < ApplicationController
   def index
-    start_date = price_params[:start_date]
-    end_date = price_params[:end_date]
     @bookings = Booking.all
     render :index
   end

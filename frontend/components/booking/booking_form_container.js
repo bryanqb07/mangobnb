@@ -15,9 +15,10 @@ import BookingForm from './booking_form';
 const mapStateToProps = (state) => ({
     prices: state.entities.prices,
     errors: state.ui.errors,
+    loading: state.ui.loading.searchResultsLoading,
+    rooms: state.entities.rooms, // availability object by room
     avgPriceRoomOne: getAvgPrice(state, 1),
-    avgPriceRoomTwo: getAvgPrice(state, 2),
-    rooms: entities.rooms, // availability object by room
+    avgPriceRoomTwo: getAvgPrice(state, 2)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -11,10 +11,10 @@ class SearchBar extends React.Component {
         this.state = {
             startDate: this.today,
             endDate: this.tomorrow,
-            numGuests: null,
+            numGuests: "1 Guest",
             errors: []
         };
-        this.GUEST_NUM = ["-- Guests --", 1, 2, 3, 4];
+        this.GUEST_NUM = ["1 Guest", "2 Guests", "3 Guests", "4 Guests"];
         this.handleChange = this.handleChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
     }
@@ -40,9 +40,10 @@ class SearchBar extends React.Component {
         if (errors.length > 0){
             this.setState({ errors: errors });        
         }else{
-            let query_params = `num_guests=${this.state.numGuests}`;
-            query_params += `&start_date=${this.state.startDate}`;
-            query_params += `&end_date=${this.state.endDate}`;
+            let intGuests = parseInt(this.state.numGuests[0]);
+            let query_params = `num_guests=${intGuests}`;
+            query_params += `&start_date=${this.state.startDate.toDateString()}`;
+            query_params += `&end_date=${this.state.endDate.toDateString()}`;
             
             this.props.history.push({
                 pathname: "/booking",

@@ -12,11 +12,11 @@ import { getRooms } from './actions/room_action';
 window.getRooms = getRooms;
 
 
-import { getCurrentDateStr } from './util/date_api_util';
+import { getCurrentDateStr, getTimeValues } from './util/date_api_util';
 window.getCurrentDateStr = getCurrentDateStr;
 // window.getCurrentDate = getCurrentDate;
 // window.getTomorrowsDate = getTomorrowsDate;
-// window.getTimeValues = getTimeValues;
+window.getTimeValues = getTimeValues;
 
 
 import { postGuest, postBooking } from './util/booking_api_util';
