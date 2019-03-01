@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
         case RECEIVE_ROOMS:
             return {};
         case RECEIVE_ERRORS:
-            return {};
+            return { };
         case RECEIVE_BOOKING:
             return {};
         case START_LOADING_CONFIRMATION:

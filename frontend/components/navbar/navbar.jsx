@@ -6,9 +6,9 @@ class NavBar extends React.Component{
         super(props);
     }
 
-    componentDidMount(){
-        this.props.getRooms();
-    }
+    // componentDidMount(){
+    //     this.props.getRooms();
+    // }
 
     render(){
         const photos = this.props.photos;

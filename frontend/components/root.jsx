@@ -13,4 +13,3 @@ export default({ store }) => (
     
 );
 
-//add store later

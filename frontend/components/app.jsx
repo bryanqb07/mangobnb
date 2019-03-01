@@ -8,7 +8,7 @@ import ConfirmationContainer from './confirmation/confirmation_container';
 export default() => (
     <div className="content-wrapper">
         <header>
-            {/* <Route path="/" component={NavBarContainer} /> */}
+            <Route path="/" component={NavBarContainer} />
         </header>
         <Route exact path="/" component={HomePage}/>
         <Route path="/booking" component={BookingFormContainer} />

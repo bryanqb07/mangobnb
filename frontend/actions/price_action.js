@@ -9,13 +9,13 @@ const receivePrices = prices => ({
     prices
 });
 
-const startLoadingRooms = () => ({
+const startLoadingSearch = () => ({
     type: START_LOADING_SEARCH
 });
 
 
 export const getPrices = (date) => dispatch => {
-    dispatch(startLoadingRooms());
+    dispatch(startLoadingSearch());
     return APIUtil.getPrices(date)
         .then(prices => dispatch(receivePrices(prices)));
 };
