@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-class BookingForm extends React.Component{
+class BookingIndex extends React.Component{
     constructor(props){
         super(props);
      //   this.props.startLoading();
@@ -15,7 +15,6 @@ class BookingForm extends React.Component{
                 checkin_time: "12:00:PM", 
                 comments: "",
                 room_id: 1,
-                loading: true,
                 errors: {}
         };
         this.num_guests = null;
@@ -96,9 +95,10 @@ class BookingForm extends React.Component{
         : this.props.avgPriceRoomTwo;
         let rooms = this.props.rooms ? this.props.rooms: "";
         
-        if(rooms[1].open_beds === 0 && rooms[2].open_beds === 0){
+        if( (rooms[1].open_beds === 0 && rooms[2].open_beds === 0)
+            || this.num_guests > (rooms[1].open_beds + rooms[2].open_beds)){
             return(
-                <div>
+                <div className="no-beds-available">
                     <p>Sorry, no beds were available for the given dates.
                         Please try another search.
                     </p>
@@ -111,43 +111,32 @@ class BookingForm extends React.Component{
             <div className="booking-form-container">
   
                 <div className="beds-container">
+                    <h1>Room Availability</h1>
                     <div className="bed-container-1">
                         <span>Title: Male/Female Mixed Dorm Room</span><br/>
                          { rooms[1].open_beds ?
-                            <span>Rooms Available: {rooms[1].open_beds}</span> : "No beds available for these dates."}
-                            <br/>
-                        <select>
-                            {rooms[1].open_beds ? this.NUM_BEDS.slice(0, rooms[1].open_beds + 1).map(
-                                num => <option value={num}>{num}</option>
-                            ) : <option disabled>No beds available</option>
-                            }
-                        </select>
+                            <span>Rooms Available: {rooms[1].open_beds}</span> : "No beds available for these dates."
+                        }    
                     </div>
                     <div className="bed-container-2">
                         <span>Title: Females Only Dorm Room</span><br/>
                         { 
                             rooms[2].open_beds ? <span>Rooms Available: {rooms[2].open_beds}</span> : 
                                 "No beds available for these dates."
-                        }
-                        <br/>
-                        <select>
-                            {rooms[2].open_beds ? this.NUM_BEDS.slice(0, rooms[2].open_beds + 1).map(
-                                num => <option value={num}>{num}</option>
-                            ): <option disabled>No beds available</option>
-                            }       
-                        </select>
-                        
+                        }              
                     </div>
                 
                 </div>
-
 
                 <form className="booking-form" onSubmit={this.handleSubmit.bind(this)}>
                     <label> Select a Room
                         <select onChange={this.handleInput("room_id")} 
                         value={this.state.room_id}>
-                            <option value="1">Mixed Male/Female Room</option>
-                            <option value="2">Female Only Room</option>
+                            <option value="1" disabled={ rooms[1].open_beds ? false : true}>
+                            Mixed Male/Female Room</option>
+
+                            <option value="2" disabled={ rooms[2].open_beds ? false : true}>
+                                Female Only Room</option>
                         </select>
                     </label>
                     
@@ -206,5 +195,5 @@ class BookingForm extends React.Component{
     }
 }
 
-export default BookingForm;
+export default BookingIndex;
 

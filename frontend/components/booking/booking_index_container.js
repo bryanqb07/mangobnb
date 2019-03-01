@@ -3,14 +3,15 @@ import { withRouter } from 'react-router-dom';
 import { getPrices } from '../../actions/price_action';
 import { getRooms } from '../../actions/room_action';
 import { getAvgPrice } from '../../reducers/selectors';
+
 import { 
         //createGuest,
         //createBooking, 
         submitGuestBooking,
-        clearBooking} from '../../actions/booking_action';
-import BookingForm from './booking_form';
+        clearBooking
+        } from '../../actions/booking_action';
 
-
+import BookingIndex from './booking_index';
 
 const mapStateToProps = (state) => ({
     prices: state.entities.prices,
@@ -32,4 +33,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 export default withRouter(connect(
-    mapStateToProps, mapDispatchToProps)(BookingForm));
+    mapStateToProps, mapDispatchToProps)(BookingIndex));

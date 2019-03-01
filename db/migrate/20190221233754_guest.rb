@@ -3,7 +3,7 @@ class Guest < ActiveRecord::Migration[5.2]
     create_table :guests do |t|
       t.string :name, null: false
       t.string :email, null: false
-      t.integer :booking_id, null: false
+      t.string :gender, null: false
       t.timestamps
     end
   end

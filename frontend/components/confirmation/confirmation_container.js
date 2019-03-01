@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    clearBooking: () => dispatch(clearBooking())
+    clearBooking: () => dispatch(clearBooking()),
 });
 
 export default connect(

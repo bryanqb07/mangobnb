@@ -1,14 +1,19 @@
 class Booking < ApplicationRecord
-  validates :start_date, :end_date, :guest_id, :room_id, :num_guests, :confirmation_code, presence: true
+  validates :start_date, :end_date, :guest_id, :room_id, :num_guests, :confirmation_code, :price_at_booking_time, presence: true
   validate :valid_dates
   validate :has_vacancy?
-  validate :ensure_unique_confirmation_code
-  validate :females_only
+  after_initialize :ensure_unique_confirmation_code
+  after_initialize :ensure_price_at_booking
+  #validate :females_only
   belongs_to :guest
   belongs_to :room
 
   def self.generate_confirmation_code
     SecureRandom.hex(3)
+  end
+
+  def ensure_price_at_booking
+    self.price_at_booking_time ||= self.get_price
   end
 
   def get_price
@@ -20,11 +25,11 @@ class Booking < ApplicationRecord
   end
 
   def valid_dates
-    if self.start_date <= Date.today
+    if self.start_date < Date.today
       self.errors[:start_date] << "Checkin date cannot be in the past."
     end
     else if self.end_date <= self.start_date
-        self.errors[:start_date] << "Checkout date cannot precede checkin date."
+        self.errors[:end_date] << "Checkout date cannot precede checkin date."
     end
   end
 
@@ -36,8 +41,9 @@ class Booking < ApplicationRecord
   end
 
   def ensure_unique_confirmation_code
+    self.confirmation_code ||= self.class.generate_confirmation_code
     while Booking.exists?(:confirmation_code => self.confirmation_code)
-      self.confirmation_code = Booking.generate_confirmation_code
+      self.confirmation_code = self.class.generate_confirmation_code
     end
   end
 

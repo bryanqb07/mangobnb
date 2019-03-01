@@ -10,75 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_192310) do
+ActiveRecord::Schema.define(version: 2019_03_01_185522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
 
   create_table "bookings", force: :cascade do |t|
     t.integer "num_guests", null: false
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.string "checkin_time"
+    t.text "comments"
     t.integer "guest_id", null: false
     t.integer "room_id", null: false
+    t.string "confirmation_code", null: false
+    t.integer "price_at_booking_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "comments"
-    t.string "confirmation_code"
-    t.integer "price_at_booking_time"
   end
 
   create_table "guests", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
+    t.string "gender", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gender"
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string "location"
+    t.string "photoUrl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "prices", force: :cascade do |t|
     t.date "price_date", null: false
+    t.integer "room_id", null: false
     t.integer "price", null: false
-    t.integer "room_id"
   end
 
   create_table "rooms", force: :cascade do |t|
     t.string "room_type", null: false
     t.integer "guest_capacity", default: 4, null: false
+    t.string "title", null: false
+    t.text "description", null: false
+    t.integer "open_beds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
-    t.string "description"
-    t.integer "open_beds"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end

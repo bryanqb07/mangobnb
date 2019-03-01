@@ -8,9 +8,6 @@ class ConfirmationPage extends React.Component{
         super(props);
     }
 
-    // componentDidUpdate(prevProps){
-
-    // }
 
     handleClick(){
         this.props.clearBooking();

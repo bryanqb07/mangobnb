@@ -1,5 +1,6 @@
 class Price < ApplicationRecord
   validates :price_date, :price, :room_id, presence: true
+  belongs_to :room
 
   validate :overwrite_existing
 
