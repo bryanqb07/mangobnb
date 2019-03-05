@@ -1,6 +1,6 @@
 export const getPhotos = () => (
     $.ajax({
         method: 'GET',
-        url: `api/photos/`,
+        url: `api/photos/1`,
     })
 ); 

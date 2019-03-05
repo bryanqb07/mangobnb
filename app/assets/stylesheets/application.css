@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ body{
+   margin: 0;
+ }
+
 .right-nav-bottom a:link {
    text-decoration: none;
    color: black;
@@ -200,11 +204,11 @@ a.button{
   text-align: center;
 }
 
-.booking-form-container{
+/* .booking-form-container{
   margin: 0 auto;
   padding-top: 50px;
   width: 30%;
-}
+} */
 
 
 
@@ -295,3 +299,80 @@ html{
     transform: rotate(360deg);
   }
 }
+
+.booking-container{
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.beds-container{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.beds-container h3{
+  text-align: center;
+}
+
+.beds-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.booking-form-container{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+.booking-form-container h3{
+  text-align: center;
+}
+
+.booking-form-container a{
+  margin: 0 auto;
+}
+
+
+.booking-form-container form span{
+  font-weight: bold;
+  margin: 5px;
+}
+
+.booking-form-container form select{
+  width: 55%;
+  /* margin: 0 auto; */
+}
+
+.booking-form-container form input{
+  border-radius: 3px;
+}
+
+
+.booking-form-container form button{
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+
+.beds-wrapper div img{
+  width: 150px;
+  height: 150px;
+}
+
+
+/* .booking-form-container label input{
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 3px;
+}
+
+.booking-form-container label select{
+  width: 50%;
+  margin: 0 auto;
+} */

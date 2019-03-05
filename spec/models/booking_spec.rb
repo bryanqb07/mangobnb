@@ -10,6 +10,4 @@
 #   t.text "comments"
 #   t.string "confirmation_code"
 #   t.integer "price_at_booking_time"
-#   t.integer "room1_beds"
-#   t.integer "room2_beds"
 # end

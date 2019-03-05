@@ -8,6 +8,10 @@ import configureStore from './store/store';
 // import { getRooms } from './util/room_api_util';
 // window.getRooms = getRooms;
 
+import { getPhotos } from './actions/photos_action';
+
+window.getPhotos = getPhotos;
+
 import { getRooms } from './actions/room_action';
 window.getRooms = getRooms;
 

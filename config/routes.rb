@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :guests, only: [:create, :show]
     resources :bookings, only: [:index, :create, :show]
     resources :prices, only: [:index]
+    resources :photos, only: [:show]
   end
 
   root to: 'static_pages#root'

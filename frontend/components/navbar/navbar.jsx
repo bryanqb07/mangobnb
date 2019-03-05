@@ -1,19 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 class NavBar extends React.Component{
     constructor(props){
         super(props);
     }
 
-    // componentDidMount(){
-    //     this.props.getRooms();
-    // }
+    componentDidMount(){
+        this.props.getPhotos();
+    }
 
     render(){
-        const photos = this.props.photos;
-        const logo = photos ? photos[0] : "";
-
+     
+        if(this.props.photos.photoUrls){
+            const logo = this.props.photos.photoUrls[0];
         return(
         <div className="nav-bar">
 
@@ -30,7 +31,7 @@ class NavBar extends React.Component{
                     <a id="mail" href="mailto:mango@mail.com?Subject=Booking%20Question">
                         &#x2709;
                     </a>
-                    <button>English</button>
+                    <button>中文</button>
                     <NavLink to="/booking" 
                         activeClassName="active"
                         className="button">BOOK NOW</NavLink>
@@ -44,6 +45,9 @@ class NavBar extends React.Component{
             </div>
         </div>
         )    
+        }else{
+            return(<div className="loader"></div>)
+        }
     }
 }
 

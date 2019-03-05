@@ -1,5 +1,6 @@
-class Api::Photos < ApplicationController
-  def index
-    render :index
+class Api::PhotosController < ApplicationController
+  def show
+    @photo = Photo.first
+    render :show
   end
 end

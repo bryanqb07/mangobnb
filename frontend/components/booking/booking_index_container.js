@@ -19,7 +19,8 @@ const mapStateToProps = (state) => ({
     loading: state.ui.loading.searchResultsLoading,
     rooms: state.entities.rooms, // availability object by room
     avgPriceRoomOne: getAvgPrice(state, 1),
-    avgPriceRoomTwo: getAvgPrice(state, 2)
+    avgPriceRoomTwo: getAvgPrice(state, 2),
+    roomPhoto: state.entities.photos.photoUrls[2]
 });
 
 const mapDispatchToProps = dispatch => ({

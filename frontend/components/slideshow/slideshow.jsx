@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Slide from './slide';
-import RightArrow from './arrows/right_arrow';
-import LeftArrow from './arrows/left_arrow';
+// import RightArrow from './arrows/right_arrow';
+// import LeftArrow from './arrows/left_arrow';
 
 
 export default class Slideshow extends React.Component{
@@ -34,6 +34,9 @@ export default class Slideshow extends React.Component{
     }
 
     render(){
+        if(this.props.loading == true){
+           return  (<div className="loader"></div>)
+        }
         const photos = this.props.photos;
         return(
             <div className="slideshow">
