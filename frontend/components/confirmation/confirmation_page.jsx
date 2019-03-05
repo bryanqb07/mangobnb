@@ -23,6 +23,7 @@ class ConfirmationPage extends React.Component{
             // const guest = this.props.guest;
         return (
             <div className="confirmation-container">
+                <div className="confirmation-wrapper">
                 <div className="confirmation-header">
                     <h1>Booking Confirmed!</h1>
                     <h3>Confirmation #: {booking.confirmation_code}</h3>
@@ -66,8 +67,9 @@ class ConfirmationPage extends React.Component{
                         We appreciate your booking and look forward to hosting you soon!
                 </p>
                 </div>
-                <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link>
             </div>
+            <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link>
+        </div>
         )}
     }
 

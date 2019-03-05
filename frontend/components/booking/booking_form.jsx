@@ -9,6 +9,7 @@ class BookingForm extends React.Component {
         this.state = {
             name: "",
             email: "",
+            confirm_email: "",
             gender: "",
             checkin_time: "12:00:PM",
             comments: "",
@@ -86,6 +87,11 @@ class BookingForm extends React.Component {
                         <input type="text"
                             value={this.state.email}
                             onChange={this.handleInput("email")} />
+                        
+                        <span> Confirm Primary Guest Email</span>
+                        <input type="text"
+                            value={this.state.confirm_email}
+                            onChange={this.handleInput("confirm_email")} />
 
 
                         <span>Estimated Checkin Time</span>
@@ -112,9 +118,9 @@ class BookingForm extends React.Component {
                             onChange={this.handleInput("comments")}>
                         </textarea>
 
-                        <span>Checkin Date: {this.start_date}</span>
+                        <span>Checkin Date: {this.props.start_date}</span>
 
-                        <span>Checkout Date: {this.end_date}</span>
+                        <span>Checkout Date: {this.props.end_date}</span>
 
                         <span>{this.props.num_guests} Guest(s) x
                             NTD${avgPrice} per Night x {this.props.num_nights} Night(s)</span>

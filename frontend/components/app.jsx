@@ -10,7 +10,7 @@ import ConfirmationContainer from './confirmation/confirmation_container';
 export default() => (
     <div className="content-wrapper">
         <header>
-            <Route path="/" component={NavBar} />
+            <Route exact path="/" component={NavBar} />
         </header>
         <Switch>
             <Route exact path="/" component={HomePage}/>
