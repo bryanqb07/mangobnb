@@ -5,7 +5,7 @@ import Map from '../map/map';
 
 export default() => (
     <div className="home-container">
-            <Slideshow />
+            {/* <Slideshow /> */}
             <SearchBar />
             {/* <Map /> */}
     </div>

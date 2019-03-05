@@ -67,8 +67,8 @@ class ConfirmationPage extends React.Component{
                         We appreciate your booking and look forward to hosting you soon!
                 </p>
                 </div>
+                <Link to="/" className="return-button" onClick={this.handleClick.bind(this)}>Return to search page.</Link>
             </div>
-            <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link>
         </div>
         )}
     }
