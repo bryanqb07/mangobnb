@@ -58,7 +58,7 @@ class BookingIndex extends React.Component{
 
         return(
             <div className="booking-container">
-                < RoomsDetail rooms={rooms} roomPhotos={this.props.roomPhotos}/>
+                < RoomsDetail rooms={rooms} />
                 < BookingForm num_guests={this.num_guests} 
                               num_nights={this.num_nights}
                               start_date={this.start_date} 

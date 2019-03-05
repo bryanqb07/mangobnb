@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
     rooms: state.entities.rooms, // availability object by room
     avgPriceRoomOne: getAvgPrice(state, 1),
     avgPriceRoomTwo: getAvgPrice(state, 2),
-    roomPhotos: [state.entities.photos.photoUrls[2], state.entities.photos.photoUrls[5]]
+    // roomPhotos: [state.entities.photos.photoUrls[2], state.entities.photos.photoUrls[5]]
 });
 
 const mapDispatchToProps = dispatch => ({

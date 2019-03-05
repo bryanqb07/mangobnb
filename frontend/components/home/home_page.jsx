@@ -1,11 +1,11 @@
 import React from 'react';
-import SlideshowContainer from '../slideshow/slideshow_container'
+import Slideshow from '../slideshow/slideshow';
 import SearchBar from '../search/search_bar';
 import Map from '../map/map';
 
 export default() => (
     <div className="home-container">
-            {/* <SlideshowContainer /> */}
+            <Slideshow />
             <SearchBar />
             {/* <Map /> */}
     </div>

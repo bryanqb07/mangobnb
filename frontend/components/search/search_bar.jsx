@@ -79,6 +79,7 @@ class SearchBar extends React.Component {
                         value={this.state.startDate} 
                         onChange={this.handleDateChange("startDate")}>   
                     </DatePicker>
+                    <span className="date-separator"> > </span>
                     <DatePicker 
                         className="picker"
                         value={this.state.endDate}
@@ -91,7 +92,7 @@ class SearchBar extends React.Component {
                             this.GUEST_NUM.map(num => <option value={num} key={num}>{num}</option>)
                         }
                     </select>
-                    <button>Search</button>
+                    <button className="search-button">Search</button>
                 </form>
                 <br/>
                 { errors }

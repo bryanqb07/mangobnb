@@ -1,26 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-
-class NavBar extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
-    componentDidMount(){
-        this.props.getPhotos();
-    }
-
-    render(){
-     
-        if(this.props.photos.photoUrls){
-            const logo = this.props.photos.photoUrls[0];
-        return(
+export default() => (
+       photos ? 
+       ( 
         <div className="nav-bar">
 
             <div className="left-nav">
                 <h1>MangoBnb</h1>
-                <img id="logo" src={logo} alt="image" />
+                <img id="logo" src={photos.photoUrls[0]} alt="image" />
             </div>
 
             <div className="right-nav">
@@ -44,12 +32,10 @@ class NavBar extends React.Component{
                 </div>
             </div>
         </div>
-        )    
-        }else{
-            return(<div className="loader"></div>)
-        }
-    }
-}
-
-export default NavBar;
+       )
+        :    <div className="loader"></div>
+        
+     
+)
+       
 

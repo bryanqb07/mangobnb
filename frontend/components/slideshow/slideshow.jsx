@@ -5,12 +5,13 @@ import Slide from './slide';
 // import LeftArrow from './arrows/left_arrow';
 
 
-export default class Slideshow extends React.Component{
+class Slideshow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             currentIdx: 0,
         };
+        this.photos = photos.photoUrls.slice(1,5);
     }
 
     componentDidMount(){
@@ -22,7 +23,7 @@ export default class Slideshow extends React.Component{
     }
 
     goToNextSlide(){
-        if (this.state.currentIdx === this.props.photos.length - 1) {
+        if (this.state.currentIdx === this.photos.length - 1) {
             return this.setState({
                 currentIdx: 0,
             });
@@ -34,14 +35,14 @@ export default class Slideshow extends React.Component{
     }
 
     render(){
-        if(this.props.loading == true){
-           return  (<div className="loader"></div>)
-        }
-        const photos = this.props.photos;
         return(
-            <div className="slideshow">
-                <Slide photo={photos[this.state.currentIdx]} />   
-            </div>
-        )
+            this.photos ? (
+                <div className="slideshow">
+                    <Slide photo={this.photos[this.state.currentIdx]} />
+                </div>
+            ) : <div className="loader"></div>
+        );
     }
 }
+
+export default Slideshow;

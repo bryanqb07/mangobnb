@@ -16,11 +16,13 @@
 
  body{
    margin: 0;
+   background-color: black;
+   color: white
  }
 
 .right-nav-bottom a:link {
    text-decoration: none;
-   color: black;
+   color: white;
  }
 
  /* html, body, div, span, applet, object, iframe,
@@ -49,24 +51,29 @@ time, mark, audio, video {
 }
 
 
-header{
-  display: flex;
+.content-wrapper{
   width: 80%;
   margin: 0 auto;
+}
+
+header{
+  display: flex;
+  background-color: hsl(300, 90%, 31%);
+  border-radius: 5px;
 }
 
 .nav-bar{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid lightgrey;
+  margin: 0 auto;
 }
 
 .left-nav{
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 
@@ -102,6 +109,7 @@ header{
 .right-nav-bottom a{
   padding: 20px;
   font-size: 20px;
+  color: white;
 }
 
 
@@ -125,8 +133,9 @@ a.button{
 
 
 .home-container{
-  width: 80%;
-  margin: 0 auto;
+  background-color: orchid;
+  border: 1px solid pink;
+  border-radius: 5px;
 }
 
 .slideshow{
@@ -136,7 +145,7 @@ a.button{
 }
 
 .slide{
-  width: 600px;
+  width: 900px;
   height: 400px;
   margin: 0 auto;
   -webkit-transition: background 1s;
@@ -145,13 +154,6 @@ a.button{
    transition: background 1s;
 }
 
-
-/* DELETE AFTER FINISHED */
-.search-form-container{
-  margin-top: 300px;
-}
-/* DELETE AFTER FINISHED */
-
 .search-form-container h1{
   text-align: center;
 }
@@ -159,8 +161,11 @@ a.button{
 .search-form-container form{
   display: flex;
   justify-content: center;
-  width: 70%;
   margin: 0 auto;
+  border-radius: 10px;
+  background-color: white;
+  width: 50%;
+
 }
 
 
@@ -169,17 +174,43 @@ a.button{
   padding: 5px;
   height: 50px;
   margin-left: 5px;
+  background-color: orange;
+  color: white;
 }
 
-.search-form-container form button{
+.date-separator{
+  color: black;
+  margin: 15px;
+}
+
+.react-date-picker__wrapper{
+  border: none !important;
+}
+
+
+
+
+/* .search-form-container form button{
   padding: 5px;
   margin-left: 5px;
-}
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  background-color: orange;
+} */
 
+.search-button{
+  padding: 5px;
+  margin-left: 5px;
+  width: 100px;
+  border-radius: 10px;
+  color: white;
+  background-color: orange;
+}
 
 
 .picker{
-  padding: 5px;
+  color: black;
 }
 
 .map-section{
