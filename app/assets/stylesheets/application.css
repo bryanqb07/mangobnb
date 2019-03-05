@@ -359,12 +359,19 @@ html{
   margin: 0 auto;
 }
 
-
-.beds-wrapper div img{
-  width: 150px;
+.room-photo{
+  width: 250px;
   height: 150px;
 }
+/* .beds-wrapper div img{
+  width: 250px;
+  height: 150px;
+} */
 
+img.icon{
+  width:  60px;
+  height: 60px;
+}
 
 /* .booking-form-container label input{
   width: 50%;

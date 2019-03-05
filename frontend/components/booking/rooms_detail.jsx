@@ -1,26 +1,30 @@
-import React from 'react'
+import React from 'react';
+import BedsIconDetail from './beds_icon_detail';
 
-export default( { rooms }, { roomPhoto }) => (
+export default( { rooms, roomPhotos } ) => (
 
     <div className="beds-container">
         <h3>Room Availability</h3>
         <div className="beds-wrapper">
             <div className="bed-container-1">
-                <img src={roomPhoto} alt="bed1-image" />
+                <img className="room-photo" src={roomPhotos[0]} alt="bed1-image" />
                 <br />
                 <b>Title: </b><span>Male/Female Mixed Dorm Room</span><br />
                 { rooms[1].open_beds ?
-                    <span><b>Beds Available: </b>{rooms[1].open_beds}</span> :
+                    < BedsIconDetail beds={rooms[1].open_beds}
+                                     icon={roomPhotos[1]}/> :
                     <span>No beds available for these dates.</span>
                 }
             </div>
             <div className="bed-container-2">
-                <img src={roomPhoto} alt="bed2-image" />
+                <img className="room-photo" src={roomPhotos[0]} alt="bed2-image" />
                 <br />
-                <b>Title: </b><span>Females Only Dorm Room</span><br />
+                <b>Title: </b><span>Females Only Dorm Room</span>
+                <br />
                 {
                     rooms[2].open_beds ?
-                        <span><b>Beds Available: </b>{rooms[2].open_beds}</span> :
+                        < BedsIconDetail beds={rooms[2].open_beds}
+                                         icon={roomPhotos[1]} /> :
                         <span>No beds available for these dates.</span>
                 }
             </div>

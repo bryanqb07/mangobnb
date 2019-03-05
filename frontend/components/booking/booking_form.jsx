@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import * as DateUtil from '../../util/date_api_util';
 import { Link } from 'react-router-dom';
 
-
-
 class BookingForm extends React.Component {
     constructor(props) {
         super(props);
@@ -22,23 +20,6 @@ class BookingForm extends React.Component {
         this.genderOptions = ["--- Select Gender ---", "Male(s) Only", "Female(s) Only", "Males/Females", "Other"];
     }
 
-    // componentDidMount() {
-    //     this.parseParams(this.props.location.search);
-    //     const date = {
-    //         start_date: this.start_date,
-    //         end_date: this.end_date
-    //     };
-    //     this.props.getPrices(date);
-    //     this.props.getRooms(date);
-    // }
-
-    // parseParams(paramsString) {
-    //     var searchParams = new URLSearchParams(paramsString);
-    //     this.num_guests = searchParams.get("num_guests");
-    //     this.start_date = searchParams.get("start_date");
-    //     this.end_date = searchParams.get("end_date");
-    //     this.num_nights = DateUtil.getNumNights(new Date(this.start_date), new Date(this.end_date));
-    // }
 
     handleInput(type) {
         return (e) => this.setState({ [type]: e.target.value });
