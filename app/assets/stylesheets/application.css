@@ -123,7 +123,7 @@ header{
 
 
 #mail{
-  color: red;
+  color: white;
   font-size: 50px;
 }
 
@@ -519,4 +519,44 @@ to   { opacity: 1; }
 
 .confirmation-contact-messages{
   margin-top: 10px;
+}
+
+.login-form-container{
+  width: 25%;
+  margin: 0 auto;
+  background-color: darksalmon;
+  border-radius: 5px;
+}
+
+.login-header{
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-header span a{
+  /* text-decoration: none; */
+  color: white;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-container form span{
+  margin-top: 2px
+}
+
+.login-form-container form input{
+  border-radius: 10px;
+  height: 25px;
+  margin: 5px
+}
+
+
+.login-form-container form button{
+  width: 50%;
+  height: 30px;
+  border-radius: 5px;
+  margin: 0 auto;
 }

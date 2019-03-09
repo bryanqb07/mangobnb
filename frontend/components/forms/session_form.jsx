@@ -42,49 +42,53 @@ class SessionForm extends React.Component{
         const errors = this.props.errors;
         const errorsDisplay = errors ? ( this.props.errors.map(error => <li key={error}>{error}</li>) 
             ) : "";
-        const emailForm = this.props.formType == "/login" ? "" : (
-            <label> Email
-                <input
-                    type="text"
-                    value={this.state.email}
-                    onChange={this.handleInput("email")}
-                />
-            </label>
+        const isLogin = this.props.formType == "/login"
+
+        const emailForm =  isLogin ? "" : (
+            <input
+                type="text"
+                value={this.state.email}
+                onChange={this.handleInput("email")}
+            />
+        
         );
         
         return(
-            <div>
-                <header>
+            <div className="login-form-container">
+                <header className="login-header">
+                    <span>Have an account already? &nbsp;&nbsp;&nbsp; 
+                        <Link to={header.url} >
+                            {header.text}
+                        </Link>
+                    </span>
+                    
                     <h1>
                         { header.title }
                     </h1>
-                    <Link to={ header.url } >
-                        { header.text }
-                    </Link>
-                    <ul>
-                        { errorsDisplay } 
-                    </ul>
                 </header>
                 <form>
-                    <label> Username
+                    <span> Username</span>
                         <input 
                             type="text" 
                             value={this.state.username}
                             onChange={this.handleInput("username")} />
-                    </label>
-                    <label> Password
+
+                    <span> Password </span>
                         <input 
                             type="password"
                             value={this.state.password}
                             onChange={this.handleInput("password")} />
-                    </label>
                     
+                    { isLogin ? "" : <span>Email</span> }
                     { emailForm}
 
                     <button onClick={this.handleSubmit}>
                         { header.title }
                     </button>
                 </form>
+                <ul>
+                    {errorsDisplay}
+                </ul>   
             </div>
         )
     }
