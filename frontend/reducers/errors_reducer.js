@@ -1,21 +1,8 @@
-import { RECEIVE_ERRORS } from '../actions/error_action';
-import { RECEIVE_GUEST, RECEIVE_BOOKING, CLEAR_BOOKING } from '../actions/booking_action';
+import { combineReducers } from 'redux';
+import sessionErrorsReducer from './session_errors_reducer';
+import bookingErrorsReducer from './booking_errors_reducer'
 
-
-export default (state = {}, action) => {
-    Object.freeze(state);
-
-    if(action.type === RECEIVE_ERRORS){
-        return action.errors;
-    
-    }else if(
-        action.type === RECEIVE_GUEST ||
-        action.type === RECEIVE_BOOKING ||
-        action.type === CLEAR_BOOKING ) {        
-        return {};
-    }
-    else{
-        return state;
-    }
-};
-
+export default combineReducers({
+      session: sessionErrorsReducer,
+      booking: bookingErrorsReducer
+});

@@ -13,6 +13,9 @@ export default() => (
             <Route exact path="/" component={NavBar} />
         </header>
         <Switch>
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
+            <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            // <ProtectedRoute exact path="/admin" component={AdminPageContainer} />
             <Route exact path="/" component={HomePage}/>
             <Route path="/booking" component={BookingIndexContainer} />
             <Route path="/confirmation" component={ConfirmationContainer} />

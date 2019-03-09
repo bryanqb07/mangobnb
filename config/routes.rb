@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :rooms, only: [:index, :show]
     resources :guests, only: [:create, :show]
     resources :bookings, only: [:index, :create, :show]
+    resource :session, only: [:create, :destroy]
     resources :prices, only: [:index]
     resources :photos, only: [:show]
   end

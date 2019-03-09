@@ -1,16 +1,16 @@
-// import { connect } from 'react-redux';
-// import { getPhotos } from '../../actions/photos_action';
-// import NavBar from './navbar';
+import { connect } from 'react-redux';
+import { logout } from '../../actions/session_actions';
+import NavBar from './navbar';
 
 
-// const mapStateToProps = ({ entities }) => ({
-//     photos: entities.photos
-// });
+const mapStateToProps = ({ entities }) => ({
+    currentUser: state.entities.users[state.session.id]
+});
 
-// const mapDispatchToProps = dispatch => ({
-//     getPhotos: () => dispatch(getPhotos())
-// });
+const mapDispatchToProps = dispatch => ({
+      logout: () => dispatch(logout())
+});
 
 
-// export default connect(
-//     mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(
+    mapStateToProps, mapDispatchToProps)(NavBar);
