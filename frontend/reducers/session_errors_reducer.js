@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 import {
     RECEIVE_CURRENT_USER,
     RECEIVE_SESSION_ERRORS
-} from '../actions/session_actions';
+} from '../actions/session_action';
 
 export default (state = [], action) => {
     Object.freeze(state);

@@ -1,9 +1,11 @@
+<% if current_user %>
 <script type="text/javascript">
   window.currentUser = <%= render(
-    "api/users/user.json.jbuilder",
-    user: current_user
+      "api/users/user.json.jbuilder",
+      user: current_user
   ).html_safe %>
 </script>
+<% end %>
 
 <div id="root">
   React will takeover from here..
