@@ -22,7 +22,7 @@
    /* background-image: url(taipei_main.jpg) */
  }
 
-.right-nav-bottom a:link {
+.right-nav a:link {
    text-decoration: none;
    color: white;
  }
@@ -57,6 +57,14 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 
+
+button{
+  cursor: pointer;
+}
+
+.active{
+  color: red
+}
 
 .content-wrapper{
   width: 80%;
@@ -105,6 +113,11 @@ header{
   justify-content: space-around;
 }
 
+.right-nav-top a span{
+  font-size: 20px;
+  color: white;
+}
+
 
 .right-nav-bottom{
   display: flex;
@@ -115,10 +128,12 @@ header{
   align-items: center;
 }
 
-.right-nav-bottom a{
+.right-nav-bottom button{
   padding: 20px;
   font-size: 20px;
   color: white;
+  background: none;
+  border: none;
 }
 
 
@@ -129,7 +144,6 @@ header{
 
 #phone{
   font-size: 30px;
-  color: red;
 }
 
 a.button{
@@ -559,4 +573,9 @@ to   { opacity: 1; }
   height: 30px;
   border-radius: 5px;
   margin: 0 auto;
+}
+
+
+.dropdown{
+  display: none;
 }

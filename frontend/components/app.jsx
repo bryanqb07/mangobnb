@@ -11,18 +11,18 @@ import LoginFormContainer from './forms/login_form_container';
 import SignupFormContainer from './forms/signup_form_container';
 
 
-export default() => (
-    <div className="content-wrapper">
-        <header>
-            <Route exact path="/" component={NavBar} />
-        </header>
-        <Switch>
-            <Route exact path="/" component={HomePage} />
-            <AuthRoute exact path="/login" component={LoginFormContainer} />
-            <AuthRoute exact path="/signup" component={SignupFormContainer} />
-            {/* <ProtectedRoute exact path="/admin" component={AdminPageContainer} /> */}
-            <Route path="/booking" component={BookingIndexContainer} />
-            <Route path="/confirmation" component={ConfirmationContainer} />
-        </Switch>
-    </div>
-)
+export default () => (
+  <div className="content-wrapper">
+    <header>
+      <Route exact path="/" component={NavBar} />
+    </header>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <AuthRoute exact path="/admin" component={LoginFormContainer} />
+      {/* <AuthRoute exact path="/signup" component={SignupFormContainer} />  */}
+      {/* <ProtectedRoute exact path="/admin" component={AdminPageContainer} /> */}
+      <Route path="/booking" component={BookingIndexContainer} />
+      <Route path="/confirmation" component={ConfirmationContainer} />
+    </Switch>
+  </div>
+);
