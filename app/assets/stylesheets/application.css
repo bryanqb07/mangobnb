@@ -60,6 +60,11 @@ time, mark, audio, video {
 
 button{
   cursor: pointer;
+  background-color: white;
+}
+
+select{
+  background-color: white;
 }
 
 .active{
@@ -370,8 +375,8 @@ html{
   border-radius: 5px;
   padding: 20px;
   background-color: dimgrey;
-  margin-right: 50px;
-  margin-top: 50px;
+  margin-right: 40px;
+  margin-top: 30px;
 }
 
 .beds-container h3{
@@ -389,7 +394,7 @@ html{
   border-radius: 5px;
   padding: 20px;
   background-color: dimgrey;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .booking-form-container h3{
   text-align: center;
@@ -578,4 +583,10 @@ to   { opacity: 1; }
 
 .dropdown{
   display: none;
+}
+
+.link-wrapper{
+  width: 225px;
+  margin: 0 auto;
+  margin-top: 30px;
 }

@@ -52,6 +52,7 @@ class NavBar extends React.Component{
               &#x2709;
             </a>
             <button>中文</button>
+            <button>日本語</button>
           </div>
           <div className="right-nav-bottom">
             <button value="about" onClick={this.handleClick}>

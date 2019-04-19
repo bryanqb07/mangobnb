@@ -15,6 +15,10 @@ class BookingIndex extends React.Component{
         this.end_date = null;
     }
 
+    handleClick(){
+        this.props.clearBooking();
+    }
+
     componentDidMount(){
         this.parseParams(this.props.location.search);
         const date = {
@@ -56,21 +60,34 @@ class BookingIndex extends React.Component{
             )
         }
 
-        return(
+        return (
+          <div>
             <div className="booking-container">
-                < RoomsDetail rooms={rooms} />
-                < BookingForm num_guests={this.num_guests} 
-                              num_nights={this.num_nights}
-                              start_date={this.start_date} 
-                              end_date={this.end_date}
-                              rooms={rooms}
-                              submitGuestBooking={this.props.submitGuestBooking}
-                              clearBooking={this.props.clearBooking}
-                              avgPriceRoomOne={this.props.avgPriceRoomOne}
-                              avgPriceRoomTwo={this.props.avgPriceRoomTwo}
-                              />
+              <RoomsDetail rooms={rooms} />
+              <BookingForm
+                num_guests={this.num_guests}
+                num_nights={this.num_nights}
+                start_date={this.start_date}
+                end_date={this.end_date}
+                rooms={rooms}
+                submitGuestBooking={this.props.submitGuestBooking}
+                //   clearBooking={this.props.clearBooking}
+                avgPriceRoomOne={this.props.avgPriceRoomOne}
+                avgPriceRoomTwo={this.props.avgPriceRoomTwo}
+              />
+
             </div>
-        )
+            <div className="link-wrapper">
+                <Link 
+                    to="/" 
+                    className="return-button"
+                    onClick={this.handleClick.bind(this)}
+                >
+                    Return to search page.
+              </Link>
+            </div>
+          </div>
+        );
     }
 }
 

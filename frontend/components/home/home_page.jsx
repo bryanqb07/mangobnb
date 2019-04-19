@@ -7,6 +7,8 @@ export default() => (
     <div className="home-container">
             {/* <Slideshow /> */}
             <SearchBar />
+            {/* Reviews */}
+            {/* Bed Info */}
             {/* <Map /> */}
     </div>
 );
