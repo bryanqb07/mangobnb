@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Slide from './slide';
-// import RightArrow from './arrows/right_arrow';
-// import LeftArrow from './arrows/left_arrow';
+import RightArrow from './arrows/right_arrow';
+import LeftArrow from './arrows/left_arrow';
 
 
 class Slideshow extends React.Component{
@@ -12,6 +12,8 @@ class Slideshow extends React.Component{
             currentIdx: 0,
         };
         this.photos = photos.photoUrls.slice(1,5);
+        this.goToNextSlide = this.goToNextSlide.bind(this);
+        this.goToPreviousSlide = this.goToPreviousSlide.bind(this);
     }
 
     componentDidMount(){
@@ -34,13 +36,30 @@ class Slideshow extends React.Component{
         }));
     }
 
+    goToPreviousSlide() {
+        if (this.state.currentIdx === 0) {
+            return this.setState({
+                currentIdx: this.photos.length - 1,
+            });
+        }
+
+        this.setState(prevState => ({
+            currentIdx: (prevState.currentIdx - 1)
+        }));
+    }
+
     render(){
-        return(
-            this.photos ? (
-                <div className="slideshow">
-                    <Slide photo={this.photos[this.state.currentIdx]} />
-                </div>
-            ) : <div className="loader"></div>
+        return this.photos ? (
+        <div className="slideshow-container">
+          <h1>Photos</h1>
+          <div className="slideshow">
+            <LeftArrow goToPreviousSlide={this.goToPreviousSlide}/>
+            <Slide photo={this.photos[this.state.currentIdx]} />
+            <RightArrow goToNextSlide={this.goToNextSlide}/>
+          </div>
+        </div>
+        ) : (
+          <div className="loader" />
         );
     }
 }

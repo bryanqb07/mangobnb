@@ -16,7 +16,7 @@
 
  body{
    margin: 0;
-   background-color: black;
+   background-color: dimgrey;
    color: white;
 
    /* background-image: url(taipei_main.jpg) */
@@ -169,18 +169,17 @@ a.button{
 
 .slideshow{
   margin: 0 auto;
-  padding-top: 20px;
   width: 80%;
 }
 
 .slide{
-  width: 900px;
+  width: 700px;
   height: 400px;
   margin: 0 auto;
-  -webkit-transition: background 1s;
-   -moz-transition: background 1s;
-   -o-transition: background 1s;
-   transition: background 1s;
+  -webkit-transition: background 2s;
+   -moz-transition: background 2s;
+   -o-transition: background 2s;
+   transition: background 2s;
 }
 
 .search-form-container{
@@ -592,4 +591,14 @@ to   { opacity: 1; }
   width: 225px;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+.slideshow-container h1{
+  text-align: center
+}
+
+@media only screen and (max-width: 800px) {
+  .content-wrapper {
+    width: 105%;
+  }
 }
