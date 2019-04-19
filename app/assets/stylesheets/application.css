@@ -247,7 +247,10 @@ a.button{
 }
 
 .map-section{
-  margin-top: 150px;
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .map-section h1{

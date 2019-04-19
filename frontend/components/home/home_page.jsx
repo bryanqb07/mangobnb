@@ -9,6 +9,6 @@ export default() => (
             <SearchBar />
             {/* Reviews */}
             {/* Bed Info */}
-            {/* <Map /> */}
+            <Map />
     </div>
 );
