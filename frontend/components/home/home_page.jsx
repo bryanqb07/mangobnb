@@ -10,15 +10,20 @@ import Payment from "./popups/payment";
 
 export default () => (
   <div className="home-container">
-        {/* menu bar */}
-        <About />
-        <Amenities />
-        <Contact />
-        <Payment />
-        {/* end */}
-        <SearchBar />
-        <Map />
-        <Slideshow />
-        <Footer />
+    {/* menu bar */}
+    <div>
+      <About />
+      <Amenities />
+      <Contact />
+      <Payment />
+    </div>
+
+    {/* end */}
+    <div>
+      <SearchBar />
+      <Map />
+      <Slideshow />
+      <Footer />
+    </div>
   </div>
 );
