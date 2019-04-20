@@ -1,35 +1,32 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import About from './popups/about';
-import Amenities from "./popups/amenities";
-import Payment from "./popups/payment";
-import Contact from "./popups/contact";
-
 
 class NavBar extends React.Component{
   constructor(props){
     super(props);
-    this.state = { showMenu: false };
+    this.state = { selected: "none", currEle: "none"};
     this.handleClick = this.handleClick.bind(this);
 }
 
   handleClick(e){
     e.preventDefault();
-    // e.target.style = {
-    //     borderRadius: "1px solid black",
-    //     color: "red"
-    // };
+    const val = e.target.value;
+ 
+    //remove last menu item to replace with new one
+    if(this.state.selected != "none" || val == this.state.selected){
+      const lastItem = document.getElementById(this.state.selected);
+      lastItem.style.display = "none";
+      this.state.currEle.style.color = "white";
+    }
 
-    console.log(e.target);
-    const ele = document.getElementById(e.target.value);
-    console.log(ele);
-    ele.style = {
-        display: "block",
-        height: "300px",
-        width: "300px"
-    };
-    console.log(ele.style);
-    this.setState({showMenu: true});
+    // don't append the same menu item if clicked more than once
+
+    
+    let ele = document.getElementById(val);
+    e.target.style.color = "red";
+    ele.style.display = "block";
+    this.setState({ selected: val, currEle: e.target});
+
   }
 
   render(){
@@ -67,27 +64,27 @@ class NavBar extends React.Component{
             <button value="contact" onClick={this.handleClick}>
               Contact
             </button>
-
-            {/* <NavLink to="/" activeClassName="active">
+{/* 
+            <NavLink to="/about" activeClassName="active">
               About
             </NavLink>
-            <NavLink to="/" activeClassName="active">
+            <NavLink to="/payment" activeClassName="active">
               Payment
             </NavLink>
-            <NavLink to="/" activeClassName="active">
+            <NavLink to="/amenities" activeClassName="active">
               Amenities
             </NavLink>
-            <NavLink to="/" activeClassName="active">
+            <NavLink to="/contact" activeClassName="active">
               Contact
             </NavLink> */}
           </div>
         </div>
-        <div className="dropdown-menu">
+        {/* <div className="dropdown-menu">
           <About />
           <Amenities />
           <Payment />
           <Contact />
-        </div>
+        </div> */}
       </div>
     ) : (
       <div className="loader" />
