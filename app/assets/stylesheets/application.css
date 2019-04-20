@@ -72,9 +72,9 @@ select{
 }
 
 .content-wrapper{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  background-image: url(taipei_main.jpg);
+  background-image: url(taiwan-taipei-skyline.jpg);
   height: 800px;
 }
 
@@ -186,7 +186,7 @@ a.button{
 }
 
 .search-form-container{
-  margin-top: 360px;
+  margin-top: 468px;
 }
 
 .search-form-container h1{
@@ -199,8 +199,7 @@ a.button{
   margin: 0 auto;
   border-radius: 10px;
   background-color: white;
-  width: 50%;
-
+  width: 34em;
 }
 
 
@@ -591,6 +590,14 @@ to   { opacity: 1; }
   color: orange;
   background: white;
   border: 1px solid black;
+  position: absolute;
+  width: 500px;
+  text-align: center;
+  /* margin: 0 auto; */
+  left: 33%;
+  margin-top: 50px;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .link-wrapper{
@@ -620,8 +627,17 @@ to   { opacity: 1; }
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 800px) {
+#amenities{
+  padding: 0px;
+}
+
+#amenities ul{
+  padding: 0px;
+  list-style-type: none;
+}
+
+/* @media only screen and (max-width: 800px) {
   .content-wrapper {
     width: 105%;
   }
-}
+} */
