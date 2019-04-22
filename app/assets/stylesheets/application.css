@@ -590,13 +590,15 @@ to   { opacity: 1; }
   color: orange;
   background: white;
   border: 1px solid black;
-  /* position: absolute; */
+  position: absolute;
   width: 500px;
   text-align: center;
   margin: 0 auto;
-  left: 33%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px;
-  margin-bottom: -350px;
   border-radius: 5px;
   padding: 20px;
 }
@@ -630,13 +632,95 @@ to   { opacity: 1; }
 
 #amenities{
   padding: 0px;
-  margin-bottom: -410px;
 }
 
 #amenities ul{
   padding: 0px;
   list-style-type: none;
 }
+
+.reviews-container{
+  text-align: center;
+}
+
+.reviews{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow{
+  height: 40px;
+  background-color: white;
+}
+
+.left-arrow{
+  margin-right: 5px;
+}
+
+
+.right-arrow{
+  margin-left: 5px;
+}
+
+.review{
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* .review span{
+  display: block;
+  background-color: white;
+  color: black;
+  display: block;
+  width: 500px;
+  padding: 10px;
+  /* margin-top: 10px; */
+} */
+/*
+.review-name{
+  border-bottom: 1px solid firebrick;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+} */
+
+.tip {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  background: transparent;
+  border: 10px solid #ccc;
+}
+
+.tip-up {
+  top: -25px; /* Same as body margin top + border */
+  left: 10px;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+.review .body{
+    position: relative;
+    max-width: 300px;
+    height: auto;
+    margin: 20px 10px;
+    padding: 5px;
+    background-color: #DADADA;
+    border-radius: 3px;
+    border: 5px solid #ccc;
+  }
+
+.body .message {
+  min-height: 30px;
+  border-radius: 3px;
+  font-family: Arial;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #797979;
+}
+
+
 
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {

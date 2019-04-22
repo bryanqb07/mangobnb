@@ -7,23 +7,21 @@ import About from './popups/about';
 import Amenities from './popups/amenities';
 import Contact from './popups/contact';
 import Payment from "./popups/payment";
+import Reviews from '../reviews/review_index';
 
 export default () => (
   <div className="home-container">
     {/* menu bar */}
-    <div>
-      <About />
-      <Amenities />
-      <Contact />
-      <Payment />
-    </div>
+    <About />
+    <Amenities />
+    <Contact />
+    <Payment />
 
     {/* end */}
-    <div>
-      <SearchBar />
-      <Map />
-      <Slideshow />
-      <Footer />
-    </div>
+    <SearchBar />
+    <Map />
+    <Slideshow />
+    <Reviews />
+    <Footer />
   </div>
 );

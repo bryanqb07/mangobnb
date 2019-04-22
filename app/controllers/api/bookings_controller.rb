@@ -1,6 +1,7 @@
 class Api::BookingsController < ApplicationController
   def index
     @bookings = Booking.all
+    @bookings.select {|booking| booking[:start_date] == Date.now } unless date.nil?
     render :index
   end
 

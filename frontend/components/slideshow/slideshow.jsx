@@ -53,9 +53,9 @@ class Slideshow extends React.Component{
         <div className="slideshow-container">
           <h1>Photos</h1>
           <div className="slideshow">
-            <LeftArrow goToPreviousSlide={this.goToPreviousSlide}/>
+            <LeftArrow onClick={this.goToPreviousSlide}/>
             <Slide photo={this.photos[this.state.currentIdx]} />
-            <RightArrow goToNextSlide={this.goToNextSlide}/>
+            <RightArrow onClick={this.goToNextSlide}/>
           </div>
         </div>
         ) : (

@@ -1,3 +1,12 @@
+export const fetchTodayBookings = () => (
+    $.ajax({
+        method: 'GET',
+        url: 'api/bookings/',
+        data: { start_date: Date.now() }
+    })
+);
+
+
 export const postGuest = guest => (
     $.ajax({
         method: 'POST',
