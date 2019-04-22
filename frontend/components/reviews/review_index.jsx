@@ -11,7 +11,7 @@ class ReviewSlider extends React.Component {
       {
         name: "Bryan",
         body:
-          "Wonderful experience. Great host, fantastic location, excellent price.I will definitely be staying here again in the future!"
+          "Wonderful experience. Great host, fantastic location, excellent price. I will definitely be staying here again in the future!"
       },
       {
         name: "Li Xin",
@@ -20,6 +20,18 @@ class ReviewSlider extends React.Component {
       {
         name: "Mutsumi",
         body: "台北駅前で便利な場所にある宿泊先です!! ホテルオーナーが綺麗好きなので安心して宿泊出来ます。"
+      },
+      {
+        name: "Kim",
+        body: "The staff is very friendly. Very clean and the location is just opposite Taipei Main station."
+      },
+      {
+        name: "Pei",
+        body: "員工非常親切，環境也非常乾淨整齊，而且地點離捷運站非常近交通很方便!"
+      },
+      {
+        name: "Tettin",
+        body: "日本語が通じて、とてもお得。台北駅から近いのに比較的静かでした。また、日本語が通じるのがとても助かりました"
       }
     ];
     this.goToNextSlide = this.goToNextSlide.bind(this);

@@ -684,40 +684,42 @@ to   { opacity: 1; }
   border-top-left-radius: 5px;
 } */
 
-.tip {
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  background: transparent;
-  border: 10px solid #ccc;
+.review-name{
+  margin: 20px 10px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 3px;
+  border: 5px solid #ccc;
+  min-height: 30px;
+  border-radius: 3px;
+  font-family: Arial;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #797979;
 }
 
-.tip-up {
-  top: -25px; /* Same as body margin top + border */
-  left: 10px;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-}
 
 .review .body{
     position: relative;
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
     margin: 20px 10px;
     padding: 5px;
-    background-color: #DADADA;
+    background-color: white;
     border-radius: 3px;
     border: 5px solid #ccc;
   }
 
 .body .message {
-  min-height: 30px;
+  height: 115px;
   border-radius: 3px;
   font-family: Arial;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.5;
   color: #797979;
+  display: flex;
+  align-items: center;
+
 }
 
 
