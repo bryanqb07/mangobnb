@@ -74,14 +74,14 @@ class SearchBar extends React.Component {
                 <h1>Reservations</h1>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <DatePicker
-                        className="picker" 
+                        className="left-picker picker" 
                         minDate={this.today}
                         value={this.state.startDate} 
                         onChange={this.handleDateChange("startDate")}>   
                     </DatePicker>
                     <span className="date-separator"> > </span>
                     <DatePicker 
-                        className="picker"
+                        className="right-picker picker"
                         value={this.state.endDate}
                         minDate={this.tomorrow} 
                         onChange={this.handleDateChange("endDate")}
