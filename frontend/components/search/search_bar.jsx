@@ -84,6 +84,7 @@ class SearchBar extends React.Component {
                         className="right-picker picker"
                         value={this.state.endDate}
                         minDate={this.tomorrow} 
+                        maxDate={this.maxDate}
                         onChange={this.handleDateChange("endDate")}
                         />
 

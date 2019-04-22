@@ -24,14 +24,23 @@ window.getTimeValues = getTimeValues;
 
 
 import { postGuest, postBooking } from './util/booking_api_util';
+import { postUser } from './util/user_api_util';
 
 window.postGuest = postGuest;
 window.postBooking = postBooking;
+window.postUser = postUser;
 
 window.testGuest = {
     name: "Bryan L",
     email: "b@mail.com",
     gender: "M"
+};
+
+
+window.testUser = {
+  email: "bml312@nyu.edu",
+  username: "bryanqb07",
+  password: "finger69"
 };
 
 window.testBooking = {
