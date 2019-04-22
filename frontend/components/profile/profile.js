@@ -1,16 +1,15 @@
 import React from 'react';
 
-class Profile extends React.Component{
-    constructor(props){
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+// class Profile extends React.Component{
+//     constructor(props){
+//         // this.handleSubmit = this.handleSubmit.bind(this);
+//     }
 
-    handleSubmit(e){
-        e.preventDefault();
-    }
+//     // handleSubmit(e){
+//     //     e.preventDefault();
+//     // }
 
-    render(){
-        return(
+    export default () => (
             <div>
                 <h1>Welcome MangoBnb Admin</h1>
                 <ul>List of customers checking in today
@@ -25,8 +24,8 @@ class Profile extends React.Component{
                 <p>Adjust prices by date</p>
                 <p>Adjust room availability by date</p>
             </div>
-        )
-    }
-}
+    )
+    
+// }
 
-export default Profile;
+// export default Profile;

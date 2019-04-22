@@ -1,0 +1,40 @@
+  Mango Station Hotel
+
+  Booking Confirmed!
+
+  Confirmation #: <%= @booking.confirmation_code %>
+
+  A confirmation email has been sent to
+
+  <%= @booking.guest.email %>.  Please check your
+
+  inbox shortly and save the email for your record.
+
+  Booking Details
+
+  Primary Guest Name: <%= @booking.guest.name %>
+
+  Primary Guest Email:  <%= @booking.guest.email %>
+
+  Number of Guests:  <%= @booking.num_guests %>
+
+  Guest(s) Gender: <%= @booking.guest.gender %>
+
+  Room Type: <%= @booking.room.title %>
+
+  Checkin Time: <%= @booking.checkin_time %>
+
+  Checkin Date: <%= @booking.start_date %>
+
+  Checkout Date: <%= @booking.end_date %>
+
+  Total Price: NTD$ <%= @booking.price_at_booking_time %>
+
+  Confirmation #: <%= @booking.confirmation_code %>
+
+  Additional Requests: <%= @booking.comments %>
+
+  For any changes to your reservation, please contact us at 555-123-4567
+  mangostationtw@gmail.com.
+
+  We appreciate your @booking and look forward to hosting you soon!
