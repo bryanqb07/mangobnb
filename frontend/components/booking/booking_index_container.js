@@ -15,7 +15,7 @@ import BookingIndex from './booking_index';
 
 const mapStateToProps = (state) => ({
     prices: state.entities.prices,
-    errors: state.ui.errors,
+    errors: state.errors.booking,
     loading: state.ui.loading.searchResultsLoading,
     rooms: state.entities.rooms, // availability object by room
     avgPriceRoomOne: getAvgPrice(state, 1),

@@ -3,4 +3,5 @@ class Guest < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   has_many :bookings
   has_one :room, :through => :bookings
+
 end

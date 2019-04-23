@@ -14,7 +14,7 @@ class BookingForm extends React.Component {
             checkin_time: "12:00:PM",
             comments: "",
             room_id: 1,
-            errors: {}
+            errors: []
         };
         this.timeOptions = DateUtil.getTimeValues();
         this.handleInput = this.handleInput.bind(this);
@@ -44,13 +44,16 @@ class BookingForm extends React.Component {
             comments: this.state.comments
         };
 
-        if (this.props.errors > 0) {
-            return;
-        } else {
-            this.props.submitGuestBooking(guest, booking);
-            this.props.history.push({
-                pathname: "/confirmation",
-            });
+        if (this.state.email != this.state.confirm_email){
+            this.setState({errors: [...this.state.errors, "Confirmation email must match"]});
+        }
+        else if (this.state.room_id == 2 && this.state.gender != this.genderOptions[2]){
+            this.setState({ errors: [...this.state.errors, "Only females permitted to book females-only room."] });
+        }
+        else {
+            this.props.submitGuestBooking(guest, booking)
+                .then((this.props.history.push({ pathname: "/confirmation" })),
+                this.setState({ errors: [this.props.errors] }));
         }
 
     }
@@ -63,6 +66,8 @@ class BookingForm extends React.Component {
 
         let avgPrice = this.state.room_id == 1 ? this.props.avgPriceRoomOne
             : this.props.avgPriceRoomTwo;
+
+        const errors = this.state.errors.map((error, i) => <li key={i}>{error}</li>) 
 
         return (
                 <div className="booking-form-container">
@@ -111,7 +116,6 @@ class BookingForm extends React.Component {
                             }
                         </select>
 
-
                         <span> Additional Requests</span>
                         <textarea
                             value={this.state.comments}
@@ -128,6 +132,9 @@ class BookingForm extends React.Component {
                         <span>Total Price: NTD${avgPrice * this.props.num_nights}</span>
                         <br />
                         <button > Book Now </button>
+                        <ul className="booking-errors">
+                            {errors ? errors : ""}    
+                        </ul>
                     </form>
                     <br />
                     {/* <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link>  */}

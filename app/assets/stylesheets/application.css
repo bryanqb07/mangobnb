@@ -715,6 +715,14 @@ to   { opacity: 1; }
   padding-left: 15px;
 }
 
+.booking-errors{
+  margin: 5px;
+}
+
+.booking-errors li{
+  color: darkred;
+}
+
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {
     width: 105%;

@@ -1,5 +1,4 @@
-import { receiveErrors } from './error_action';
-
+import { receiveBookingErrors, receiveGuestErrors } from './error_action';
 export const RECEIVE_GUEST = "RECEIVE_GUEST";
 export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
 export const CLEAR_BOOKING = "CLEAR_BOOKING";
@@ -34,32 +33,32 @@ export const startLoadingConfirmation = () => ({
 // export const createGuest = (formGuest) => dispatch => {
 //     APIUtil.postGuest(formGuest).then(guest => {
 //         dispatch(receiveGuest(guest));
-//         return guest.id;
-//     });
+//         formBooking.guest_id = guest.id;
+//         return APIUtil.postBooking(formBooking);
+//     },
+//         errors => (dispatch(receiveBookingErrors(errors.responseJSON))));
 // };
 
 
 export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
     dispatch(startLoadingConfirmation());
     return APIUtil.postGuest(formGuest)
-        .then(guest => {
-            //dispatch(receiveGuest(guest));
+        .then(guest => { //successful user creation
             formBooking.guest_id = guest.id;
-            return APIUtil.postBooking(formBooking);
+            return APIUtil.postBooking(formBooking).then(
+                booking => dispatch(receiveBooking(booking)),
+                errors => dispatch(receiveBookingErrors(errors.responseJSON))
+            );
         },
-            errors => dispatch(receiveErrors(errors))
-        )
-        .then(booking => dispatch(receiveBooking(booking)),
-            errors => dispatch(receiveErrors(errors))
-        );
+        errors => dispatch(receiveBookingErrors(errors.responseJSON)));
 };
 
 // export const createBooking = (formBooking) => dispatch => {
 //     APIUtil.postBooking(formBooking)
 //         .then(booking => {
 //             dispatch(receiveBooking(booking));
-//             return "success";
-//         });
+//         },
+//         errors => (dispatch(receiveBookingErrors(errors.responseJSON))));
 // };
 
 

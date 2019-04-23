@@ -73,6 +73,7 @@ class BookingIndex extends React.Component{
                 submitGuestBooking={this.props.submitGuestBooking}
                 avgPriceRoomOne={this.props.avgPriceRoomOne}
                 avgPriceRoomTwo={this.props.avgPriceRoomTwo}
+                errors={this.props.errors}
               />
 
             </div>
