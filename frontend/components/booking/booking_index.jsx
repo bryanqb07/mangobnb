@@ -71,7 +71,6 @@ class BookingIndex extends React.Component{
                 end_date={this.end_date}
                 rooms={rooms}
                 submitGuestBooking={this.props.submitGuestBooking}
-                //   clearBooking={this.props.clearBooking}
                 avgPriceRoomOne={this.props.avgPriceRoomOne}
                 avgPriceRoomTwo={this.props.avgPriceRoomTwo}
               />

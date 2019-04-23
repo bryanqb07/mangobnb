@@ -1,25 +1,29 @@
 require 'rails_helper'
 
+# attr_reader :password
+# validates :username, :password_digest, :email, presence: true
+# validates :username, :email, uniqueness: true
+# validates :password_digest, presence: { message:  'Password can\'t be blank' }
+# validates :password, length: { minimum: 6, allow_nil: true }
+# after_initialize :ensure_session_token
+
+
+
 # Things to test:
 # Validations
 # Associations
 # Class Methods
 
-RSpec.describe Room, type: :model do
+RSpec.describe User, type: :model do
 
-  subject(:room1) { Room.find_by(id: 1) }
+  subject(:test_user) { Room.find_by(id: 2) }
 
   describe "validations" do
-    it { should validate_presence_of(:room_type) }
-    it { should validate_presence_of(:guest_capacity) }
+    it { should validate_presence_of(:username) }
+    it { should validate_presence_of(:password_digest) }
+    it { should validate_presence_of(:email) }
   end
 
-
-  describe "associations" do
-    it { should have_many(:prices)}
-    it { should have_many(:bookings)}
-    it { should have_many(:guests).through(:bookings)}
-  end
 
   describe "class methods" do
     #

@@ -12,8 +12,6 @@ class Api::BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    #@booking.confirmation_code = Booking.generate_confirmation_code
-    #@booking.price_at_booking_time = @booking.get_price
     if @booking.save
       msg = BookingMailer.confirmation_email(@booking)
       msg.deliver_now
@@ -29,7 +27,5 @@ class Api::BookingsController < ApplicationController
     self.params.require(:booking).permit(:start_date, :end_date, :num_guests,
     :room_id, :guest_id, :comments, :checkin_time)
   end
-
-
 
 end
