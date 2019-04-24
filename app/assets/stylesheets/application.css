@@ -16,7 +16,7 @@
 
  body{
    margin: 0;
-   background-color: dimgrey;
+   background-color: midnightblue;
    color: white;
 
    /* background-image: url(taipei_main.jpg) */
@@ -378,7 +378,7 @@ html{
   border: 1px solid mistyrose;
   border-radius: 5px;
   padding: 20px;
-  background-color: dimgrey;
+  background-color: midnightblue;
   margin-right: 40px;
   margin-top: 30px;
 }
@@ -397,7 +397,7 @@ html{
   border: 1px solid mistyrose;
   border-radius: 5px;
   padding: 20px;
-  background-color: dimgrey;
+  background-color: midnightblue;
   margin-top: 30px;
 }
 .booking-form-container h3{
@@ -513,7 +513,7 @@ to   { opacity: 1; }
 }
 
 .confirmation-wrapper div{
-  background-color: dimgrey;
+  background-color: midnightblue;
   border: 1px solid mistyrose;
   border-radius: 10px;
   padding: 5px;
@@ -526,7 +526,7 @@ to   { opacity: 1; }
 .return-button{
   text-decoration: none;
   color: white;
-  background-color: dimgrey;
+  background-color: midnightblue;
   padding: 10px;
   border-radius: 10px;
   height: 40px;
@@ -547,7 +547,7 @@ to   { opacity: 1; }
 .login-form-container{
   width: 25%;
   margin: 0 auto;
-  background-color: dimgrey;
+  background-color: midnightblue;
   border-radius: 5px;
   margin-top: 300px;
 }
@@ -720,7 +720,7 @@ to   { opacity: 1; }
 }
 
 .booking-errors li{
-  color: darkred;
+  color: orange;
 }
 
 /* @media only screen and (max-width: 800px) {

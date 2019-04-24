@@ -29,6 +29,11 @@ class BookingForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        if(this.state.email != this.state.confirm_email){
+            this.setState({errors: [...this.state.errors].concat("Invalid confirmation email")});
+            return;
+        }
+
         const guest = {
             name: this.state.name,
             email: this.state.email,
@@ -44,21 +49,12 @@ class BookingForm extends React.Component {
             comments: this.state.comments
         };
 
-        if (this.state.email != this.state.confirm_email){
-            this.setState({errors: [...this.state.errors, "Confirmation email must match"]});
-        }
-        else if (this.state.room_id == 2 && this.state.gender != this.genderOptions[2]){
-            this.setState({ errors: [...this.state.errors, "Only females permitted to book females-only room."] });
-        }
-        else {
-            this.props.submitGuestBooking(guest, booking)
-                .then((this.props.history.push({ pathname: "/confirmation" })),
-                this.setState({ errors: [this.props.errors] }));
-        }
-
+        this.props.submitGuestBooking(guest, booking)
+            .then( () => this.props.history.push({ pathname: "/confirmation" }),
+            this.setState({ errors: [this.props.errors] }));
     }
 
-    handleClick() {
+    handleClick(){
         this.props.clearBooking();
     }
 

@@ -5,7 +5,8 @@ const Slide = ({photo}) => {
         backgroundImage: `url(${photo})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: '50% 60%'
+        backgroundPosition: '50% 60%',
+        border: '5px solid white'
     };
     
     return (<div className="slide" style={styles}></div>)

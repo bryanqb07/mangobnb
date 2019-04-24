@@ -17,7 +17,7 @@ class Api::GuestsController < ApplicationController
   private
 
   def guest_params
-    self.params.require(:guest).permit(:name, :email, :gender)
+    self.params.require(:guest).permit(:name, :email, :gender, :confirmation_email)
   end
 
 end

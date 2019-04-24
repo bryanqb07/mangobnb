@@ -1,10 +1,9 @@
-import { receiveBookingErrors, receiveGuestErrors } from './error_action';
+import { receiveBookingErrors } from './error_action';
 export const RECEIVE_GUEST = "RECEIVE_GUEST";
 export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
 export const CLEAR_BOOKING = "CLEAR_BOOKING";
 
 export const START_LOADING_CONFIRMATION = "START_LOADING_CONFIRMATION";
-
 
 import * as APIUtil from '../util/booking_api_util';
 
@@ -18,8 +17,6 @@ const receiveBooking = booking => ({
     booking
 });
 
-
-
 export const clearBooking = () => ({
     type: CLEAR_BOOKING
 });
@@ -28,17 +25,6 @@ export const clearBooking = () => ({
 export const startLoadingConfirmation = () => ({
     type: START_LOADING_CONFIRMATION
 });
-
-
-// export const createGuest = (formGuest) => dispatch => {
-//     APIUtil.postGuest(formGuest).then(guest => {
-//         dispatch(receiveGuest(guest));
-//         formBooking.guest_id = guest.id;
-//         return APIUtil.postBooking(formBooking);
-//     },
-//         errors => (dispatch(receiveBookingErrors(errors.responseJSON))));
-// };
-
 
 export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
     dispatch(startLoadingConfirmation());
@@ -52,14 +38,6 @@ export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
         },
         errors => dispatch(receiveBookingErrors(errors.responseJSON)));
 };
-
-// export const createBooking = (formBooking) => dispatch => {
-//     APIUtil.postBooking(formBooking)
-//         .then(booking => {
-//             dispatch(receiveBooking(booking));
-//         },
-//         errors => (dispatch(receiveBookingErrors(errors.responseJSON))));
-// };
 
 
 

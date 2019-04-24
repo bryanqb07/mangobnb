@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
         this.GUEST_NUM = ["1 Guest", "2 Guests", "3 Guests", "4 Guests"];
         this.handleChange = this.handleChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
+        // this.maxDate = Date.new(this.state.startDate + 12096e5);
     }
 
     handleChange(e) {
@@ -60,6 +61,9 @@ class SearchBar extends React.Component {
         if(this.state.startDate > this.state.endDate){
             errors.push("Check-in date must precede check-out date.");
         }
+        // if (this.state.endDate - this.state.startDate > 14) {
+        //     errors.push("Max booking range is 14 days.");
+        // }
         return errors;
     }
 
@@ -70,34 +74,39 @@ class SearchBar extends React.Component {
                 {error}</div>) ) : ""; 
 
         return (
-            <div className="search-form-container">
-                <h1>Reservations</h1>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <DatePicker
-                        className="left-picker picker" 
-                        minDate={this.today}
-                        value={this.state.startDate} 
-                        onChange={this.handleDateChange("startDate")}>   
-                    </DatePicker>
-                    <span className="date-separator"> > </span>
-                    <DatePicker 
-                        className="right-picker picker"
-                        value={this.state.endDate}
-                        minDate={this.tomorrow} 
-                        maxDate={this.maxDate}
-                        onChange={this.handleDateChange("endDate")}
-                        />
+          <div className="search-form-container">
+            <h1>Reservations</h1>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+              <DatePicker
+                className="left-picker picker"
+                minDate={this.today}
+                value={this.state.startDate}
+                onChange={this.handleDateChange("startDate")}
+              />
+              <span className="date-separator"> > </span>
+              <DatePicker
+                className="right-picker picker"
+                value={this.state.endDate}
+                minDate={this.tomorrow}
+                // maxDate={ this.maxDate }
+                onChange={this.handleDateChange("endDate")}
+              />
 
-                    <select value={this.numGuests} onChange={this.handleChange}> 
-                        {
-                            this.GUEST_NUM.map(num => <option value={num} key={num}>{num}</option>)
-                        }
-                    </select>
-                    <button className="search-button">Search</button>
-                </form>
-                <br/>
-                { errors }
-            </div>
+              <select
+                value={this.numGuests}
+                onChange={this.handleChange}
+              >
+                {this.GUEST_NUM.map(num => (
+                  <option value={num} key={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+              <button className="search-button">Search</button>
+            </form>
+            <br />
+            {errors}
+          </div>
         );
     }
 }
