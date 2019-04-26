@@ -1,25 +1,24 @@
+
 class Price < ApplicationRecord
   validates :price_date, :price, :room_id, presence: true
+  validate :in_future
   belongs_to :room
 
-  validate :overwrite_existing
+  def in_future
+    self.errors[:price_date] << "Invalid price date." if self.price_date.nil? || self.price_date < Date.today
+  end
 
+  # factory method
   def self.createPrices(start_date, end_date, new_price, room_id)
-    Date.new(start_date).upto(Date.new(end_date)) do |date|
+    start = Date.parse(start_date)
+    finish = Date.parse(end_date)
+    raise ArgumentError, "Start date must precede end date" if finish <= start
+    start.upto(finish) do |date|
       existing_price = Price.find_by(price_date: date, room_id: room_id)
-      if price
-        existing_price.price = new_price
-      else
-        Price.create(price: new_price, price_date: date, room_id: room_id)
+      if existing_price
+        existing_price.destroy
       end
+      Price.create(price_date: date, price: new_price, room_id: room_id)
     end
   end
-
-  def overwrite_existing(new_price)
-    price = Price.find_by(price_date: self.price_date, room_id: self.room_id)
-    if(price)
-      price.price = new_price
-    end
-  end
-
 end

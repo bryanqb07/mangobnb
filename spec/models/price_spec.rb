@@ -1,15 +1,5 @@
 require 'rails_helper'
 
-# t.date "price_date", null: false
-# t.integer "price", null: false
-# t.integer "room_id"
-
-# Things to test:
-# Validations
-# Associations
-# Class Methods
-
-
 RSpec.describe Price, type: :model do
 
   subject(:price) { FactoryBot.build(:price) }
@@ -17,12 +7,43 @@ RSpec.describe Price, type: :model do
   describe "validations" do
     it { should validate_presence_of(:price_date) }
     it { should validate_presence_of(:price) }
+    it { should validate_presence_of(:room_id) }
+
+    describe "in_future" do
+      it "ensures past prices cannot be created or altered" do
+        past_price = Price.new(price_date: Date.parse("Apr 15 2000"), price: 555, room_id: 2)
+        expect(past_price).to_not be_valid
+      end
+    end
+
   end
 
 
   describe "associations" do
     it { should belong_to(:room) }
-    # it { should have_many(:guests).through(:bookings)}
   end
 
+  describe "model methods" do
+    #
+    describe "::create_prices" do
+      context "prices don't exist" do
+        it "should create new prices for date range" do
+          start_date = "May 01 2019"
+          end_date = "May 02 2019"
+          Price.createPrices(start_date, end_date, 5312, 2)
+          last_price = Price.find_by(price_date: start_date, price: 5312, room_id: 2)
+          expect(last_price).not_to be_falsey
+        end
+      end
+      context "prices that already exist" do
+        it "should delete old price and replace with new new ones" do
+          start = "May 25 2019"
+          finish = "May 26 2019"
+          test_price = Price.create(price_date: start, price: 500, room_id: 2)
+          Price.createPrices(start,finish, 1500, room_id: 2)
+          expect(test_price.id).to be_falsey
+        end
+      end
+    end
+  end
 end

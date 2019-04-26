@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   has_many :bookings
   has_many :guests, through: :bookings
   has_many :prices
-  has_many_attached :photos
+  # has_many_attached :photos
 
   def max_guests(bookings)
     guest_count = Hash.new(0)
@@ -26,7 +26,7 @@ class Room < ApplicationRecord
     price_per_guest = 0
     prices = Price.where(["(price_date between ? and ? ) and room_id = ?" ,
       start_date, end_date, self.id])
-    prices.each{ |price| total_price += price.price }
+    prices.to_a.each { |price| price_per_guest += price[:price] }
     price_per_guest
   end
 

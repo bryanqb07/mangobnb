@@ -13,7 +13,6 @@ const startLoadingSearch = () => ({
     type: START_LOADING_SEARCH
 });
 
-
 export const getPrices = (date) => dispatch => {
     dispatch(startLoadingSearch());
     return APIUtil.getPrices(date)

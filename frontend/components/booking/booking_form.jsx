@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import * as DateUtil from '../../util/date_api_util';
-import { Link } from 'react-router-dom';
 
 class BookingForm extends React.Component {
     constructor(props) {
@@ -133,7 +132,6 @@ class BookingForm extends React.Component {
                         </ul>
                     </form>
                     <br />
-                    {/* <Link to="/" onClick={this.handleClick.bind(this)}>Return to search page.</Link>  */}
                 </div>
         )
     }
