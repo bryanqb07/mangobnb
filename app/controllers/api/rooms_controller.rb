@@ -9,7 +9,11 @@ class Api::RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(id: params[:id])
-    render :show
+    if @room
+      render :show
+    else
+      render json: "Invalid room id", status: 422
+    end
   end
 
   private

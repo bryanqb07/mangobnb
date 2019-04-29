@@ -7,3 +7,12 @@
 #   t.string "description"
 #   t.integer "open_beds"
 # end
+
+FactoryBot.define do
+  factory :room do
+    room_type { "MIXED" }
+    guest_capacity { 10 }
+    title  { "female room" }
+    description { "blah" }
+  end
+end

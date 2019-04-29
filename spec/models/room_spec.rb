@@ -15,8 +15,7 @@ require 'rails_helper'
 
 RSpec.describe Room, type: :model do
 
-  subject(:room) { Room.new(room_type: "FEMALE", guest_capacity: 10, title: "female room",
-      description: "blah") }
+  subject(:room) { FactoryBot.build(:room) }
 
   describe "validations" do
     it { should validate_presence_of(:room_type) }
@@ -31,9 +30,15 @@ RSpec.describe Room, type: :model do
   end
 
   describe "class methods" do
-    #
-    describe "#max_guests" do
 
+    describe "#max_guests" do
+        it "should return the max vacancy given existing guest list" do
+        test_booking = Booking.new(
+          num_guests: 7, start_date: "May 01 2019", end_date: "May 03 2019",
+          guest_id: 1, room_id: 1
+        )
+        expect(room.max_guests([test_booking])).to eq(7)
+      end
     end
 
     describe "#beds_available" do
@@ -44,10 +49,19 @@ RSpec.describe Room, type: :model do
           expect(room.beds_available(start,finish)).to eq(10)
         end
       end
+
       context "has existing bookings for date range" do
-        it "should return max guests from specified number of bookings" do
-          # bookings = Booking.where(room_id: 1)
-          # expect(room1.max_guests(bookings)).to eq(4)
+        it "call the max guests method and return vacamcy" do
+          new_room = room
+          new_room.save!
+          start = Date.parse("Apr 30 2019")
+          finish = Date.parse("May 01 2019")
+          test_booking = Booking.create(
+                    num_guests: 7, start_date: start, end_date: finish,
+                    guest_id: 1, room_id: new_room.id
+          )
+          new_room.beds_available(start,finish)
+          expect(new_room).to receive(:max_guests)
         end
       end
     end

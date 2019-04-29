@@ -8,8 +8,8 @@ require 'rails_helper'
 # Class Methods
 
 RSpec.describe Booking, type: :model do
-
-  subject(test_booking) { Booking.create(start_date: "04-30-19", end_date: "05-02-19") }
+  #
+  # subject(:test_booking) { Booking.create(start_date: "04-30-19", end_date: "05-02-19") }
 
   describe "validations" do
     it { should validate_presence_of(:start_date) }
@@ -20,16 +20,39 @@ RSpec.describe Booking, type: :model do
     it { should validate_presence_of(:confirmation_code) }
     it { should validate_presence_of(:price_at_booking_time) }
 
+    # self.errors[:start_date] << "Checkin date cannot be in the past." if self.start_date < Date.today
+    # self.errors[:end_date] << "Checkout date cannot precede checkin date." if self.end_date <= self.start_date
+    # self.errors[:end_date] << "Max booking range -- 2 weeks" if self.end_date - self.start_date > 14
+    #
+
 
     describe "#valid_dates" do
       context "check-in date precedes current date" do
-
-        it {}
+        start = "May 01 2000"
+        finish = "May 10 2000"
+        invalid_booking = Booking.new(
+                  num_guests: 1, start_date: start, end_date: finish,
+                  guest_id: 1, room_id: 3
+        )
+        invalid_booking.valid?
+        expect(invalid_booking.errors[:start_date].to eq(["Checkin date cannot be in the past."]))
       end
       context "checkout-date precedes start date" do
+        start = "May 10 2019"
+        finish = "May 01 2019"
+        invalid_booking = Booking.new(
+            num_guests: 1, start_date: start, end_date: finish,
+            guest_id: 1, room_id: 3
+        )
         it {}
       end
       context "booking range extends two weeks" do
+        start = "May 01 2019"
+        finish = "May 31 2019"
+        invalid_booking = Booking.new(
+                  num_guests: 1, start_date: start, end_date: finish,
+                  guest_id: 1, room_id: 3
+        )
         it {}
       end
     end
@@ -42,6 +65,7 @@ RSpec.describe Booking, type: :model do
 
     describe "#has_vacancy" do
       it "ensures that the room being booked has vacancy" do
+
 
       end
     end
@@ -59,8 +83,7 @@ RSpec.describe Booking, type: :model do
 
     describe "#ensure_price_at_booking" do
       it "set a price for the booking prior to saving" do
-        bookings = Booking.where(room_id: 1)
-        expect(room1.max_guests(bookings)).to eq(4)
+
       end
     end
 
@@ -78,8 +101,13 @@ RSpec.describe Booking, type: :model do
 
     describe "::generate_confirmation_code" do
       it "should generate a confirmation code after booking is initialized" do
-
-
+        start = "May 01 2019"
+        finish = "May 10 2019"
+        booking = Booking.new(
+                  num_guests: 1, start_date: start, end_date: finish,
+                  guest_id: 1, room_id: 3
+        )
+        expect(booking.confirmation_code).to be_truthy
       end
     end
   end

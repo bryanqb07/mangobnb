@@ -1,13 +1,16 @@
 class Api::BookingsController < ApplicationController
   def index
     @bookings = Booking.all
-    @bookings.select {|booking| booking[:start_date] == Date.now } unless date.nil?
     render :index
   end
 
   def show
     @booking = Booking.find_by(id: params[:id])
-    render :show
+    if @booking
+      render :show
+    else
+      render json: "Invalid guest id", status: 422
+    end
   end
 
   def create

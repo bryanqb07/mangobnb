@@ -15,9 +15,7 @@ class Price < ApplicationRecord
     raise ArgumentError, "Start date must precede end date" if finish <= start
     start.upto(finish) do |date|
       existing_price = Price.find_by(price_date: date, room_id: room_id)
-      if existing_price
-        existing_price.destroy
-      end
+      existing_price.destroy if existing_price
       Price.create(price_date: date, price: new_price, room_id: room_id)
     end
   end

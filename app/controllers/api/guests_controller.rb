@@ -2,7 +2,11 @@ class Api::GuestsController < ApplicationController
 
   def show
     @guest = Guest.find_by(id: params[:id])
-    render :show
+    if @guest
+      render :show
+    else
+      render json: "Invalid guest id", status: 422
+    end
   end
 
   def create

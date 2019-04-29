@@ -26,17 +26,17 @@ RSpec.describe Price, type: :model do
   describe "model methods" do
     #
     describe "::create_prices" do
-      context "prices don't exist" do
+      context "prices don't exist for date range" do
         it "should create new prices for date range" do
           start_date = "May 01 2019"
           end_date = "May 02 2019"
           Price.createPrices(start_date, end_date, 5312, 2)
-          last_price = Price.find_by(price_date: start_date, price: 5312, room_id: 2)
+          last_price = Price.find_by(price_date: Date.parse(start_date), price: 5312, room_id: 2)
           expect(last_price).not_to be_falsey
         end
       end
-      context "prices that already exist" do
-        it "should delete old price and replace with new new ones" do
+      context "prices already exist for date range" do
+        it "should delete old prices and replace with new new ones" do
           start = "May 25 2019"
           finish = "May 26 2019"
           test_price = Price.create(price_date: start, price: 500, room_id: 2)

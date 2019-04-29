@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
     if @user.nil?
-      render json: "Credentials were wrong."
+      render json: "Credentials were wrong.", status: 422
     else
       login!(@user)
       render 'api/users/show'
