@@ -25,13 +25,14 @@ class Booking < ApplicationRecord
   end
 
   def valid_dates
+    self.errors[:date] << "Invalid dates" if self.nil? || self.start_date.nil? || self.end_date.nil?
     self.errors[:start_date] << "Checkin date cannot be in the past." if self.start_date < Date.today
     self.errors[:end_date] << "Checkout date cannot precede checkin date." if self.end_date <= self.start_date
     self.errors[:end_date] << "Max booking range -- 2 weeks" if self.end_date - self.start_date > 14
   end
 
-  def has_vacancy? # change
-    self.errors[:guest_capacity] << "Must have at least one guest!" if self.num_guests < 1
+  def has_vacancy?
+    self.errors[:guest_capacity] << "Must have at least one guest!" if self.nil? || self.num_guests.nil? || self.num_guests < 1
     if self.num_guests > self.room.beds_available(self.start_date, self.end_date)
       self.errors[:guest_capacity] << "Room full for one or more selected dates. Please re-do search."
     end

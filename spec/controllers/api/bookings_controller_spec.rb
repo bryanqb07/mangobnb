@@ -1,11 +1,5 @@
 require 'rails_helper'
 
-begin
-  Api::BookingsController
-rescue
-  Api::BookingsController = nil
-end
-
 RSpec.describe Api::BookingsController, :type => :controller do
   describe "GET #index" do
     it "renders the bookings index" do

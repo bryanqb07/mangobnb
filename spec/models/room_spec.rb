@@ -1,18 +1,5 @@
 require 'rails_helper'
 
-# t.string "room_type", null: false
-# t.integer "guest_capacity", default: 4, null: false
-# t.string "title", null: false
-# t.text "description", null: false
-# t.integer "open_beds"
-# t.datetime "created_at", null: false
-# t.datetime "updated_at", null: false
-
-# Things to test:
-# Validations
-# Associations
-# Class Methods
-
 RSpec.describe Room, type: :model do
 
   subject(:room) { FactoryBot.build(:room) }
@@ -35,7 +22,7 @@ RSpec.describe Room, type: :model do
         it "should return the max vacancy given existing guest list" do
         test_booking = Booking.new(
           num_guests: 7, start_date: "May 01 2019", end_date: "May 03 2019",
-          guest_id: 1, room_id: 1
+          guest_id: 1, room_id: room.id
         )
         expect(room.max_guests([test_booking])).to eq(7)
       end
@@ -52,22 +39,26 @@ RSpec.describe Room, type: :model do
 
       context "has existing bookings for date range" do
         it "call the max guests method and return vacamcy" do
-          new_room = room
-          new_room.save!
-          start = Date.parse("Apr 30 2019")
-          finish = Date.parse("May 01 2019")
+          new_room = FactoryBot.create(:room)
+          test_guest = FactoryBot.create(:guest)
+          start = Date.parse("May 05 2019")
+          finish = Date.parse("May 09 2019")
           test_booking = Booking.create(
                     num_guests: 7, start_date: start, end_date: finish,
-                    guest_id: 1, room_id: new_room.id
+                    guest_id: test_guest.id, room_id: new_room.id
           )
-          new_room.beds_available(start,finish)
-          expect(new_room).to receive(:max_guests)
+          expect(new_room.beds_available(start,finish)).to eq(3)
         end
       end
     end
 
     describe "#price_per_guest" do
-      it "should return the total price / by total guests" do
+      it "should return the total price for given date range" do
+        new_room = FactoryBot.create(:room)
+        start = Date.parse("May 05 2019")
+        finish = Date.parse("May 06 2019")
+        Price.create(price_date: start, price: 3333, room_id: new_room.id)
+        expect(new_room.price_per_guest(start,finish)).to eq(3333)
       end
     end
   end

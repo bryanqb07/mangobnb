@@ -1,9 +1,4 @@
 require 'rails_helper'
-# begin
-#   Api::GuestsController
-# rescue
-#   Api::GuestsController = nil
-# end
 
 RSpec.describe Api::GuestsController, type: :controller do
   describe "GET #show" do
