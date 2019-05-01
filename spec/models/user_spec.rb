@@ -1,22 +1,8 @@
 require 'rails_helper'
 
-# attr_reader :password
-# validates :username, :password_digest, :email, presence: true
-# validates :username, :email, uniqueness: true
-# validates :password_digest, presence: { message:  'Password can\'t be blank' }
-# validates :password, length: { minimum: 6, allow_nil: true }
-# after_initialize :ensure_session_token
-
-
-
-# Things to test:
-# Validations
-# Associations
-# Class Methods
-
 RSpec.describe User, type: :model do
 
-  subject(:test_user) { Room.find_by(id: 2) }
+  subject(:user) { FactoryBot.build(:user) }
 
   describe "validations" do
     it { should validate_presence_of(:username) }
@@ -26,21 +12,28 @@ RSpec.describe User, type: :model do
 
 
   describe "class methods" do
-    #
-    describe "#max_guests" do
-      it "should return max guests from specified number of bookings" do
-        bookings = Booking.where(room_id: 1)
-        expect(room1.max_guests(bookings)).to eq(4)
+    describe "#reset_session_token" do
+        it "should reset a user's session token" do
+          old_session_token = user.session_token
+          user.reset_session_token!
+          expect(user.session_token).to_not eq(old_session_token)
+        end
+    end
+  end
+
+  describe "model methods" do
+    describe "::find_by_credentials" do
+      context "user exists" do
+        it "should return a user based on criteria" do
+          test_user = FactoryBot.create(:user)
+          expect(User.find_by_credentials(test_user.username, test_user.password)).to eq(test_user)
+        end
+      end
+      context "user doesn't exist" do
+        it "should not return anything" do
+          expect(User.find_by_credentials("bobobob", "password123")).to be_nil
+        end
       end
     end
-
-    describe "#beds_available" do
-      it "should return an min number of beds for a given date range"
-    end
-
-    describe "#price_per_guest" do
-      it "should return the total price / by total guests"
-    end
-
   end
 end
