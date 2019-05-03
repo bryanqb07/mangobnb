@@ -23,12 +23,20 @@ window.getCurrentDateStr = getCurrentDateStr;
 window.getTimeValues = getTimeValues;
 
 
-import { postGuest, postBooking } from './util/booking_api_util';
+import { postGuest, postBooking, fetchBookings, destroyBooking } from './util/booking_api_util';
 import { postUser } from './util/user_api_util';
+// import { fetchGuestBookings, receiveBookings } from './actions/booking_action';
+
+window.destroyBooking = destroyBooking;
+
 
 window.postGuest = postGuest;
 window.postBooking = postBooking;
 window.postUser = postUser;
+// window.fetchBookings = fetchBookings;
+// window.receiveBookings = receiveBookings;
+// window.fetchGuestBookings = fetchGuestBookings;
+
 
 window.testGuest = {
     name: "Bryan L",
@@ -66,6 +74,7 @@ window.testDate = {
     start_date: "Mar 1 2019",
     end_date: "Mar 4 2019"
 };
+
 
 /////////////////////////
 

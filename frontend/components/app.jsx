@@ -9,7 +9,7 @@ import ConfirmationContainer from './confirmation/confirmation_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import LoginFormContainer from './forms/login_form_container';
 import SignupFormContainer from './forms/signup_form_container';
-import Profile from './profile/profile';
+import ProfileContainer from './profile/profile_container';
 
 
 export default () => (
@@ -19,10 +19,10 @@ export default () => (
     </header>
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <AuthRoute exact path="/admin" component={LoginFormContainer} />
+      <Route exact path="/admin" component={LoginFormContainer} />
       {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> 
       {/* <ProtectedRoute exact path="/admin" component={AdminPageContainer} /> */}
-      <Route path="/profile" component={Profile} />
+      <Route path="/profile" component={ProfileContainer} />
       <Route path="/booking" component={BookingIndexContainer} />
       <Route path="/confirmation" component={ConfirmationContainer} />
     </Switch>

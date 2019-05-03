@@ -124,7 +124,7 @@ class BookingForm extends React.Component {
                         <span>{this.props.num_guests} Guest(s) x
                             NTD${avgPrice} per Night x {this.props.num_nights} Night(s)</span>
 
-                        <span>Total Price: NTD${avgPrice * this.props.num_nights}</span>
+                        <span>Total Price: NTD${avgPrice * this.props.num_nights * this.props.num_guests}</span>
                         <br />
                         <button > Book Now </button>
                         <ul className="booking-errors">

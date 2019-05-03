@@ -1,8 +1,11 @@
-export const fetchTodayBookings = () => (
+export const fetchBookings = (start_date, end_date) => (
     $.ajax({
         method: 'GET',
         url: 'api/bookings/',
-        data: { start_date: Date.now() }
+        data: { 
+                start_date,  
+                end_date
+            }
     })
 );
 
@@ -21,5 +24,13 @@ export const postBooking = (booking) => (
         method: 'POST',
         url: 'api/bookings/',
         data: { booking }
+    })
+);
+
+export const destroyBooking = (id) => (
+    $.ajax({
+        method: 'DELETE',
+        url: `api/bookings/${id}`,
+        data: { id }
     })
 );

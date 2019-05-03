@@ -1,6 +1,8 @@
 class Api::BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    if params[:start_date] && params[:end_date]
+      @bookings = Booking.where(["start_date >= ? and end_date <= ?", params[:start_date], params[:end_date]])
+    end
     render :index
   end
 
@@ -13,6 +15,7 @@ class Api::BookingsController < ApplicationController
     end
   end
 
+
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
@@ -21,6 +24,16 @@ class Api::BookingsController < ApplicationController
       render :show
     else
       render json: @booking.errors.full_messages, status: 422
+    end
+  end
+
+  def destroy
+    @booking = Booking.find_by(id: params[:id])
+    if @booking.nil?
+      render json: "Booking doesn't exist.", status: 404
+    else
+      @booking.destroy!
+      render json: {}
     end
   end
 
