@@ -7,9 +7,10 @@ class Profile extends React.Component{
         super(props);
         this.state = {
             booking_start: new Date(),
-            booking_end: DateUtil.getFollowingDate(this.state.booking_start),
+            booking_end: DateUtil.getFollowingDate(new Date()),
             price_start: "",
-            price_end: ""
+            price_end: "",
+            confirmation_code: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -47,33 +48,52 @@ class Profile extends React.Component{
           Object.keys(bookings).length > 0 ? (
             Object.keys(bookings).map(id => (
               <tr key={id}>
-                  <td>{id}</td>
-                  <td>{bookings[id].start_date}</td>
-                  <td>{bookings[id].end_date}</td>
-                  <td>{bookings[id].guest.name} </td>
-                  <td>{bookings[id].guest.email} </td>
-                  <td>{bookings[id].num_guests} </td>
-                  <td>{bookings[id].guest.gender} </td>
-                  <td>{bookings[id].room.room_type} </td>
-                  <td>{bookings[id].checkin_time} </td>
-                  <td>{bookings[id].comments} </td>
-                  <td><button onClick={this.handleDestroy.bind(this)}>Cancel Booking</button></td>
+                <td>{id}</td>
+                <td>{bookings[id].start_date}</td>
+                <td>{bookings[id].end_date}</td>
+                <td>NTD ${bookings[id].price_at_booking_time} </td>
+                <td>{bookings[id].guest.name} </td>
+                <td>{bookings[id].guest.email} </td>
+                <td>{bookings[id].num_guests} </td>
+                <td>{bookings[id].guest.gender} </td>
+                <td>{bookings[id].room.room_type} </td>
+                <td>{bookings[id].checkin_time} </td>
+                <td>{bookings[id].comments} </td>
+                <td>
+                  <button className="search-button" onClick={this.handleDestroy.bind(this)}>
+                    Cancel Booking
+                  </button>
+                </td>
               </tr>
             ))
           ) : (
-                <tr><td>No bookings available for this date."</td></tr>
+            <tr>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+              <td>n/a</td>
+            </tr>
           );
         
             return(
             <div className="admin-wrapper">
                 <h1>Welcome MangoBnb Admin</h1>
-                <h3> List of customers checking in today</h3>
+                <h3 id="todays-bookings"> List of customers checking in today</h3>
                 <table className="bookings-list">
                     <tbody>
                     <tr>
                         <th>ID</th>
                         <th>Checkin date</th>
                         <th>Checkout date</th>
+                        <th>Price</th>
                         <th>Guest Name</th>
                         <th>Guest Email</th>
                         <th>Num Guests</th>
@@ -86,10 +106,10 @@ class Profile extends React.Component{
                         { bookingList }
                     </tbody>
                 </table>
-                <p>Search for booking by confirmation #</p>
+                <h3>Search for booking by confirmation #</h3>
                 <form>
                     <input type="text"></input>
-                    <button>Search</button>
+                    <button className="search-button">Search</button>
                 </form>
                     <div>
                         <h3>Search for Bookings by Date</h3>
@@ -112,7 +132,7 @@ class Profile extends React.Component{
                 </div>
                 <p>Adjust prices by date</p>
                 <p>Adjust room availability by date</p>
-                <button onClick={this.handleLogout}>Logout</button>
+                <button className="search-button" onClick={this.handleLogout}>Logout</button>
             </div>
         )
     }    

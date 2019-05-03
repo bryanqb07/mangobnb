@@ -15,7 +15,6 @@ class Api::BookingsController < ApplicationController
     end
   end
 
-
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
@@ -36,6 +35,7 @@ class Api::BookingsController < ApplicationController
       render json: {}
     end
   end
+
 
   private
 

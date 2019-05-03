@@ -24,11 +24,12 @@ window.getTimeValues = getTimeValues;
 
 
 import { postGuest, postBooking, fetchBookings, destroyBooking } from './util/booking_api_util';
+
 import { postUser } from './util/user_api_util';
-// import { fetchGuestBookings, receiveBookings } from './actions/booking_action';
+import { deleteBooking } from './actions/booking_action';
 
 window.destroyBooking = destroyBooking;
-
+window.deleteBooking = deleteBooking;
 
 window.postGuest = postGuest;
 window.postBooking = postBooking;

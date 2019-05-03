@@ -742,6 +742,17 @@ to   { opacity: 1; }
   background-color: white;
 }
 
+table, th{
+  border: 1px solid white;
+}
+
+th, td{
+  padding: 5px;
+}
+
+tr :hover{
+  background-color: red;
+}
 
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {

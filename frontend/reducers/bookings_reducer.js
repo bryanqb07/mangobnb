@@ -13,7 +13,7 @@ export default (state = {}, action) => {
             return action.booking;
         case DELETE_BOOKING:
             let new_state = state;
-            delete new_state[action.id];
+            delete new_state.entities.bookings[action.id];
             return new_state;
         case CLEAR_BOOKING:
             return {};
