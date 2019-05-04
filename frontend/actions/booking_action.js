@@ -39,7 +39,7 @@ export const startLoadingConfirmation = () => ({
 });
 
 export const destroyBooking = id => dispatch => {
-    APIUtil.destroyBooking.then( () => dispatch(deleteBooking(id)));
+    APIUtil.destroyBooking(id).then( () => dispatch(deleteBooking(id)));
 };
 
 export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
@@ -55,8 +55,8 @@ export const submitGuestBooking = (formGuest, formBooking) => dispatch => {
         errors => dispatch(receiveBookingErrors(errors.responseJSON)));
 };
 
-export const fetchBookings = (start_date, end_date) => dispatch => {
-    APIUtil.fetchBookings(start_date, end_date).then(
+export const fetchBookings = (start_date, end_date, confirm_code) => dispatch => {
+    APIUtil.fetchBookings(start_date, end_date, confirm_code).then(
             bookings => dispatch(receiveBookings(bookings)),
             errors => dispatch(receiveBookingErrors(errors.responseJSON))
         );

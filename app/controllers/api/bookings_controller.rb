@@ -1,9 +1,17 @@
 class Api::BookingsController < ApplicationController
   def index
-    if params[:start_date] && params[:end_date]
-      @bookings = Booking.where(["start_date >= ? and end_date <= ?", params[:start_date], params[:end_date]])
+    if params[:confirmation_code].length > 0
+      @bookings = [Booking.find_by(confirmation_code: params[:confirmation_code])]
+    else
+      bookings = Booking.where(["start_date >= ? and end_date <= ?", params[:start_date], params[:end_date]])
+      @bookings = bookings.includes(:guest, :room)
     end
-    render :index
+
+    if @bookings
+      render :index
+    else
+      render json: {}
+    end
   end
 
   def show
@@ -14,6 +22,8 @@ class Api::BookingsController < ApplicationController
       render json: "Invalid guest id", status: 422
     end
   end
+
+
 
   def create
     @booking = Booking.new(booking_params)

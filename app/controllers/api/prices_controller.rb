@@ -6,6 +6,11 @@ class Api::PricesController < ApplicationController
       render :index
     end
 
+    def create
+      Price.createPrices(price_params[:start_date], price_params[:end_date])
+      render json {"success"}
+    end
+
     private
     def price_params
       self.params.require(:dates).permit(:start_date, :end_date)

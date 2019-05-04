@@ -1,11 +1,22 @@
-export const fetchBookings = (start_date, end_date) => (
+export const fetchBookings = (start_date, end_date, confirmation_code) => (
     $.ajax({
         method: 'GET',
         url: 'api/bookings/',
         data: { 
                 start_date,  
-                end_date
+                end_date,
+                confirmation_code
             }
+    })
+);
+
+export const fetchBooking = (id) => (
+    $.ajax({
+        method: 'GET',
+        url: `api/bookings/${id}`,
+        data: {
+            id
+        }
     })
 );
 

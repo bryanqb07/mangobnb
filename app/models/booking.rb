@@ -40,9 +40,6 @@ class Booking < ApplicationRecord
 
   def ensure_unique_confirmation_code
     self.confirmation_code ||= self.class.generate_confirmation_code
-    while Booking.exists?(:confirmation_code => self.confirmation_code)
-      self.confirmation_code = self.class.generate_confirmation_code
-    end
   end
 
   #ensure males cannot book female_only dorm room

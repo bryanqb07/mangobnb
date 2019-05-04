@@ -19,10 +19,10 @@ export default () => (
     </header>
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route exact path="/admin" component={LoginFormContainer} />
+      <AuthRoute exact path="/admin" component={LoginFormContainer} />
       {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> 
       {/* <ProtectedRoute exact path="/admin" component={AdminPageContainer} /> */}
-      <Route path="/profile" component={ProfileContainer} />
+      <ProtectedRoute path="/profile" component={ProfileContainer} />
       <Route path="/booking" component={BookingIndexContainer} />
       <Route path="/confirmation" component={ConfirmationContainer} />
     </Switch>
