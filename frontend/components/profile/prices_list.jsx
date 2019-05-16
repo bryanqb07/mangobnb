@@ -1,7 +1,10 @@
 import React from 'react';
 import DatePicker from "react-date-picker";
 import * as DateUtil from "../../util/date_api_util";
+
 import PriceRow from './price_row';
+import PriceEditor from './price_editor';
+
 
 class PricesList extends React.Component {
     constructor(props) {
@@ -40,7 +43,7 @@ class PricesList extends React.Component {
               <PriceRow 
                 date={date} 
                 price={prices[date][room_id].price} 
-                vacancies={rooms[room_id].vacancies[date]}
+                vacancies={rooms[room_id].vacancies[date] ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity}
                 key={date}>
               </PriceRow>
           ))
@@ -60,6 +63,7 @@ class PricesList extends React.Component {
 
         return (
           <div className="bookings-wrapper">
+            <h3>Prices & Vacancies for the Upcoming Week</h3>
             <div className="price-table-wrapper">
               <table className="bookings-list">
                 <caption>Room 1</caption>
@@ -67,9 +71,7 @@ class PricesList extends React.Component {
                   <tr>
                     <th>Date</th>
                     <th>Price</th>
-                    <th>Submit</th>
                     <th>Vacancies</th>
-                    <th>Submit</th>
                   </tr>
                   {priceList1}
                 </tbody>
@@ -81,7 +83,7 @@ class PricesList extends React.Component {
                   <tr>
                     <th>Date</th>
                     <th>Price</th>
-                    <th>Submit</th>
+                    <th>Vacancies</th>
                   </tr>
                   {priceList2}
                 </tbody>
@@ -103,11 +105,15 @@ class PricesList extends React.Component {
                 />
                 <button
                   className="search-button"
-                  onSubmit={this.handleSubmit.bind(this)}
+                  // onSubmit={this.handleSubmit.bind(this)}
                 >
                   Search
                 </button>
               </form>
+            </div>
+            <div>
+              <h3>Bulk edit prices & vacancies</h3>
+              <PriceEditor />
             </div>
           </div>
         );

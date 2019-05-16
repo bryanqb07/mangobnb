@@ -760,6 +760,11 @@ th, td{
   margin-top: 20px;
 }
 
+.bookings-list input{
+  width: 75px;
+  text-align: center;
+}
+
 
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {

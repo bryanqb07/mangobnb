@@ -8,42 +8,45 @@ class PriceRow extends React.Component {
             current_vacancies: this.props.vacancies
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
-    handleInput(e) {
-        this.setState({ current_price: e.target.value });
+    handleInput(type) {
+        return e => this.setState({ [type]: e.target.value });
     }
 
     handleSubmit(e){
-        e.preventDefault();
-    }
+                     e.preventDefault();
+                     let targetButton = e.currentTarget;
+                     // targetButton.disabled = true;
+                     targetButton.innerHTML = "&#10003"; // targetButton
+                   }
 
     render(){
-        console.log(this.props);
-        return(
-            <tr>
-                <td>{this.props.date}</td>
-                <td>
-                    <input 
-                        type="number" 
-                        value={this.state.current_price} 
-                        onChange={this.handleInput.bind(this)}
-                    />
-                </td>
-                <td>
-                    <button>Submit New Price</button>
-                </td>
-                <td>
-                    <input
-                        type="number"
-                        value={this.state.vacancies}
-                        onChange={this.handleInput.bind(this)}
-                    />
-                    <button>Change Room Vacancy</button>
-                </td>
-            </tr>
-        )
+        return (
+          <tr>
+            <td>{this.props.date}</td>
+            <td>
+                <input
+                    type="number"
+                    value={this.state.current_price}
+                    onChange={this.handleInput("current_price").bind(this)}
+                    min="0"
+                />
+                <button className="table-button"
+                        onClick={this.handleSubmit}>Update</button>
+            </td>
+            <td>
+                <input
+                    type="number"
+                    value={this.state.current_vacancies}
+                    onChange={this.handleInput("current_vacancies").bind(this)}
+                    min="0"
+                />
+                <button className="table-button"
+                    onClick={this.handleSubmit}>Update</button>
+            </td>
+          </tr>
+        );
     }
 
 }
