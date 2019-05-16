@@ -62,7 +62,15 @@ window.testBooking = {
 };
 
 
-// import { getPrices } from './util/price_api_util';
+import { postPrice } from './util/price_api_util';
+
+window.postPrice = postPrice;
+
+window.testPrice = {
+  price_date: "May 05 2019",
+  price: 1133,
+  room_id: 1
+};
 
 import { getPrices } from './actions/price_action';
 import { getAvgPrice } from './reducers/selectors';

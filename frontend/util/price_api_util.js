@@ -13,3 +13,11 @@ export const postPrices = (dates) => (
         data: { dates }
     })
 ); 
+
+export const postPrice = (price) => (
+    $.ajax({
+        method: 'POST',
+        url: `api/prices/`,
+        data: { price }
+    })
+); 

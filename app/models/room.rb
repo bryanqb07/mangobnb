@@ -5,21 +5,37 @@ class Room < ApplicationRecord
   has_many :prices
   # has_many_attached :photos
 
-  def max_guests(bookings)
-    guest_count = Hash.new(0)
+  # def max_guests(bookings)
+  #   guest_count = Hash.new(0)
+  #   bookings.each do | booking |
+  #     (booking.start_date...booking.end_date).each do |date| # doesn't include checkout date bc guest not staying
+  #       guest_count[date] += booking.num_guests # get amount of guests per room
+  #     end
+  #   end
+  #   guest_count.max_by{|k, v| v }[1] #returns the max number of guests per one day , return array [k,v]
+  # end
+
+  def vacancies_by_day(start_date, end_date)
+    bookings = self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])
+    return if bookings.empty?
+    vacancy_count = Hash.new(self.guest_capacity)
     bookings.each do | booking |
       (booking.start_date...booking.end_date).each do |date| # doesn't include checkout date bc guest not staying
-        guest_count[date] += booking.num_guests # get amount of guests per room
+        vacancy_count[date] -= booking.num_guests # get amount of guests per room
       end
     end
-    guest_count.max_by{|k, v| v }[1] #returns the max number of guests per one day , return array [k,v]
+    vacancy_count
   end
 
   def beds_available(start_date, end_date)
-      bookings = self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])
-      return self.guest_capacity if bookings.empty?
-      existing_guests_max = self.max_guests(bookings)
-      self.guest_capacity - existing_guests_max >= 0 ? self.guest_capacity - existing_guests_max : 0
+    bookings_hash = vacancies_by_day(start_date, end_date)
+    max_beds_available(bookings_hash)
+  end
+
+  def max_beds_available(bookings_hash)
+    return self.guest_capacity if bookings_hash.nil? || bookings_hash.empty?
+    min_vacancies = bookings_hash.min_by{|k, v| v }[1]
+    min_vacancies >= 0 ? min_vacancies : 0
   end
 
   def price_per_guest(start_date, end_date)

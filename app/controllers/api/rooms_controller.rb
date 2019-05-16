@@ -3,7 +3,14 @@ class Api::RoomsController < ApplicationController
     start_date = room_params[:start_date]
     end_date = room_params[:end_date]
     @rooms = Room.all
-    @rooms.each{ |room| room.open_beds = room.beds_available(start_date, end_date) }
+    @rooms.each do |room|
+      # debugger
+      vacancies = room.vacancies_by_day(start_date, end_date)
+      room.vacancies = vacancies
+      # room.vacancies = vacancies
+      room.open_beds = room.max_beds_available(vacancies)
+    end
+
     render :index
   end
 

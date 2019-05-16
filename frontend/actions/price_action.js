@@ -1,8 +1,14 @@
 export const RECEIVE_PRICES = "RECEIVE_PRICES";
+export const RECEIVE_PRICE = "RECEIVE_PRICE";
 export const START_LOADING_SEARCH = "START_LOADING_SEARCH";
 
 import * as APIUtil from '../util/price_api_util';
 
+
+export const receivePrice = price => ({
+  type: RECEIVE_PRICES,
+  price
+});
 
 const receivePrices = prices => ({
     type: RECEIVE_PRICES,
@@ -18,5 +24,13 @@ export const getPrices = (date) => dispatch => {
     return APIUtil.getPrices(date)
         .then(prices => dispatch(receivePrices(prices)));
 };
+
+
+export const postPrice = (date) => dispatch => {
+    APIUtil.postPrice(date)
+        .then(price => dispatch(receivePrices(price)));
+};
+
+
 
 

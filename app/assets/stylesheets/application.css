@@ -750,9 +750,16 @@ th, td{
   padding: 5px;
 }
 
-tr :hover{
+/* tr :hover{
   background-color: red;
+} */
+
+.price-table-wrapper{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
+
 
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {

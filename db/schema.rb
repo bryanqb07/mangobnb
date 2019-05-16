@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_143251) do
+ActiveRecord::Schema.define(version: 2019_05_06_140342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_143251) do
     t.integer "open_beds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "vacancies", default: {}
   end
 
   create_table "users", force: :cascade do |t|
