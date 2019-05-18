@@ -46,10 +46,11 @@ class BookingIndex extends React.Component{
             )
         }
 
-        let rooms = this.props.rooms ? this.props.rooms: "";
+        let rooms = this.props.rooms ? this.props.rooms: null;
         
         if( (rooms[1].open_beds === 0 && rooms[2].open_beds === 0)
-            || this.num_guests > (rooms[1].open_beds + rooms[2].open_beds)){
+            || ( this.num_guests > rooms[1].open_beds && this.num_guests > rooms[2].open_beds)
+            ){
             return(
                 <div className="no-beds-available">
                     <p>Sorry, no beds were available for the given dates.

@@ -1,10 +1,8 @@
 import React from 'react';
 import DatePicker from "react-date-picker";
 import * as DateUtil from "../../util/date_api_util";
-
 import PriceRow from './price_row';
 import PriceEditor from './price_editor';
-
 
 class PricesList extends React.Component {
     constructor(props) {
@@ -38,28 +36,31 @@ class PricesList extends React.Component {
     }
 
     createDateTable(prices, rooms, room_id) {
-        return Object.keys(rooms).length > 0 ? (
-          Object.keys(prices).map(date => (
-              <PriceRow 
-                date={date} 
-                price={prices[date][room_id].price} 
-                vacancies={rooms[room_id].vacancies[date] ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity}
-                key={date}>
-              </PriceRow>
-          ))
-        ) : (
-          <tr>
-            <td>n/a</td>
-            <td>n/a</td>
-          </tr>
-        );
+      return Object.keys(rooms).length > 0 && Object.keys(prices).length > 0 ? (
+        Object.keys(prices).map(date => (
+          <PriceRow date={date}
+            price={prices[date][room_id].price}
+            vacancies={
+              rooms[room_id].vacancies && rooms[room_id].vacancies[date] ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity
+            }
+            key={date}
+          />
+        ))
+      ) : (
+        <tr>
+          <td>n/a</td>
+          <td>n/a</td>
+          <td>n/a</td>
+        </tr>
+      );
     }
 
     render() {
         const prices = this.props.prices;
         const rooms = this.props.rooms
-        let priceList1 = this.createDateTable(prices, rooms, 1);
-        let priceList2 = this.createDateTable(prices, rooms, 2);
+
+        let priceList1 = this.createDateTable(prices, rooms, 1)
+        let priceList2 = this.createDateTable(prices, rooms, 2)
 
         return (
           <div className="bookings-wrapper">
@@ -91,7 +92,7 @@ class PricesList extends React.Component {
             </div>
 
             <div>
-              <h3>Search for Prices by Date</h3>
+              <h3>Search for Prices & Vacancies by Date</h3>
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <DatePicker
                   className="left-picker picker admin-picker"
@@ -103,10 +104,7 @@ class PricesList extends React.Component {
                   value={this.state.endDate}
                   onChange={this.handleDateChange("endDate")}
                 />
-                <button
-                  className="search-button"
-                  // onSubmit={this.handleSubmit.bind(this)}
-                >
+                <button className="search-button">
                   Search
                 </button>
               </form>

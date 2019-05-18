@@ -766,6 +766,22 @@ th, td{
 }
 
 
+.booking-search-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.booking-search-wrapper form input{
+  height: 25px;
+}
+
+.no-beds-available{
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 265px;
+  text-align: center;
+}
+
 /* @media only screen and (max-width: 800px) {
   .content-wrapper {
     width: 105%;

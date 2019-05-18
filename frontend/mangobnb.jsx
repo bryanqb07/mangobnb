@@ -72,7 +72,7 @@ window.testPrice = {
   room_id: 1
 };
 
-import { getPrices } from './actions/price_action';
+import { getPrices } from './util/price_api_util';
 import { getAvgPrice } from './reducers/selectors';
 
 window.getAvgPrice = getAvgPrice;
@@ -80,8 +80,8 @@ window.getAvgPrice = getAvgPrice;
 window.getPrices = getPrices;
 
 window.testDate = {
-    start_date: "Mar 1 2019",
-    end_date: "Mar 4 2019"
+    start_date: "May 17 2019",
+    end_date: "Nov 4 2019"
 };
 
 

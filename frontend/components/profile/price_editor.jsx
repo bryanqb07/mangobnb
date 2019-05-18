@@ -1,5 +1,5 @@
 import React from 'react';
-import * as DatePicker from "react-date-picker";
+import DatePicker from "react-date-picker";
 import * as DateUtil from "../../util/date_api_util";
 
 class PriceEditor extends React.Component{
@@ -7,6 +7,7 @@ class PriceEditor extends React.Component{
         super(props);
         this.state = {
             price: 1000,
+            vacancy: 0,
             startDate: new Date(),
             endDate: DateUtil.getFollowingDate(new Date())
         };
@@ -32,6 +33,10 @@ class PriceEditor extends React.Component{
         targetButton.innerHTML = "&#10003"; // targetButton
     }
 
+    handleInput(type) {
+        return e => this.setState({ [type]: e.target.value });
+    }
+
     render(){
         return (
           <div>
@@ -51,13 +56,23 @@ class PriceEditor extends React.Component{
                 <option value="2">Females Only Room</option>
               </select>
               <span>New Price</span>
-              <input type="number"/>
-                
-                <span>New Price</span>
-                <input type="number" />
-                    <span>New Vacancy</span>
-                    <input type="number" />
-              <button className="search-button">Submit</button>
+              <input
+                type="number"
+                value={this.state.price}
+                onChange={this.handleInput("price")}
+                min="0"
+              />
+              <button className="search-button">Update Prices</button>
+              <span>New Vacancy</span>
+              <input
+                type="number"
+                value={this.state.vacancy}
+                onChange={this.handleInput("vacancy")}
+                min="0"
+              />
+              <button className="search-button">
+                Update Vacancies
+              </button>
             </form>
           </div>
         );
