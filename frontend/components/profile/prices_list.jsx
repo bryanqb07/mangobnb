@@ -39,11 +39,13 @@ class PricesList extends React.Component {
       return Object.keys(rooms).length > 0 && Object.keys(prices).length > 0 ? (
         Object.keys(prices).map(date => (
           <PriceRow date={date}
-            price={prices[date][room_id].price}
+            price={prices[date][room_id] ? prices[date][room_id].price : "n/a"}
             vacancies={
               rooms[room_id].vacancies && rooms[room_id].vacancies[date] ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity
             }
             key={date}
+            room_id={room_id}
+            postPrice={this.props.postPrice}
           />
         ))
       ) : (
@@ -53,6 +55,22 @@ class PricesList extends React.Component {
           <td>n/a</td>
         </tr>
       );
+    }
+
+    fillTable(title, table){
+      return(
+        <table className="bookings-list">
+          <caption>{title}</caption>
+          <tbody>
+            <tr>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Vacancies</th>
+            </tr>
+            {table}
+          </tbody>
+        </table>
+      )
     }
 
     render() {
@@ -66,29 +84,8 @@ class PricesList extends React.Component {
           <div className="bookings-wrapper">
             <h3>Prices & Vacancies for the Upcoming Week</h3>
             <div className="price-table-wrapper">
-              <table className="bookings-list">
-                <caption>Room 1</caption>
-                <tbody>
-                  <tr>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Vacancies</th>
-                  </tr>
-                  {priceList1}
-                </tbody>
-              </table>
-
-              <table className="bookings-list">
-                <caption>Room 2</caption>
-                <tbody>
-                  <tr>
-                    <th>Date</th>
-                    <th>Price</th>
-                    <th>Vacancies</th>
-                  </tr>
-                  {priceList2}
-                </tbody>
-              </table>
+              {this.fillTable("Mixed Room", priceList1)}
+              {this.fillTable("Females Only Room", priceList2)}
             </div>
 
             <div>
@@ -104,14 +101,12 @@ class PricesList extends React.Component {
                   value={this.state.endDate}
                   onChange={this.handleDateChange("endDate")}
                 />
-                <button className="search-button">
-                  Search
-                </button>
+                <button className="search-button">Search</button>
               </form>
             </div>
             <div>
               <h3>Bulk edit prices & vacancies</h3>
-              <PriceEditor />
+              <PriceEditor postPrice={this.props.postPrice} />
             </div>
           </div>
         );

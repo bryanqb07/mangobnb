@@ -6,7 +6,7 @@ import * as APIUtil from '../util/price_api_util';
 
 
 export const receivePrice = price => ({
-  type: RECEIVE_PRICES,
+  type: RECEIVE_PRICE,
   price
 });
 
@@ -28,7 +28,7 @@ export const getPrices = (date) => dispatch => {
 
 export const postPrice = (date) => dispatch => {
     APIUtil.postPrice(date)
-        .then(price => dispatch(receivePrices(price)));
+        .then(price => dispatch(receivePrice(price)));
 };
 
 

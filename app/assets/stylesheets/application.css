@@ -758,13 +758,13 @@ th, td{
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  width: 800px;
 }
 
 .bookings-list input{
   width: 75px;
   text-align: center;
 }
-
 
 .booking-search-wrapper{
   display: flex;
@@ -780,6 +780,34 @@ th, td{
   margin: 0 auto;
   margin-top: 265px;
   text-align: center;
+}
+
+.price-editor-menu{
+  width: 25%;
+  margin: 0 auto;
+
+}
+
+.price-editor-menu form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  border: 1px solid white;
+  height: 350px;
+  border-radius: 5px;
+  align-items: center;
+  padding: 5px;
+}
+
+.form-fix{
+  height: 25px;
+  width: 155px;
+  text-align: center;
+}
+
+#admin-logout{
+  margin-top: 30px;
 }
 
 /* @media only screen and (max-width: 800px) {

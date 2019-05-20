@@ -48,9 +48,11 @@ class Profile extends React.Component{
                 getPrices={this.props.getPrices}
                 rooms={this.props.rooms}
                 getRooms={this.props.getRooms}
+                postPrice={this.props.postPrice}
             />
             <button
               className="search-button"
+              id="admin-logout"
               onClick={this.handleLogout.bind(this)}
             >
               Logout

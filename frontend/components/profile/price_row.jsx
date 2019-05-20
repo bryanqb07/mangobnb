@@ -7,19 +7,43 @@ class PriceRow extends React.Component {
             current_price: this.props.price,
             current_vacancies: this.props.vacancies
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePriceSubmit = this.handlePriceSubmit.bind(this);
     }
 
     handleInput(type) {
         return e => this.setState({ [type]: e.target.value });
     }
 
-    handleSubmit(e){
-                     e.preventDefault();
-                     let targetButton = e.currentTarget;
-                     // targetButton.disabled = true;
-                     targetButton.innerHTML = "&#10003"; // targetButton
-                   }
+    handlePriceSubmit(e){
+        e.preventDefault();
+        let targetButton = e.currentTarget;
+        targetButton.disabled = true;
+        
+        let newPrice = {
+            price_date: this.props.date,
+            price: this.state.current_price,
+            room_id: this.props.room_id
+        };
+        
+        this.props.postPrice(newPrice);
+        targetButton.innerHTML = "&#10003";
+        
+    }
+
+    handleVacancySubmit(e) {
+        e.preventDefault();
+        let targetButton = e.currentTarget;
+        targetButton.disabled = true;
+
+        let price = {
+            price_date: this.props.date,
+            price: this.state.current_price,
+            room_id: this.props.room_id
+        };
+
+        this.props.postPrice(price);
+        targetButton.innerHTML = "&#10003";
+    }
 
     render(){
         return (
@@ -33,7 +57,7 @@ class PriceRow extends React.Component {
                     min="0"
                 />
                 <button className="table-button"
-                        onClick={this.handleSubmit}>Update</button>
+                        onClick={this.handlePriceSubmit.bind(this)}>Update</button>
             </td>
             <td>
                 <input
@@ -43,7 +67,7 @@ class PriceRow extends React.Component {
                     min="0"
                 />
                 <button className="table-button"
-                    onClick={this.handleSubmit}>Update</button>
+                    onClick={this.handlePriceSubmit.bind(this)}>Update</button>
             </td>
           </tr>
         );

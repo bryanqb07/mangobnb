@@ -39,19 +39,22 @@ class PriceEditor extends React.Component{
 
     render(){
         return (
-          <div>
+          <div className="price-editor-menu">
             <form onSubmit={this.handleSubmit.bind(this)}>
+              <span>Start Date</span>
               <DatePicker
-                className="left-picker picker admin-picker"
+                className="picker admin-picker"
                 value={this.state.startDate}
                 onChange={this.handleDateChange("startDate")}
               />
+              <span>End Date</span>
               <DatePicker
                 className="right-picker picker admin-picker"
                 value={this.state.endDate}
                 onChange={this.handleDateChange("endDate")}
               />
-              <select name="" id="">
+              <span>Room Type</span>
+              <select name="" id="" className="form-fix">
                 <option value="1">Mixed Room</option>
                 <option value="2">Females Only Room</option>
               </select>
@@ -61,6 +64,7 @@ class PriceEditor extends React.Component{
                 value={this.state.price}
                 onChange={this.handleInput("price")}
                 min="0"
+                className="form-fix"
               />
               <button className="search-button">Update Prices</button>
               <span>New Vacancy</span>
@@ -69,6 +73,7 @@ class PriceEditor extends React.Component{
                 value={this.state.vacancy}
                 onChange={this.handleInput("vacancy")}
                 min="0"
+                className="form-fix"
               />
               <button className="search-button">
                 Update Vacancies
