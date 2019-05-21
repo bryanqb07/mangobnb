@@ -8,7 +8,7 @@ export const postRestrictions = restrictions =>
 export const postPrice = restriction => (
     $.ajax({
         method: 'POST',
-        url: `api/prices/`,
+        url: `api/restrictions/`,
         data: { restriction }
     })
 ); 
