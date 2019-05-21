@@ -6,11 +6,11 @@ export const getPrices = (dates) => (
     })
 ); 
 
-export const postPrices = (dates) => (
+export const postPrices = (price) => (
     $.ajax({
         method: 'POST',
         url: `api/prices/`,
-        data: { dates }
+        data: { price }
     })
 ); 
 

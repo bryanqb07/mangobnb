@@ -106,7 +106,10 @@ class PricesList extends React.Component {
             </div>
             <div>
               <h3>Bulk edit prices & vacancies</h3>
-              <PriceEditor postPrice={this.props.postPrice} />
+              <PriceEditor
+                postPrice={this.props.postPrice}
+                postPrices={this.props.postPrices}
+              />
             </div>
           </div>
         );

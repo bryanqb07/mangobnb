@@ -64,11 +64,21 @@ window.testBooking = {
 
 import { postPrice } from './util/price_api_util';
 
+import { postPrices } from './actions/price_action';
+
 window.postPrice = postPrice;
+window.postPrices = postPrices;
 
 window.testPrice = {
   price_date: "May 05 2019",
   price: 1133,
+  room_id: 1
+};
+
+window.testPrices = {
+  start_date: "May 10 2020",
+  end_date: "May 15 2020",
+  price: 1234,
   room_id: 1
 };
 

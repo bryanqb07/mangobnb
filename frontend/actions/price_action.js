@@ -31,6 +31,11 @@ export const postPrice = (date) => dispatch => {
         .then(price => dispatch(receivePrice(price)));
 };
 
+export const postPrices = (price) => dispatch => {
+    APIUtil.postPrice(price)
+        .then(prices => dispatch(receivePrice(prices)));
+};
+
 
 
 

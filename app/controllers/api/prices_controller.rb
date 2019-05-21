@@ -7,21 +7,34 @@ class Api::PricesController < ApplicationController
     end
 
     def create
-      start_date = price_params[:price_date]
       room_id = price_params[:room_id]
-      price = Price.find_by(price_date: start_date, room_id: room_id)
-      price.destroy if price
-      @price = Price.new(price_params)
-      if @price.save
-        render :show
+      #bulk edit prices
+      # debugger
+      if price_params[:start_date] && price_params[:end_date]
+        new_prices = Price.createPrices(price_params[:start_date], price_params[:end_date],
+          price_params[:price], room_id)
+        if new_prices
+          render json: new_prices
+        else
+          render json: "error"
+        end
+      #create single price
       else
-        render json: @price.errors.full_messages, status: 422
+        price_date = price_params[:price_date]
+        price = Price.find_by(price_date: price_date, room_id: room_id)
+        price.destroy if price
+        @price = Price.new(price_params)
+        if @price.save
+          render :show
+        else
+          render json: @price.errors.full_messages, status: 422
+        end
       end
     end
 
     # private
     def price_params
-      self.params.require(:price).permit(:price_date, :price, :room_id)
+      self.params.require(:price).permit(:price_date, :price, :room_id, :start_date, :end_date)
     end
 
 end

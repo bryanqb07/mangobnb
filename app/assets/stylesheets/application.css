@@ -785,10 +785,6 @@ th, td{
 .price-editor-menu{
   width: 25%;
   margin: 0 auto;
-
-}
-
-.price-editor-menu form{
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -799,6 +795,22 @@ th, td{
   align-items: center;
   padding: 5px;
 }
+
+td a{
+  color: white;
+}
+
+/* .price-editor-menu form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  border: 1px solid white;
+  height: 350px;
+  border-radius: 5px;
+  align-items: center;
+  padding: 5px;
+} */
 
 .form-fix{
   height: 25px;

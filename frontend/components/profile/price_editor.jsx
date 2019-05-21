@@ -8,10 +8,13 @@ class PriceEditor extends React.Component{
         this.state = {
             price: 1000,
             vacancy: 0,
+            room_id: 1,
             startDate: new Date(),
             endDate: DateUtil.getFollowingDate(new Date())
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.updatePrices = this.updatePrices.bind(this);
+        this.updateVacancies = this.updateVacancies.bind(this);
     }
 
     handleDateChange(type) {
@@ -26,11 +29,42 @@ class PriceEditor extends React.Component{
         }
     }
 
+    handleChange(e) {
+        this.setState({ room_id: e.target.value });
+    }
+
+    disableButton(e){
+        let targetButton = e.currentTarget;
+        targetButton.disabled = true;
+        targetButton.innerHTML = "&#10003"; // targetButton
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        let targetButton = e.currentTarget;
-        // targetButton.disabled = true;
-        targetButton.innerHTML = "&#10003"; // targetButton
+        disableButton(e);
+        // let targetButton = e.currentTarget;
+        // // targetButton.disabled = true;
+        // targetButton.innerHTML = "&#10003"; // targetButton
+    }
+
+    updateVacancies(e) {
+        e.preventDefault();
+        // let targetButton = e.currentTarget;
+        // // targetButton.disabled = true;
+        // targetButton.innerHTML = "&#10003"; // targetButton
+    }
+
+    updatePrices(e) {
+        e.preventDefault();
+        const price = {
+            start_date: this.state.startDate.toDateString(),
+            end_date: this.state.endDate.toDateString(),
+            price: this.state.price,
+            room_id: this.state.room_id
+        };
+        // console.log(price);
+        this.props.postPrices(price);
+        this.disableButton(e);
     }
 
     handleInput(type) {
@@ -40,7 +74,6 @@ class PriceEditor extends React.Component{
     render(){
         return (
           <div className="price-editor-menu">
-            <form onSubmit={this.handleSubmit.bind(this)}>
               <span>Start Date</span>
               <DatePicker
                 className="picker admin-picker"
@@ -54,7 +87,7 @@ class PriceEditor extends React.Component{
                 onChange={this.handleDateChange("endDate")}
               />
               <span>Room Type</span>
-              <select name="" id="" className="form-fix">
+              <select name="" id="" className="form-fix" onChange={this.handleChange.bind(this)}>
                 <option value="1">Mixed Room</option>
                 <option value="2">Females Only Room</option>
               </select>
@@ -66,7 +99,7 @@ class PriceEditor extends React.Component{
                 min="0"
                 className="form-fix"
               />
-              <button className="search-button">Update Prices</button>
+              <button className="search-button"　onClick={this.updatePrices}>Update Prices</button>
               <span>New Vacancy</span>
               <input
                 type="number"
@@ -75,10 +108,9 @@ class PriceEditor extends React.Component{
                 min="0"
                 className="form-fix"
               />
-              <button className="search-button">
+              <button className="search-button" onClick={this.updateVacancies}>
                 Update Vacancies
               </button>
-            </form>
           </div>
         );
     }

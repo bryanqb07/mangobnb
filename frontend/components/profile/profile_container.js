@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { fetchBookings, destroyBooking } from '../../actions/booking_action';
 import { logout } from '../../actions/session_action';
-import { getPrices, postPrice } from "../../actions/price_action";
+import { getPrices, postPrice, postPrices } from "../../actions/price_action";
+// import { postPrices } from '../../util/price_api_util';
 import { getRooms } from "../../actions/room_action";
 // import { withRouter } from 'react-router-dom';
 import Profile from './profile';
@@ -19,7 +20,8 @@ const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
     getPrices: (date) => dispatch(getPrices(date)),
     getRooms: (date) => dispatch(getRooms(date)),
-    postPrice: (date) => dispatch(postPrice(date)) 
+    postPrice: (date) => dispatch(postPrice(date)),
+    postPrices: (dates) => dispatch(postPrices(dates)) 
 });
 
 

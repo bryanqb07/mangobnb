@@ -49,6 +49,7 @@ class Profile extends React.Component{
                 rooms={this.props.rooms}
                 getRooms={this.props.getRooms}
                 postPrice={this.props.postPrice}
+                postPrices={this.props.postPrices}
             />
             <button
               className="search-button"
