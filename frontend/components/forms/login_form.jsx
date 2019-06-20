@@ -30,29 +30,39 @@ class SessionForm extends React.Component {
         const errorsDisplay = errors ? (this.props.errors.map(error => <li key={error}>{error}</li>)
         ) : "";
         return (
-            <div className="login-form-container">
-                <h1>Login</h1>
-                <form>
-                    <span> Username</span>
-                    <input
-                        type="text"
-                        value={this.state.username}
-                        onChange={this.handleInput("username")} />
-
-                    <span> Password </span>
-                    <input
-                        type="password"
-                        value={this.state.password}
-                        onChange={this.handleInput("password")} />
-                    <button onClick={this.handleSubmit}>
-                        Login
-                    </button>
-                </form>
-                <ul>
-                    {errorsDisplay}
-                </ul>
+            <div className="w3-padding w3-col l6 m8" style={{border: "1px solid darkgrey"}}>
+            <div className="w3-container w3-yellow">
+            <h1>Login</h1>
             </div>
-        )
+            <div className="w3-container w3-white w3-padding-16">
+            <form>  
+              <span> Username {"   "}</span>
+              <input
+      
+                type="text"
+                value={this.state.username}
+                onChange={this.handleInput("username")}
+              />
+
+              <span> Password </span>
+              <input
+         
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInput("password")}
+              />
+              <button
+                onClick={this.handleSubmit}
+                className="w3-button w3-dark-grey"
+                style={{marginLeft: "15px"}}
+              >
+                Login
+              </button>
+            </form>
+            <ul>{errorsDisplay}</ul>
+            </div>
+          </div>
+        );
     }
 
 }

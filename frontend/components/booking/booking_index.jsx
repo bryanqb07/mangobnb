@@ -65,7 +65,7 @@ class BookingIndex extends React.Component{
 
         return (
           <div>
-            <div className="booking-container">
+            <div className="booking-container w3-mobile">
               <RoomsDetail rooms={rooms} />
               <BookingForm
                 num_guests={this.num_guests}
@@ -78,9 +78,10 @@ class BookingIndex extends React.Component{
                 avgPriceRoomTwo={this.props.avgPriceRoomTwo}
                 errors={this.props.errors}
               />
+              
 
             </div>
-            <div className="link-wrapper">
+            {/* <div className="link-wrapper">
                 <Link 
                     to="/" 
                     className="return-button"
@@ -88,7 +89,7 @@ class BookingIndex extends React.Component{
                 >
                     Return to search page.
               </Link>
-            </div>
+            </div> */}
           </div>
         );
     }

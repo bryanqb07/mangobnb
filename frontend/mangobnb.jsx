@@ -94,6 +94,40 @@ window.testDate = {
     end_date: "Nov 4 2019"
 };
 
+import { postRestriction, postRestrictions } from './util/restriction_api_util';
+
+window.postRestriction = postRestriction;
+// window.postRestrictions = postRestrictions;
+
+window.testRestriction = {
+  restriction_date: "June 13, 2019",
+  net_vacancies: -1,
+  room_id: 2
+};
+
+window.testRestrictions = {
+  start_date: "May 01 2020",
+  end_date: "May 10 2020",
+  net_vacancies: -1,
+  room_id: 1
+};
+
+import { postSubscriber, postContactForm } from './util/subscriber_api_util';
+
+window.postSubscriber = postSubscriber;
+window.postContactForm = postContactForm;
+
+window.testSubscriber = {
+  email: "bml312@nyu.edu"
+};
+
+window.contact = {
+  name: "bryan",
+  email: "bml312@nyu.edu",
+  message: "any rooms available?"
+};
+
+
 
 /////////////////////////
 

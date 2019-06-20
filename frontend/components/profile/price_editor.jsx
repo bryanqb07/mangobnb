@@ -1,18 +1,20 @@
 import React from 'react';
 import DatePicker from "react-date-picker";
 import * as DateUtil from "../../util/date_api_util";
+// import { postRestriction } from "../../util/restriction_api_util"; 
 
 class PriceEditor extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             price: 1000,
-            vacancy: 0,
+            net_vacancies: 0,
             room_id: 1,
             startDate: new Date(),
             endDate: DateUtil.getFollowingDate(new Date())
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.GUEST_CAPACITY = 4;
+        // this.handleSubmit = this.handleSubmit.bind(this);
         this.updatePrices = this.updatePrices.bind(this);
         this.updateVacancies = this.updateVacancies.bind(this);
     }
@@ -39,19 +41,24 @@ class PriceEditor extends React.Component{
         targetButton.innerHTML = "&#10003"; // targetButton
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        disableButton(e);
-        // let targetButton = e.currentTarget;
-        // // targetButton.disabled = true;
-        // targetButton.innerHTML = "&#10003"; // targetButton
-    }
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     disableButton(e);
+    //     // let targetButton = e.currentTarget;
+    //     // // targetButton.disabled = true;
+    //     // targetButton.innerHTML = "&#10003"; // targetButton
+    // }
 
     updateVacancies(e) {
         e.preventDefault();
-        // let targetButton = e.currentTarget;
-        // // targetButton.disabled = true;
-        // targetButton.innerHTML = "&#10003"; // targetButton
+        const net_vacancies = {
+            start_date: this.state.startDate.toDateString(),
+            end_date: this.state.endDate.toDateString(),
+            net_vacancies: this.state.net_vacancies,
+            room_id: this.state.room_id
+        };
+        this.props.postRestriction(net_vacancies);
+        this.disableButton(e);
     }
 
     updatePrices(e) {
@@ -100,12 +107,12 @@ class PriceEditor extends React.Component{
                 className="form-fix"
               />
               <button className="search-button"　onClick={this.updatePrices}>Update Prices</button>
-              <span>New Vacancy</span>
+                <span>Adjust Vacancies (+)(-)</span>
               <input
                 type="number"
-                value={this.state.vacancy}
-                onChange={this.handleInput("vacancy")}
-                min="0"
+                value={this.state.net_vacancies}
+                onChange={this.handleInput("net_vacancies")}
+                min="-4"
                 className="form-fix"
               />
               <button className="search-button" onClick={this.updateVacancies}>

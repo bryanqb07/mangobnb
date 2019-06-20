@@ -6,17 +6,26 @@ class Room < ApplicationRecord
   has_many :restrictions
 
   def vacancies_by_day(start_date, end_date)
+    # base vacancies
+    vacancy_count = Hash.new(self.guest_capacity)
     bookings = self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])
     restrictions = self.restrictions.where(["restriction_date between ? and ?", start_date, end_date])
-    restriction_hash = Hash.new(0)
-    restrictions.map{|restriction| restriction_hash[restriction.restriction_date] += restriction.net_vacancies} unless restrictions.empty?
-    return if bookings.empty?
-    vacancy_count = Hash.new(self.guest_capacity)
-    bookings.each do | booking |
-      (booking.start_date...booking.end_date).each do |date| # doesn't include checkout date bc guest not staying
-        vacancy_count[date] -= (booking.num_guests - restriction_hash[date]) # get amount of guests per room
+    return if bookings.empty? && restrictions.empty?
+    # restriction_hash = Hash.new(0)
+
+    restrictions.map{|restriction| vacancy_count[restriction.restriction_date] += restriction.net_vacancies} unless restrictions.empty?
+
+
+    # restriction_hash.map{|date, val| vacancy_count[date] += restriction_hash[date] } unless restrictions.empty?
+
+    unless bookings.empty?
+      bookings.each do | booking |
+        (booking.start_date...booking.end_date).each do |date| # doesn't include checkout date bc guest not staying
+          vacancy_count[date] -= booking.num_guests # get amount of guests per room
+        end
       end
     end
+    # end
     vacancy_count
   end
 

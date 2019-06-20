@@ -28,15 +28,15 @@ class BookingForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if(this.state.email != this.state.confirm_email){
-            this.setState({errors: [...this.state.errors].concat("Invalid confirmation email")});
-            return;
-        }
+        // if(this.state.email != this.state.confirm_email){
+        //     this.setState({errors: [...this.state.errors].concat("Invalid confirmation email")});
+        //     return;
+        // }
 
         const guest = {
             name: this.state.name,
             email: this.state.email,
-            gender: this.state.gender
+            gender: this.state.gender,
         };
 
         const booking = {
@@ -47,10 +47,17 @@ class BookingForm extends React.Component {
             room_id: this.state.room_id,
             comments: this.state.comments
         };
-
+        
         this.props.submitGuestBooking(guest, booking)
-            .then( () => this.props.history.push({ pathname: "/confirmation" }),
-            this.setState({ errors: [this.props.errors] }));
+            .then( () => this.props.history.push({ pathname: "/confirmation" }));
+            // this.setState({ errors: this.props.errors }));
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps != this.props){
+            this.setState({ errors: this.props.errors });
+        }
+        
     }
 
     handleClick(){
@@ -62,78 +69,121 @@ class BookingForm extends React.Component {
         let avgPrice = this.state.room_id == 1 ? this.props.avgPriceRoomOne
             : this.props.avgPriceRoomTwo;
 
-        const errors = this.state.errors.map((error, i) => <li key={i}>{error}</li>) 
+        const errors = this.state.errors.map((error) => <li key={error}>{error}</li>) 
 
         return (
-                <div className="booking-form-container">
-                    <h3>Booking Details</h3>
-                    <form className="booking-form" onSubmit={this.handleSubmit.bind(this)}>
-                        <span> Select a Room </span>
-                        <select onChange={this.handleInput("room_id")}
-                            value={this.state.room_id}>
-                            <option value="1" disabled={this.props.rooms[1].open_beds ? false : true}>
-                                Mixed Male/Female Room</option>
+          <div className="booking-form-container w3-mobile">
+            <div className="booking-form-left booking-form-basic">
+              <h3>Customer Information</h3>
+              <form
+                className="booking-form"
+                onSubmit={this.handleSubmit.bind(this)}
+              >
+                <span> Select a Room </span>
+                <select
+                  onChange={this.handleInput("room_id")}
+                  value={this.state.room_id}
+                >
+                  <option
+                    value="1"
+                    disabled={
+                      this.props.rooms[1].open_beds ? false : true
+                    }
+                  >
+                    Mixed Male/Female Room
+                  </option>
 
-                            <option value="2" disabled={this.props.rooms[2].open_beds ? false : true}>
-                                Female Only Room</option>
-                        </select>
+                  <option
+                    value="2"
+                    disabled={
+                      this.props.rooms[2].open_beds ? false : true
+                    }
+                  >
+                    Female Only Room
+                  </option>
+                </select>
 
-                        <span> Primary Guest's Name</span>
-                        <input type="text"
-                            value={this.state.name}
-                            onChange={this.handleInput("name")} />
+                <span> Primary Guest's Name</span>
+                <input
+                  type="text"
+                  value={this.state.name}
+                  onChange={this.handleInput("name")}
+                />
 
-                        <span> Primary Guest Email</span>
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.handleInput("email")} />
-                        
-                        <span> Confirm Primary Guest Email</span>
-                        <input type="text"
-                            value={this.state.confirm_email}
-                            onChange={this.handleInput("confirm_email")} />
+                <span> Primary Guest Email</span>
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.handleInput("email")}
+                />
 
+                <span> Confirm Primary Guest Email</span>
+                <input
+                  type="text"
+                  value={this.state.confirm_email}
+                  onChange={this.handleInput("confirm_email")}
+                />
 
-                        <span>Estimated Checkin Time</span>
-                        <select id="checkin-time" value={this.state.checkin_time}
-                            onChange={this.handleInput("checkin_time")}>
-                            {this.timeOptions.map(time => <option value={time}
-                                key={time}>{time}</option>)
-                            }
-                        </select>
+                <span>Estimated Checkin Time</span>
+                <select
+                  id="checkin-time"
+                  value={this.state.checkin_time}
+                  onChange={this.handleInput("checkin_time")}
+                >
+                  {this.timeOptions.map(time => (
+                    <option value={time} key={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
 
+                <span>Guest(s) Gender</span>
+                <select
+                  value={this.state.gender}
+                  id="gender"
+                  onChange={this.handleInput("gender")}
+                >
+                  {this.genderOptions.map(gender => (
+                    <option value={gender} key={gender}>
+                      {gender}
+                    </option>
+                  ))}
+                </select>
 
-                        <span>Guest(s) Gender</span>
-                        <select value={this.state.gender} id="gender"
-                            onChange={this.handleInput("gender")}>
-                            {this.genderOptions.map(gender => <option value={gender}
-                                key={gender}>{gender}</option>)
-                            }
-                        </select>
+                <span> Additional Requests</span>
+                <textarea
+                  value={this.state.comments}
+                  onChange={this.handleInput("comments")}
+                />
 
-                        <span> Additional Requests</span>
-                        <textarea
-                            value={this.state.comments}
-                            onChange={this.handleInput("comments")}>
-                        </textarea>
+                <button> Book Now </button>
+                
+                {errors.length > 0 ? <ul className="booking-errors">{errors}</ul> : ""}
+        
+              </form>
+              <br />
+            </div>
+            <div className="booking-form-right booking-form-basic">
+              <h3>Booking details</h3>
+              <p>Checkin Date: {this.props.start_date}</p>
 
-                        <span>Checkin Date: {this.props.start_date}</span>
+              <p>Checkout Date: {this.props.end_date}</p>
 
-                        <span>Checkout Date: {this.props.end_date}</span>
+              <p>
+                {this.props.num_guests} Guest(s) x NTD${avgPrice} per
+                Night x {this.props.num_nights} Night(s)
+              </p>
 
-                        <span>{this.props.num_guests} Guest(s) x
-                            NTD${avgPrice} per Night x {this.props.num_nights} Night(s)</span>
-
-                        <span>Total Price: NTD${avgPrice * this.props.num_nights * this.props.num_guests}</span>
-                        <br />
-                        <button > Book Now </button>
-                        <ul className="booking-errors">
-                            {errors ? errors : ""}    
-                        </ul>
-                    </form>
-                    <br />
-                </div>
-        )
+              <p>
+                Total Price: NTD$
+                {avgPrice *
+                  this.props.num_nights *
+                  this.props.num_guests}
+              </p>
+              <br />
+            </div>
+          </div>
+        );
     }
 }
 

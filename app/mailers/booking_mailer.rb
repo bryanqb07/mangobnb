@@ -1,5 +1,4 @@
 class BookingMailer < ApplicationMailer
-  default from: 'admin@mangostation.com'
 
   def confirmation_email(booking)
     @booking = booking

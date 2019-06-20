@@ -3,6 +3,7 @@ import DatePicker from "react-date-picker";
 import * as DateUtil from "../../util/date_api_util";
 import PriceRow from './price_row';
 import PriceEditor from './price_editor';
+import { postRestriction } from "../../util/restriction_api_util"; 
 
 class PricesList extends React.Component {
     constructor(props) {
@@ -41,11 +42,12 @@ class PricesList extends React.Component {
           <PriceRow date={date}
             price={prices[date][room_id] ? prices[date][room_id].price : "n/a"}
             vacancies={
-              rooms[room_id].vacancies && rooms[room_id].vacancies[date] ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity
+              rooms[room_id].vacancies && (rooms[room_id].vacancies[date] || rooms[room_id].vacancies[date] == 0 ) ? rooms[room_id].vacancies[date] : rooms[room_id].guest_capacity
             }
             key={date}
             room_id={room_id}
             postPrice={this.props.postPrice}
+            postRestriction={postRestriction}
           />
         ))
       ) : (
@@ -58,9 +60,11 @@ class PricesList extends React.Component {
     }
 
     fillTable(title, table){
-      return(
+      return (
         <table className="bookings-list">
-          <caption>{title}</caption>
+          <caption>
+            <h5>{title}</h5>
+          </caption>
           <tbody>
             <tr>
               <th>Date</th>
@@ -70,7 +74,7 @@ class PricesList extends React.Component {
             {table}
           </tbody>
         </table>
-      )
+      );
     }
 
     render() {
@@ -81,7 +85,7 @@ class PricesList extends React.Component {
         let priceList2 = this.createDateTable(prices, rooms, 2)
 
         return (
-          <div className="bookings-wrapper">
+          <div className="bookings-wrapper" style={{marginTop: "30px"}}>
             <h3>Prices & Vacancies for the Upcoming Week</h3>
             <div className="price-table-wrapper">
               {this.fillTable("Mixed Room", priceList1)}
@@ -92,12 +96,12 @@ class PricesList extends React.Component {
               <h3>Search for Prices & Vacancies by Date</h3>
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <DatePicker
-                  className="left-picker picker admin-picker"
+                  className="left-picker picker admin-picker w3-border"
                   value={this.state.startDate}
                   onChange={this.handleDateChange("startDate")}
                 />
                 <DatePicker
-                  className="right-picker picker admin-picker"
+                  className="right-picker picker admin-picker w3-border"
                   value={this.state.endDate}
                   onChange={this.handleDateChange("endDate")}
                 />
@@ -109,6 +113,7 @@ class PricesList extends React.Component {
               <PriceEditor
                 postPrice={this.props.postPrice}
                 postPrices={this.props.postPrices}
+                postRestriction={postRestriction}
               />
             </div>
           </div>

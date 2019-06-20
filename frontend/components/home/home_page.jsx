@@ -1,27 +1,26 @@
 import React from 'react';
-import Slideshow from '../slideshow/slideshow';
 import SearchBar from '../search/search_bar';
 import Map from '../map/map';
 import Footer from './footer';
-import About from './popups/about';
-import Amenities from './popups/amenities';
-import Contact from './popups/contact';
-import Payment from "./popups/payment";
-import Reviews from '../reviews/review_index';
+import PageContent from '../page_content/page_content';
 
-export default () => (
-  <div className="home-container">
-    {/* menu bar */}
-    <About />
-    <Amenities />
-    <Contact />
-    <Payment />
+class HomePage extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  componentDidMount(){
+    this.props.getPhotos();
+  }
 
-    {/* end */}
-    <SearchBar />
-    <Map />
-    <Slideshow />
-    <Reviews />
-    <Footer />
-  </div>
-);
+  render(){
+    return (
+        <div className = "home-container" >
+          <SearchBar />
+          < PageContent photos={this.props.photos}/>
+          <Footer />
+        </div >
+  )
+  }
+}
+
+export default HomePage;

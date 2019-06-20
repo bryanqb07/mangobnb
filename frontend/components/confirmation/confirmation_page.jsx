@@ -21,10 +21,13 @@ class ConfirmationPage extends React.Component{
         }else{
             const booking = this.props.booking;
             // const guest = this.props.guest;
+            const containerPadding = {
+                padding: "20px"
+            }
         return (
             <div className="confirmation-container">
                 <div className="confirmation-wrapper">
-                <div className="confirmation-header">
+                <div className="confirmation-header" style={containerPadding}>
                     <h1>Booking Confirmed!</h1>
                     <h3>Confirmation #: {booking.confirmation_code}</h3>
                     <p>A confirmation email has been sent to
@@ -32,7 +35,7 @@ class ConfirmationPage extends React.Component{
                         inbox shortly and save the email for your record.
                      </p>
                 </div>
-                <div className="confirmation-details">
+                    <div className="confirmation-details" style={containerPadding}>
                     <h1>Booking Details</h1>
 
                     <b>Primary Guest Name: </b><span>{booking.guest.name}</span>
@@ -59,7 +62,7 @@ class ConfirmationPage extends React.Component{
                     <br />
                 </div>
 
-                <div className="confirmation-contact-messages">
+                    <div className="confirmation-contact-messages" style={containerPadding}>
                     <p>
                         For any changes to your reservation, please contact us at
                 <a href="tel: 5551234567"> 555-123-4567 </a>  or email us at

@@ -5,9 +5,10 @@ class PriceRow extends React.Component {
         super(props);
         this.state = {
             current_price: this.props.price,
-            current_vacancies: this.props.vacancies
+            net_vacancies: this.props.vacancies
         };
         this.handlePriceSubmit = this.handlePriceSubmit.bind(this);
+        this.handleVacancySubmit = this.handleVacancySubmit.bind(this);
     }
 
     handleInput(type) {
@@ -35,13 +36,13 @@ class PriceRow extends React.Component {
         let targetButton = e.currentTarget;
         targetButton.disabled = true;
 
-        let price = {
-            price_date: this.props.date,
-            price: this.state.current_price,
+        let restriction = {
+            restriction_date: this.props.date,
+            net_vacancies: (this.state.net_vacancies - this.props.vacancies),
             room_id: this.props.room_id
         };
 
-        this.props.postPrice(price);
+        this.props.postRestriction(restriction);
         targetButton.innerHTML = "&#10003";
     }
 
@@ -62,12 +63,11 @@ class PriceRow extends React.Component {
             <td>
                 <input
                     type="number"
-                    value={this.state.current_vacancies}
-                    onChange={this.handleInput("current_vacancies").bind(this)}
-                    min="0"
+                    value={this.state.net_vacancies}
+                    onChange={this.handleInput("net_vacancies").bind(this)}
                 />
                 <button className="table-button"
-                    onClick={this.handlePriceSubmit.bind(this)}>Update</button>
+                    onClick={this.handleVacancySubmit.bind(this)}>Update</button>
             </td>
           </tr>
         );

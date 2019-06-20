@@ -3,7 +3,8 @@ import { Route,
         Switch
         } from 'react-router-dom';
 import NavBar from './navbar/navbar';
-import HomePage from './home/home_page';
+// import HomePage from './home/home_page';
+import HomePageContainer from './home/home_container';
 import BookingIndexContainer from './booking/booking_index_container';
 import ConfirmationContainer from './confirmation/confirmation_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -15,13 +16,11 @@ import ProfileContainer from './profile/profile_container';
 export default () => (
   <div className="content-wrapper">
     <header>
-      <Route exact path="/" component={NavBar} />
+      <Route path="/" component={NavBar} />
     </header>
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={HomePageContainer}/>   
       <AuthRoute exact path="/admin" component={LoginFormContainer} />
-      {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> 
-      {/* <ProtectedRoute exact path="/admin" component={AdminPageContainer} /> */}
       <ProtectedRoute path="/profile" component={ProfileContainer} />
       <Route path="/booking" component={BookingIndexContainer} />
       <Route path="/confirmation" component={ConfirmationContainer} />

@@ -11,10 +11,10 @@ class SearchBar extends React.Component {
         this.state = {
             startDate: this.today,
             endDate: this.tomorrow,
-            numGuests: "1 Guest",
+            numGuests: 1,
             errors: []
         };
-        this.GUEST_NUM = ["1 Guest", "2 Guests", "3 Guests", "4 Guests"];
+        this.MAX_GUESTS = 4;
         this.handleChange = this.handleChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
         // this.maxDate = Date.new(this.state.startDate + 12096e5);
@@ -25,10 +25,10 @@ class SearchBar extends React.Component {
     }
 
     handleDateChange(type) {
-        if(type === "startDate"){ //allows auto-updating of end date 
+        if(type === "startDate"){ //allows auto-updating of end date
                                 //when new start date selected
-            return (e) =>  this.setState({ 
-                [type]: e , 
+            return (e) =>  this.setState({
+                [type]: e ,
                 endDate: DateUtil.getFollowingDate(e) });
         }else{
             return (e) => this.setState({ [type]: e });
@@ -39,13 +39,12 @@ class SearchBar extends React.Component {
         e.preventDefault();
         const errors = this.errorCheck();
         if (errors.length > 0){
-            this.setState({ errors: errors });        
+            this.setState({ errors: errors });
         }else{
-            let intGuests = parseInt(this.state.numGuests[0]);
-            let query_params = `num_guests=${intGuests}`;
+            let query_params = `num_guests=${this.state.numGuests}`;
             query_params += `&start_date=${this.state.startDate.toDateString()}`;
             query_params += `&end_date=${this.state.endDate.toDateString()}`;
-            
+
             this.props.history.push({
                 pathname: "/booking",
                 search: query_params
@@ -71,44 +70,74 @@ class SearchBar extends React.Component {
     render() {
         const errors = this.state.errors ? (
             this.state.errors.map(error => <div className="search-warning" key ={error}>
-                {error}</div>) ) : ""; 
+                {error}</div>) ) : "";
+
+        const imgStyle = {
+          minWidth: "1000px",
+          width: "1500px",
+          height: "800px"
+        }
+
+        const headerStyle = {
+          maxWidth: '1500px'
+        }
+        const rowPadding = {
+          margin: "0 -16px"
+        }
+
+        const pickerStyle = {
+          border: "1px solid white"
+        }
 
         return (
-          <div className="search-form-container">
-            <h1>Reservations</h1>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <DatePicker
-                className="left-picker picker"
-                minDate={this.today}
-                value={this.state.startDate}
-                onChange={this.handleDateChange("startDate")}
-              />
-              <span className="date-separator"> > </span>
-              <DatePicker
-                className="right-picker picker"
-                value={this.state.endDate}
-                minDate={this.tomorrow}
-                // maxDate={ this.maxDate }
-                onChange={this.handleDateChange("endDate")}
-              />
-
-              <select
-                value={this.numGuests}
-                onChange={this.handleChange}
-              >
-                {this.GUEST_NUM.map(num => (
-                  <option value={num} key={num}>
-                    {num}
-                  </option>
-                ))}
-              </select>
-              <button className="search-button">Search</button>
-            </form>
-            <br />
-            {errors}
+            <header className="w3-display-container w3-content" style={headerStyle}>
+            <img className="w3-image" src="https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/f_auto/c_fill/blogen/green-101.jpg" alt="The Hotel" style={imgStyle} />
+                <div className="w3-display-left w3-padding w3-col l6 m8">
+                  <div className="w3-container w3-yellow">
+                    <h2><i className="fa fa-bed w3-margin-right"></i>MangoBnb</h2>
+                  </div>
+                  <div className="w3-container w3-white w3-padding-16">
+                    <form onSubmit={this.handleSubmit.bind(this)} >
+                      <div className="w3-row-padding" style={rowPadding}>
+                        <div className="w3-half w3-margin-bottom">
+                          <label><i className="fa fa-calendar-o"></i> Check In</label>
+                          <DatePicker 
+                          className="w3-input w3-border" style={pickerStyle} name="CheckIn" required 
+                          minDate={this.today}
+                          value={this.state.startDate}
+                          onChange={this.handleDateChange("startDate")}
+                          />
+                      </div>
+                          <div className="w3-half">
+                            <label><i className="fa fa-calendar-o"></i> Check Out</label>
+                            <DatePicker 
+                              className="w3-input w3-border" type="date" name="CheckOut" required 
+                              value={this.state.endDate}
+                              minDate={this.tomorrow}
+                              onChange={this.handleDateChange("endDate")}/>
           </div>
-        );
-    }
-}
+                          </div>
+                          <div className="w3-row-padding" style={rowPadding}>
+                            <div className="w3-half w3-margin-bottom">
+                              <label><i className="fa fa-male"></i> Guests</label>
+                              <input 
+                                    value={this.state.numGuests}
+                                    onChange={this.handleChange}
+                                    className="w3-input w3-border" type="number" name="Guests" min="1" max={this.MAX_GUESTS} 
+                              />                        
+          
+          </div>
+                              </div>
+                              <button className="w3-button w3-dark-grey" type="submit"><i className="fa fa-search w3-margin-right"></i> Search availability</button>
+      </form>
+                          </div>
+                        </div>
+                        </header>
 
-export default withRouter(SearchBar);
+
+          )
+          }
+    }
+
+
+            export default withRouter(SearchBar);
