@@ -16,7 +16,7 @@ export default ({ photos }) => (
 
     <div className="w3-row-padding w3-padding-16">
       <div className="w3-half w3-margin-bottom">
-        <img src={photos.photoUrls ? photos.photoUrls[2] : ""} alt="Norway" style={imgStyle} />
+        <img src={photos.photoUrls ? photos.photoUrls[2] : ""} alt="bed1" style={imgStyle} />
         <div className="w3-container w3-white">
           <h3>Single Bed in Mixed Dorm </h3>
           <h6 className="w3-opacity">From NT$ 1000</h6>
@@ -30,7 +30,7 @@ export default ({ photos }) => (
         </div>
       </div>
       <div className="w3-half w3-margin-bottom">
-        <img src={photos.photoUrls ? photos.photoUrls[2] : ""} alt="Norway" style={imgStyle} />
+        <img src={photos.photoUrls ? photos.photoUrls[2] : ""} alt="bed2" style={imgStyle} />
         <div className="w3-container w3-white">
           <h3>Single Bed in Females Only Dorm</h3>
           <h6 className="w3-opacity">From NT$ 1000</h6>

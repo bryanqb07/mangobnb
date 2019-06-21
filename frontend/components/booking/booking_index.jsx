@@ -81,15 +81,6 @@ class BookingIndex extends React.Component{
               
 
             </div>
-            {/* <div className="link-wrapper">
-                <Link 
-                    to="/" 
-                    className="return-button"
-                    onClick={this.handleClick.bind(this)}
-                >
-                    Return to search page.
-              </Link>
-            </div> */}
           </div>
         );
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import HomeNav from './home_nav';
 
 class NavBar extends React.Component{
@@ -35,7 +34,7 @@ class NavBar extends React.Component{
       <div className="w3-bar w3-white w3-large">
         <a href="#" className="w3-bar-item w3-button w3-yellow w3-mobile">
           <i className="fa fa-bed w3-margin-right" />
-          MangoBnb
+          Mango Station
         </a>
         { window.location.href == "http://localhost:3000/#/" ? <HomeNav /> : ""}
         <div className="w3-bar-item w3-right w3-mobile">

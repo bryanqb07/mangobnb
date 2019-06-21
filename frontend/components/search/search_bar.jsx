@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
         this.MAX_GUESTS = 4;
         this.handleChange = this.handleChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
-        // this.maxDate = Date.new(this.state.startDate + 12096e5);
     }
 
     handleChange(e) {
@@ -60,9 +59,7 @@ class SearchBar extends React.Component {
         if(this.state.startDate > this.state.endDate){
             errors.push("Check-in date must precede check-out date.");
         }
-        // if (this.state.endDate - this.state.startDate > 14) {
-        //     errors.push("Max booking range is 14 days.");
-        // }
+
         return errors;
     }
 
@@ -94,7 +91,7 @@ class SearchBar extends React.Component {
             <img className="w3-image" src="https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/f_auto/c_fill/blogen/green-101.jpg" alt="The Hotel" style={imgStyle} />
                 <div className="w3-display-left w3-padding w3-col l6 m8">
                   <div className="w3-container w3-yellow">
-                    <h2><i className="fa fa-bed w3-margin-right"></i>MangoBnb</h2>
+                    <h2><i className="fa fa-bed w3-margin-right"></i>Mango Station</h2>
                   </div>
                   <div className="w3-container w3-white w3-padding-16">
                     <form onSubmit={this.handleSubmit.bind(this)} >
@@ -131,10 +128,13 @@ class SearchBar extends React.Component {
                               <button className="w3-button w3-dark-grey" type="submit"><i className="fa fa-search w3-margin-right"></i> Search availability</button>
       </form>
                           </div>
+                          {errors ? (<div>
+                            <ul>
+                              {errors}
+                            </ul>
+                          </div>) : ""}
                         </div>
                         </header>
-
-
           )
           }
     }
