@@ -2,6 +2,10 @@ $background-color: yellow;
 $border: mistyrose;
 $table-border: darkgrey;
 
+body,h1,h2,h3,h4,h5,h6 {
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
 button{
   cursor: pointer;
 }
@@ -200,9 +204,9 @@ html{
   height: 150px;
 } */
 
-img.icon{
-  width:  60px;
-  height: 60px;
+.icon{
+  font-size: 35px;
+  margin-right: 5px;
 }
 
 /* .booking-form-container label input{

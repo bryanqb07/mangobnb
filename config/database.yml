@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: MangoBnb_production
+  database: MangoBnb
   username: MangoBnb
   password: <%= ENV['MANGOBNB_DATABASE_PASSWORD'] %>

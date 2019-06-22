@@ -4,10 +4,10 @@ export default( {beds} ) => (
     <div>
         < span > <b>Beds Available: </b>{beds}</span>
         <br/>
-        <img className="icon" src={photos.photoUrls[5]} alt="icon-image"/>
-        {beds >= 2 ? <img className="icon" src={photos.photoUrls[5]} alt="icon-image" /> : ""}
-        {beds >= 3 ? <img className="icon" src={photos.photoUrls[5]} alt="icon-image" /> : ""}
-        {beds == 4 ? <img className="icon" src={photos.photoUrls[5]} alt="icon-image" /> : ""}
+        <div className="fa fa-bed  icon"/>
+        {beds >= 2 ? <div className="fa fa-bed icon" /> : ""}
+        {beds >= 3 ? <div className="fa fa-bed icon" /> : ""}
+        {beds == 4 ? <div className="fa fa-bed icon" /> : ""}
     </div>
 )
 

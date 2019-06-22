@@ -2,6 +2,7 @@ import React from 'react';
 import * as DateUtil from '../../util/date_api_util';
 import DatePicker from 'react-date-picker';
 import { withRouter } from 'react-router-dom';
+import photos_reducer from '../../reducers/photos_reducer';
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -88,7 +89,7 @@ class SearchBar extends React.Component {
 
         return (
             <header className="w3-display-container w3-content" style={headerStyle}>
-            <img className="w3-image" src="https://res.klook.com/image/upload/fl_lossy.progressive/q_auto/f_auto/c_fill/blogen/green-101.jpg" alt="The Hotel" style={imgStyle} />
+            <img className="w3-image" src={photos.photoUrls[0]} alt="The Hotel" style={imgStyle} />
                 <div className="w3-display-left w3-padding w3-col l6 m8">
                   <div className="w3-container w3-yellow">
                     <h2><i className="fa fa-bed w3-margin-right"></i>Mango Station</h2>
