@@ -2,7 +2,7 @@
   "name": "MangoBnB",
   "version": "1.0.0",
   "description": "hotel project for a friend/client",
-  "main": "mangobnb.jsx",
+  "main": "./frontend/mangobnb.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --mode=development",
