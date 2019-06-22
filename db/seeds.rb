@@ -66,8 +66,6 @@ booking7 = Booking.create(num_guests: 3, start_date: "Mar 10 2019", end_date: "M
             checkin_time: "10:00 PM", guest_id: 7, room_id: 2)
 
 first = Photo.create(photoUrl: "holder")
-first.photos.attach(io: File.open('app/assets/images/new_taipei_skyline.jpg'), filename: 'skyline.jpg')
-first.photos.attach(io: File.open('app/assets/images/beds.jpg'), filename: 'beds.jpg')
 
 
             # create_table "bookings", force: :cascade do |t|
