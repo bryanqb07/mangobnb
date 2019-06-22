@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def photo_holder
-    Photo.first
+    Photo.last
   end
 
   def login!(user)
