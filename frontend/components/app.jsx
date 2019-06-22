@@ -14,10 +14,10 @@ import ProfileContainer from './profile/profile_container';
 export default () => (
   <div className="content-wrapper">
     <header>
-      <Route path="/" component={NavBar} />
+      <Route path="https://mangobnb.herokuapp.com/" component={NavBar} />
     </header>
     <Switch>
-      <Route exact path="/" component={HomePageContainer}/>   
+      <Route exact path="/" component={HomePageContainer} />
       <AuthRoute exact path="/admin" component={LoginFormContainer} />
       <ProtectedRoute path="/profile" component={ProfileContainer} />
       <Route path="/booking" component={BookingIndexContainer} />

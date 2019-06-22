@@ -89,7 +89,7 @@ class SearchBar extends React.Component {
 
         return (
             <header className="w3-display-container w3-content" style={headerStyle}>
-            <img className="w3-image" src={photos.photoUrls[0]} alt="The Hotel" style={imgStyle} />
+            <img className="w3-image" src={window.photos.photoUrls[0]} alt="The Hotel" style={imgStyle} />
                 <div className="w3-display-left w3-padding w3-col l6 m8">
                   <div className="w3-container w3-yellow">
                     <h2><i className="fa fa-bed w3-margin-right"></i>Mango Station</h2>
