@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag "application", 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag('favicon.ico') %>
     <script type="text/javascript">
           window.photos = <%= render(
             "api/photos/photo.json.jbuilder",
