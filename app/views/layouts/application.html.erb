@@ -11,13 +11,6 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <script type="text/javascript">
-          window.photos = <%= render(
-            "api/photos/photo.json.jbuilder",
-            photo: photo_holder
-          ).html_safe %>
-    </script>
-
     <% if current_user %>
     <script type="text/javascript">
       window.currentUser = <%= render(
