@@ -14,7 +14,7 @@ import ProfileContainer from './profile/profile_container';
 export default () => (
   <div className="content-wrapper">
     <header>
-      <Route path="https://mangobnb.herokuapp.com/" component={NavBar} />
+      <Route path="/" component={NavBar} />
     </header>
     <Switch>
       <Route exact path="/" component={HomePageContainer} />
