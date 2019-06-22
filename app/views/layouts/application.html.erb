@@ -8,8 +8,15 @@
     <%= stylesheet_link_tag "application", 'https://www.w3schools.com/w3css/4/w3.css' %>
     <%= stylesheet_link_tag "application", 'https://fonts.googleapis.com/css?family=Raleway' %>
     <%= stylesheet_link_tag "application", 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <script type="text/javascript">
+          window.photos = <%= render(
+            "api/photos/photo.json.jbuilder",
+            photo: photo_holder
+          ).html_safe %>
+    </script>
 
     <% if current_user %>
     <script type="text/javascript">
