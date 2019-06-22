@@ -104,7 +104,7 @@ class SearchBar extends React.Component {
                           minDate={this.today}
                           value={this.state.startDate}
                           onChange={this.handleDateChange("startDate")}
-                          style={{ border: none }}
+                          style={{ border: 'none' }}
                           />
                       </div>
                           <div className="w3-half">
@@ -114,7 +114,7 @@ class SearchBar extends React.Component {
                               value={this.state.endDate}
                               minDate={this.tomorrow}
                               onChange={this.handleDateChange("endDate")}
-                              style={{border: none}}
+                              style={{border: 'none'}}
                               />
                               
           </div>
