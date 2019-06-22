@@ -7,7 +7,7 @@ export default( { rooms, roomPhotos } ) => (
         <h3>Room Availability</h3>
         <div className="beds-wrapper">
             <div className="bed-container-1">
-                <img className="room-photo" src={photos.photoUrls[2]} alt="bed1-image" />
+                <img className="room-photo" src={photos.photoUrls[1]} alt="bed1-image" />
                 <br />
                 <b>Title: </b><span>Male/Female Mixed Dorm Room</span><br />
                 { rooms[1].open_beds ?
@@ -16,7 +16,7 @@ export default( { rooms, roomPhotos } ) => (
                 }
             </div>
             <div className="bed-container-2">
-                <img className="room-photo" src={photos.photoUrls[2]} alt="bed2-image" />
+                <img className="room-photo" src={photos.photoUrls[1]} alt="bed2-image" />
                 <br />
                 <b>Title: </b><span>Females Only Dorm Room</span>
                 <br />

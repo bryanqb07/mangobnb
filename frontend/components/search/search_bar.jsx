@@ -104,6 +104,7 @@ class SearchBar extends React.Component {
                           minDate={this.today}
                           value={this.state.startDate}
                           onChange={this.handleDateChange("startDate")}
+                          style={{ border: none }}
                           />
                       </div>
                           <div className="w3-half">
@@ -112,7 +113,10 @@ class SearchBar extends React.Component {
                               className="w3-input w3-border" type="date" name="CheckOut" required 
                               value={this.state.endDate}
                               minDate={this.tomorrow}
-                              onChange={this.handleDateChange("endDate")}/>
+                              onChange={this.handleDateChange("endDate")}
+                              style={{border: none}}
+                              />
+                              
           </div>
                           </div>
                           <div className="w3-row-padding" style={rowPadding}>
