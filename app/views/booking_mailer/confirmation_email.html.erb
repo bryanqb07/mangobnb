@@ -2,13 +2,11 @@
   <body>
     <div class="confirmation-container">
         <div class="confirmation-wrapper">
+          <h1>Mango Station Hotel</h1>
+          <img src="<%= image_url('mango.png') %>" alt="mango">
           <div class="confirmation-header">
             <h1>Booking Confirmed!</h1>
             <h3>Confirmation #: <%= @booking.confirmation_code %> </h3>
-            <p>A confirmation email has been sent to
-             <a href="#"> <%= @booking.guest.email %> </a>.  Please check your
-                inbox shortly and save the email for your record.
-             </p>
         </div>
         <div class="confirmation-details">
             <h1>Booking Details</h1>

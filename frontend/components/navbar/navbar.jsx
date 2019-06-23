@@ -36,7 +36,7 @@ class NavBar extends React.Component{
           <i className="fa fa-bed w3-margin-right" />
           Mango Station
         </a>
-        { window.location.href == "http://localhost:3000/#/" ? <HomeNav /> : ""}
+        { window.location.href == "http://mangobnb.com/#/" ? <HomeNav /> : ""}
         <div className="w3-bar-item w3-right w3-mobile">
             <i className="fa fa-phone w3-text-yellow" /> Phone:{" "}
             <a href="tel:886-0988-792-057" style={{marginRight:"15px"}}>+886 0988 792 057</a>
