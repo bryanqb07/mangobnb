@@ -4,7 +4,7 @@
 <h3>Single AJAX App, RESTful Rails API Backend</h3>
 <br>
 <h5>Home Page</h5>
-<img src="img/portfolio/mango_home.png" height="400px" width="750px">
+<img src="app/assets/images/mango_home.png" height="400px" width="750px">
 <br>
 <br>
 <h5>Booking</h5>
