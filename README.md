@@ -64,7 +64,7 @@ App should appear on localhost:3000
 
 <b>RSpec</b> is the testing suite used for this app.
 
-To run tests, execute: <code>bundle exec rspec <filename> </code> 
+To run tests, execute: <code>bundle exec rspec filename </code> 
 
 <h3>To-Do List</h3>
 
