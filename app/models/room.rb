@@ -11,13 +11,9 @@ class Room < ApplicationRecord
     bookings = self.bookings.where(["start_date >= ? and end_date <= ?", start_date, end_date])
     restrictions = self.restrictions.where(["restriction_date between ? and ?", start_date, end_date])
     return if bookings.empty? && restrictions.empty?
-    # restriction_hash = Hash.new(0)
-
+    # add/subtract restrictions from room count
     restrictions.map{|restriction| vacancy_count[restriction.restriction_date] += restriction.net_vacancies} unless restrictions.empty?
-
-
-    # restriction_hash.map{|date, val| vacancy_count[date] += restriction_hash[date] } unless restrictions.empty?
-
+    # subtract existing guests from room count
     unless bookings.empty?
       bookings.each do | booking |
         (booking.start_date...booking.end_date).each do |date| # doesn't include checkout date bc guest not staying
