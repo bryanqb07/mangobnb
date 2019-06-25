@@ -61,16 +61,6 @@ App should appear on localhost:3000
 <h3>Testing</h3>
 
 <p><b>FactoryBot</b> and <b>Faker</b> gems are used to create mocks for testing.</p>
-<code>spec/factories/guest_model.rb</code>
-<br>
-<code>FactoryBot.define do</code><br>
-<code>  factory :guest do＜/code><br>
-<code>    name {Faker::Name.name}＜/code><br>
-<code>    email {Faker::Internet.email}＜/code><br>
-<code>    gender {Faker::Gender.binary_type}＜/code><br>
-<code>  end
-<code>end
-</code>
 
 <b>RSpec</b> is the testing suite used for this app.
 
